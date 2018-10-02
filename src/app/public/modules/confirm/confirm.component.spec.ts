@@ -1,4 +1,5 @@
 import {
+  async,
   ComponentFixture,
   TestBed
 } from '@angular/core/testing';
@@ -44,7 +45,7 @@ import {
   SkyConfirmModalContext
 } from './confirm-modal-context';
 
-xdescribe('Confirm component', () => {
+describe('Confirm component', () => {
   const modalInstance = new MockSkyModalInstance();
   const modalHost = new MockSkyModalHostService();
 
@@ -73,13 +74,13 @@ xdescribe('Confirm component', () => {
     });
   });
 
-  afterAll(() => {
+  afterEach(async(() => {
     // Cleanup after unit tests.
     // TODO: Figure out a better way to do this!
     document.querySelector('.sky-confirm').remove();
-  });
+  }));
 
-  it('should display an OK confirm by default', () => {
+  it('should display an OK confirm by default', async(() => {
     const fixture = createConfirm({
       message: 'confirm message'
     });
@@ -92,9 +93,10 @@ xdescribe('Confirm component', () => {
     expect(messageElem).toHaveText('confirm message');
     expect(buttons.length).toEqual(1);
     expect(buttons[0]).toHaveText('OK');
-  });
+    buttons[0].click();
+  }));
 
-  it('should display an OK confirm', () => {
+  it('should display an OK confirm', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       type: SkyConfirmType.OK
@@ -108,9 +110,10 @@ xdescribe('Confirm component', () => {
     expect(messageElem).toHaveText('confirm message');
     expect(buttons.length).toEqual(1);
     expect(buttons[0]).toHaveText('OK');
-  });
+    buttons[0].click();
+  }));
 
-  it('should display an OK confirm with body', () => {
+  it('should display an OK confirm with body', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       body: 'additional text',
@@ -127,9 +130,10 @@ xdescribe('Confirm component', () => {
     expect(bodyElem).toHaveText('additional text');
     expect(buttons.length).toEqual(1);
     expect(buttons[0]).toHaveText('OK');
-  });
+    buttons[0].click();
+  }));
 
-  it('should display a YesCancel confirm', () => {
+  it('should display a YesCancel confirm', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       type: SkyConfirmType.YesCancel
@@ -144,9 +148,10 @@ xdescribe('Confirm component', () => {
     expect(buttons.length).toEqual(2);
     expect(buttons[0]).toHaveText('Yes');
     expect(buttons[1]).toHaveText('Cancel');
-  });
+    buttons[0].click();
+  }));
 
-  it('should display a YesNoCancel confirm', () => {
+  it('should display a YesNoCancel confirm', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       type: SkyConfirmType.YesNoCancel
@@ -162,9 +167,10 @@ xdescribe('Confirm component', () => {
     expect(buttons[0]).toHaveText('Yes');
     expect(buttons[1]).toHaveText('No');
     expect(buttons[2]).toHaveText('Cancel');
-  });
+    buttons[0].click();
+  }));
 
-  it('should display a custom confirm', () => {
+  it('should display a custom confirm', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       type: SkyConfirmType.Custom,
@@ -184,9 +190,10 @@ xdescribe('Confirm component', () => {
     expect(messageElem).toHaveText('confirm message');
     expect(buttons.length).toEqual(1);
     expect(buttons[0]).toHaveText('Custom label');
-  });
+    buttons[0].click();
+  }));
 
-  it('should handle incorrect button config', () => {
+  it('should handle incorrect button config', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       type: SkyConfirmType.Custom,
@@ -206,9 +213,10 @@ xdescribe('Confirm component', () => {
     expect(messageElem).toHaveText('confirm message');
     expect(buttons.length).toEqual(1);
     expect(buttons[0]).toHaveText('');
-  });
+    buttons[0].click();
+  }));
 
-  it('should default to OK confirm if buttons not provided with custom type', () => {
+  it('should default to OK confirm if buttons not provided with custom type', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       type: SkyConfirmType.Custom,
@@ -223,9 +231,10 @@ xdescribe('Confirm component', () => {
     expect(messageElem).toHaveText('confirm message');
     expect(buttons.length).toEqual(1);
     expect(buttons[0]).toHaveText('OK');
-  });
+    buttons[0].click();
+  }));
 
-  it('should invoke close method and return arguments', () => {
+  it('should invoke close method and return arguments', async(() => {
     const fixture = createConfirm({
       message: 'confirm message'
     });
@@ -241,9 +250,9 @@ xdescribe('Confirm component', () => {
     expect(spy).toHaveBeenCalledWith({
       action: 'ok'
     });
-  });
+  }));
 
-  it('should autofocus specified button from config', () => {
+  it('should autofocus specified button from config', async(() => {
     const fixture = createConfirm({
       message: 'confirm message',
       type: SkyConfirmType.Custom,
@@ -271,5 +280,6 @@ xdescribe('Confirm component', () => {
     expect(buttons[0].hasAttribute('autofocus')).toEqual(false);
     expect(buttons[1].hasAttribute('autofocus')).toEqual(false);
     expect(buttons[2].hasAttribute('autofocus')).toEqual(true);
-  });
+    buttons[0].click();
+  }));
 });
