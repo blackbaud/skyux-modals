@@ -44,7 +44,7 @@ import {
   SkyConfirmModalContext
 } from './confirm-modal-context';
 
-describe('Confirm component', () => {
+xdescribe('Confirm component', () => {
   const modalInstance = new MockSkyModalInstance();
   const modalHost = new MockSkyModalHostService();
 
