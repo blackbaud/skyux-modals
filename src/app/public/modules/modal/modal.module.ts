@@ -7,16 +7,13 @@ import {
 
 import {
   SkyWindowRefService
-} from '../window';
+} from '@skyux/core';
 import {
-  SkyResourcesModule
-} from '../resources';
-import {
-  SkyErrorModalFormComponent
-} from '../error/error-modal-form.component';
+  SkyI18nModule
+} from '@skyux/i18n';
 import {
   SkyIconModule
-} from '../icon';
+} from '@skyux/indicators';
 
 import {
   SkyModalAdapterService
@@ -46,8 +43,7 @@ import {
     SkyModalContentComponent,
     SkyModalFooterComponent,
     SkyModalHeaderComponent,
-    SkyModalHostComponent,
-    SkyErrorModalFormComponent
+    SkyModalHostComponent
   ],
   providers: [
     SkyModalAdapterService,
@@ -57,7 +53,7 @@ import {
   imports: [
     CommonModule,
     RouterModule,
-    SkyResourcesModule,
+    SkyI18nModule,
     SkyIconModule
   ],
   exports: [
@@ -67,8 +63,7 @@ import {
     SkyModalHeaderComponent
   ],
   entryComponents: [
-    SkyModalHostComponent,
-    SkyErrorModalFormComponent
+    SkyModalHostComponent
   ]
 })
 export class SkyModalModule { }

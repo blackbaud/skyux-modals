@@ -4,8 +4,16 @@ import {
 } from '@angular/core/testing';
 
 import {
+  SkyAppResourcesService
+} from '@skyux/i18n';
+
+import {
+  SkyAppResourcesTestService
+} from '@skyux/i18n/testing';
+
+import {
   expect
-} from '@blackbaud/skyux-builder/runtime/testing/browser';
+} from '@skyux-sdk/testing';
 
 import {
   SkyModalInstance,
@@ -44,7 +52,8 @@ describe('Confirm component', () => {
     TestBed.overrideComponent(SkyConfirmComponent, { set: {
       providers: [
         { provide: SkyConfirmModalContext, useValue: config },
-        { provide: SkyModalInstance, useValue: modalInstance }
+        { provide: SkyModalInstance, useValue: modalInstance },
+        { provide: SkyAppResourcesService, useClass: SkyAppResourcesTestService }
       ]
     }});
 
@@ -62,6 +71,12 @@ describe('Confirm component', () => {
         { provide: SkyModalConfiguration, useValue: {} }
       ]
     });
+  });
+
+  afterAll(() => {
+    // Cleanup after unit tests.
+    // TODO: Figure out a better way to do this!
+    document.querySelector('.sky-confirm').remove();
   });
 
   it('should display an OK confirm by default', () => {

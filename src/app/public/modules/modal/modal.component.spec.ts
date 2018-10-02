@@ -13,7 +13,7 @@ import {
 import {
   expect,
   SkyAppTestUtility
-} from '@blackbaud/skyux-builder/runtime/testing/browser';
+} from '@skyux-sdk/testing';
 
 import { SkyModalInstance } from './modal-instance';
 import { SkyModalService } from './modal.service';

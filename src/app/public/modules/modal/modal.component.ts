@@ -15,7 +15,7 @@ import { SkyModalHostService } from './modal-host.service';
 import { SkyModalConfiguration } from './modal-configuration';
 
 import { SkyModalComponentAdapterService } from './modal-component-adapter.service';
-import { SkyWindowRefService } from '../window';
+import { SkyWindowRefService } from '@skyux/core';
 
 let skyModalUniqueIdentifier: number = 0;
 

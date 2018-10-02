@@ -5,7 +5,7 @@ import {
   RouterTestingModule
 } from '@angular/router/testing';
 
-import { SkyWindowRefService } from '../../window';
+import { SkyWindowRefService } from '@skyux/core';
 
 import { SkyModalModule } from '../modal.module';
 import { ModalTestComponent } from './modal.component.fixture';

@@ -2,7 +2,7 @@ import {
   Injectable
 } from '@angular/core';
 
-import { SkyWindowRefService } from '../window';
+import { SkyWindowRefService } from '@skyux/core';
 
 @Injectable()
 export class SkyModalAdapterService {
