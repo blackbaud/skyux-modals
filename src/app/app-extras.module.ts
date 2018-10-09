@@ -12,11 +12,24 @@ import {
   SkyTilesModule
 } from '@skyux/tiles';
 
-import { ModalDemoComponent } from './visual/modal/modal-demo.component';
-import { ModalContentDemoComponent } from './visual/modal/modal-content-demo.component';
-import { ModalFullPageDemoComponent } from './visual/modal/modal-fullpage-demo.component';
-import { ModalLargeDemoComponent } from './visual/modal/modal-large-demo.component';
-import { ModalTiledDemoComponent } from './visual/modal/modal-tiled-demo.component';
+import {
+  ModalDemoComponent
+} from './visual/modal/modal-demo.component';
+import {
+  ModalContentDemoComponent
+} from './visual/modal/modal-content-demo.component';
+import {
+  ModalFullPageDemoComponent
+} from './visual/modal/modal-fullpage-demo.component';
+import {
+  ModalLargeDemoComponent
+} from './visual/modal/modal-large-demo.component';
+import {
+  ModalTiledDemoComponent
+} from './visual/modal/modal-tiled-demo.component';
+import {
+  ModalContentAutofocusComponent
+} from './visual/modal/modal-content-autofocus.component';
 
 @NgModule({
   imports: [
@@ -37,7 +50,8 @@ import { ModalTiledDemoComponent } from './visual/modal/modal-tiled-demo.compone
     ModalContentDemoComponent,
     ModalFullPageDemoComponent,
     ModalLargeDemoComponent,
-    ModalTiledDemoComponent
+    ModalTiledDemoComponent,
+    ModalContentAutofocusComponent
   ]
 })
 export class AppExtrasModule { }
