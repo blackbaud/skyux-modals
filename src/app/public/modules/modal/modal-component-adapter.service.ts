@@ -38,7 +38,7 @@ export class SkyModalComponentAdapterService {
   }
 
   public loadFocusElementList(modalEl: ElementRef): Array<HTMLElement> {
-    return this.loadFocussableChildren(modalEl.nativeElement);
+    return this.loadFocusableChildren(modalEl.nativeElement);
   }
 
   public isFocusInFirstItem(event: KeyboardEvent, list: Array<HTMLElement>): boolean {
@@ -92,10 +92,10 @@ export class SkyModalComponentAdapterService {
         inputWithAutofocus.focus();
       } else {
         let focusEl: HTMLElement = modalEl.nativeElement.querySelector('.sky-modal-content');
-        let focussableChildren = this.loadFocussableChildren(focusEl);
+        let focusableChildren = this.loadFocusableChildren(focusEl);
 
-        // Focus first focussable child if available. Otherwise focus content pane.
-        if (!this.focusFirstElement(focussableChildren)) {
+        // Focus first focusable child if available. Otherwise focus content pane.
+        if (!this.focusFirstElement(focusableChildren)) {
           focusEl.focus();
         }
       }
@@ -103,7 +103,7 @@ export class SkyModalComponentAdapterService {
     }
   }
 
-  private loadFocussableChildren(elem: HTMLElement) {
+  private loadFocusableChildren(elem: HTMLElement) {
     let elements: Array<HTMLElement>
       = Array.prototype.slice.call(elem.querySelectorAll(tabbableSelector));
 
