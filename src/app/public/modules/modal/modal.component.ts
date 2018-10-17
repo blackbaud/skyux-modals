@@ -11,11 +11,30 @@
   HostListener
 } from '@angular/core';
 
-import { SkyModalHostService } from './modal-host.service';
-import { SkyModalConfiguration } from './modal-configuration';
+import 'rxjs/add/operator/take';
 
-import { SkyModalComponentAdapterService } from './modal-component-adapter.service';
-import { SkyWindowRefService } from '@skyux/core';
+import {
+  SkyWindowRefService
+} from '@skyux/core';
+
+import {
+  SkyConfirmService,
+  SkyConfirmType,
+  SkyConfirmCloseEventArgs
+} from '../confirm';
+
+import {
+  SkyModalHostService
+} from './modal-host.service';
+import {
+  SkyModalConfiguration
+} from './modal-configuration';
+import {
+  SkyModalComponentAdapterService
+} from './modal-component-adapter.service';
+import {
+  SkyModalService
+} from './modal.service';
 
 let skyModalUniqueIdentifier: number = 0;
 
@@ -49,6 +68,9 @@ export class SkyModalComponent implements AfterViewInit {
   public set tiledBody(value: boolean) {
     this.config.tiledBody = value;
   }
+
+  @Input()
+  public hasUnsavedWork = false;
 
   public get modalZIndex() {
     return this.hostService.getModalZIndex();
@@ -94,13 +116,18 @@ export class SkyModalComponent implements AfterViewInit {
     return this.config.helpKey;
   }
 
+  private confirmService: SkyConfirmService;
+
   constructor(
     private hostService: SkyModalHostService,
     private config: SkyModalConfiguration,
     private elRef: ElementRef,
     private windowRef: SkyWindowRefService,
-    private componentAdapter: SkyModalComponentAdapterService
-  ) { }
+    private componentAdapter: SkyModalComponentAdapterService,
+    private modalService: SkyModalService
+  ) {
+    this.confirmService = new SkyConfirmService(this.modalService);
+  }
 
   @HostListener('document:keydown', ['$event'])
   public onDocumentKeyDown(event: KeyboardEvent) {
@@ -112,7 +139,7 @@ export class SkyModalComponent implements AfterViewInit {
         switch (event.which) {
           case 27: { // Esc key pressed
             event.preventDefault();
-            this.hostService.onClose();
+            this.closeButtonClick();
             break;
           }
 
@@ -162,7 +189,18 @@ export class SkyModalComponent implements AfterViewInit {
   }
 
   public closeButtonClick() {
-    this.hostService.onClose();
+    if (!this.hasUnsavedWork) {
+      this.hostService.onClose();
+    } else {
+      this.confirmService.open({
+        message: 'You have unsaved work. Do you still wish to exit?',
+        type: SkyConfirmType.YesCancel
+      }).closed.take(1).subscribe((value: SkyConfirmCloseEventArgs) => {
+        if (value.action === 'yes') {
+          this.hostService.onClose();
+        }
+      });
+    }
   }
 
   public windowResize() {

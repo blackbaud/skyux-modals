@@ -14,6 +14,7 @@ import { ModalAutofocusTestComponent } from './modal-autofocus.component.fixture
 import { ModalFooterTestComponent } from './modal-footer.component.fixture';
 import { ModalNoHeaderTestComponent } from './modal-no-header.component.fixture';
 import { ModalTiledBodyTestComponent } from './modal-tiled-body.component.fixture';
+import { SkyModalService } from '../modal.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalTiledBodyTestComponent } from './modal-tiled-body.component.fixtur
     SkyModalModule
   ],
   providers: [
-    SkyWindowRefService
+    SkyWindowRefService,
+    SkyModalService
   ],
   entryComponents: [
     ModalTestComponent,

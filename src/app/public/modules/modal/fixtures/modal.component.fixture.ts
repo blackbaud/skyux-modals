@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './modal.component.fixture.html'
 })
 export class ModalTestComponent {
-
+  public hasUnsavedWork: boolean;
 }
