@@ -16,27 +16,27 @@ describe('Confirm (lg screen)', () => {
 
   it('should match previous OK screenshot', (done) => {
     element(by.css('.sky-confirm-btn-ok')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous YesCancel screenshot', (done) => {
     element(by.css('.sky-confirm-btn-yescancel')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous body screenshot', (done) => {
     element(by.css('.sky-confirm-btn-body')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous YesNoCancel screenshot', (done) => {
     element(by.css('.sky-confirm-btn-yesnocancel')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous custom screenshot', (done) => {
     element(by.css('.sky-confirm-btn-custom')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 });
 
@@ -48,26 +48,26 @@ describe('Confirm (small screen)', () => {
 
   it('should match previous OK screenshot on small screens', (done) => {
     element(by.css('.sky-confirm-btn-ok')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous YesCancel screenshot on small screens', (done) => {
     element(by.css('.sky-confirm-btn-yescancel')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous body screenshot on small screens', (done) => {
     element(by.css('.sky-confirm-btn-body')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous YesNoCancel screenshot on small screens', (done) => {
     element(by.css('.sky-confirm-btn-yesnocancel')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 
   it('should match previous custom screenshot on small screens', (done) => {
     element(by.css('.sky-confirm-btn-custom')).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done);
+    expect('body').toMatchBaselineScreenshot(done);
   });
 });
