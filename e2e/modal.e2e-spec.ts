@@ -100,16 +100,25 @@ describe('Modal', () => {
       SkyHostBrowser.setWindowBreakpoint('xs');
     });
 
-    it('should match previous modal screenshot with help button in header on small screens', () => {
+    it('should match previous modal screenshot with help button in header on small screens', (done) => {
       element(by.css('.sky-modal-with-help')).click();
+      expect('body').toMatchBaselineScreenshot(done, {
+        screenshotName: 'modal-xs-with-help-screenshot'
+      });
     });
 
-    it('should match previous modal screenshot on small screens', () => {
+    it('should match previous modal screenshot on small screens', (done) => {
       element(by.css('.sky-btn-primary')).click();
+      expect('body').toMatchBaselineScreenshot(done, {
+        screenshotName: 'modal-xs-screenshot'
+      });
     });
 
-    it('should match previous large modal screenshot on mobile', () => {
+    it('should match previous large modal screenshot on mobile', (done) => {
       element(by.css('.sky-test-large-modal')).click();
+      expect('body').toMatchBaselineScreenshot(done, {
+        screenshotName: 'modal-xs-large-size-screenshot'
+      });
     });
   });
 });
