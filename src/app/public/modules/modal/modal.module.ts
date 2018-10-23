@@ -16,6 +16,10 @@ import {
 } from '@skyux/indicators';
 
 import {
+  SkyModalsResourcesModule
+} from '../shared';
+
+import {
   SkyModalAdapterService
 } from './modal-adapter.service';
 import {
@@ -56,7 +60,8 @@ import { SkyModalWorkConfirmComponent } from './unsaved-work-confirmation/modal-
     CommonModule,
     RouterModule,
     SkyI18nModule,
-    SkyIconModule
+    SkyIconModule,
+    SkyModalsResourcesModule
   ],
   exports: [
     SkyModalComponent,
