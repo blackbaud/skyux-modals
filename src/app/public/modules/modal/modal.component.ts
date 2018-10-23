@@ -18,12 +18,6 @@ import {
 } from '@skyux/core';
 
 import {
-  SkyConfirmService,
-  SkyConfirmType,
-  SkyConfirmCloseEventArgs
-} from '../confirm';
-
-import {
   SkyModalHostService
 } from './modal-host.service';
 import {
@@ -35,6 +29,15 @@ import {
 import {
   SkyModalService
 } from './modal.service';
+import {
+  SkyModalWorkConfirmComponent
+} from './unsaved-work-confirmation/modal-work-confirm.component';
+import {
+  SkyModalInstance
+} from './modal-instance';
+import {
+  SkyModalCloseArgs
+} from './modal-close-args';
 
 let skyModalUniqueIdentifier: number = 0;
 
@@ -116,8 +119,6 @@ export class SkyModalComponent implements AfterViewInit {
     return this.config.helpKey;
   }
 
-  private confirmService: SkyConfirmService;
-
   constructor(
     private hostService: SkyModalHostService,
     private config: SkyModalConfiguration,
@@ -125,9 +126,7 @@ export class SkyModalComponent implements AfterViewInit {
     private windowRef: SkyWindowRefService,
     private componentAdapter: SkyModalComponentAdapterService,
     private modalService: SkyModalService
-  ) {
-    this.confirmService = new SkyConfirmService(this.modalService);
-  }
+  ) { }
 
   @HostListener('document:keydown', ['$event'])
   public onDocumentKeyDown(event: KeyboardEvent) {
@@ -192,11 +191,12 @@ export class SkyModalComponent implements AfterViewInit {
     if (!this.hasUnsavedWork) {
       this.hostService.onClose();
     } else {
-      this.confirmService.open({
-        message: 'You have unsaved work. Do you still wish to exit?',
-        type: SkyConfirmType.YesCancel
-      }).closed.take(1).subscribe((value: SkyConfirmCloseEventArgs) => {
-        if (value.action === 'yes') {
+      const modalInstance: SkyModalInstance = this.modalService.open(
+        SkyModalWorkConfirmComponent
+      );
+
+      modalInstance.closed.take(1).subscribe((value: SkyModalCloseArgs) => {
+        if (value.data === 'yes') {
           this.hostService.onClose();
         }
       });

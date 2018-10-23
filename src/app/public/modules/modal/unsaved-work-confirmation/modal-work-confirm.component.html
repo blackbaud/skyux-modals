@@ -1,0 +1,27 @@
+<div class="sky-modal-work-confirm">
+  <sky-modal
+    ariaRole="alertdialog">
+    <sky-modal-content>
+      <div class="sky-modal-work-confirm-message sky-emphasized">
+        {{ 'skyux_modal_work_confirm_dialog_message' | skyLibResources }}
+      </div>
+      <div class="sky-modal-work-confirm-buttons">
+        <button
+          autofocus
+          class="sky-btn sky-btn-primary"
+          type="button"
+          (click)="close('yes')"
+        >
+          {{ 'skyux_confirm_dialog_default_yes_text' | skyLibResources }}
+        </button>
+        <button
+          class="sky-btn sky-btn-link"
+          type="button"
+          (click)="close('cancel')"
+        >
+          {{ 'skyux_confirm_dialog_default_cancel_text' | skyLibResources }}
+        </button>
+      </div>
+    </sky-modal-content>
+  </sky-modal>
+</div>

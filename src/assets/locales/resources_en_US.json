@@ -19,6 +19,10 @@
     "_description": "Text for modal close button",
     "message": "Close modal"
   },
+  "skyux_modal_work_confirm_message": {
+    "_description": "Text for modal unsaved work confirm dialog's message",
+    "message": "You have unsaved work. Do you still wish to exit?"
+  },
   "skyux_modal_open_help": {
     "_description": "Text for modal header Open Help button",
     "message": "Open Help"

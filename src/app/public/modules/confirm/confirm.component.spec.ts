@@ -20,12 +20,14 @@ import {
   SkyModalInstance,
   SkyModalHostService,
   SkyModalConfiguration,
-  SkyModalModule
+  SkyModalModule,
+  SkyModalService
 } from '../modal';
 
 import {
   MockSkyModalHostService,
-  MockSkyModalInstance
+  MockSkyModalInstance,
+  MockSkyModalService
 } from './fixtures/mocks';
 
 import {
@@ -48,13 +50,25 @@ import {
 describe('Confirm component', () => {
   const modalInstance = new MockSkyModalInstance();
   const modalHost = new MockSkyModalHostService();
+  const modalService = new MockSkyModalService(
+    {
+      resolveComponentFactory() {}
+    } as any,
+    {
+      bootstrap() {}
+    } as any,
+    {
+      addHostEl: function (): any {}
+    } as any
+  );
 
   function createConfirm(config: SkyConfirmConfig): ComponentFixture<SkyConfirmComponent> {
     TestBed.overrideComponent(SkyConfirmComponent, { set: {
       providers: [
         { provide: SkyConfirmModalContext, useValue: config },
         { provide: SkyModalInstance, useValue: modalInstance },
-        { provide: SkyAppResourcesService, useClass: SkyAppResourcesTestService }
+        { provide: SkyAppResourcesService, useClass: SkyAppResourcesTestService },
+        { provide: SkyModalService, useValue: modalService }
       ]
     }});
 

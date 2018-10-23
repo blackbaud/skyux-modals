@@ -36,6 +36,7 @@ import {
 import {
   SkyModalService
 } from './modal.service';
+import { SkyModalWorkConfirmComponent } from './unsaved-work-confirmation/modal-work-confirm.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {
     SkyModalContentComponent,
     SkyModalFooterComponent,
     SkyModalHeaderComponent,
-    SkyModalHostComponent
+    SkyModalHostComponent,
+    SkyModalWorkConfirmComponent
   ],
   providers: [
     SkyModalAdapterService,
@@ -63,7 +65,8 @@ import {
     SkyModalHeaderComponent
   ],
   entryComponents: [
-    SkyModalHostComponent
+    SkyModalHostComponent,
+    SkyModalWorkConfirmComponent
   ]
 })
 export class SkyModalModule { }
