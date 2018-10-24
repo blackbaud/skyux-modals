@@ -33,6 +33,9 @@ import {
   ModalTestComponent
 } from './fixtures/modal.component.fixture';
 import {
+  ModalWithWorkTestComponent
+} from './fixtures/modal-with-work.component.fixture';
+import {
   ModalAutofocusTestComponent
 } from './fixtures/modal-autofocus.component.fixture';
 import {
@@ -299,6 +302,46 @@ describe('Modal component', () => {
 
     expect(document.querySelector('.sky-modal')).not.toExist();
 
+    applicationRef.tick();
+  }));
+
+  it('should prompt to confirm close when the close button is clicked and there is unsaved work', fakeAsync(() => {
+    openModal(ModalWithWorkTestComponent);
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    let confirmModal = document.querySelector('.sky-modal-work-confirm');
+    expect(confirmModal).toExist();
+
+    // Cancel button
+    (confirmModal.querySelector('.sky-btn-link') as any).click();
+    expect(document.querySelector('.sky-modal-work-confirm')).not.toExist();
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    confirmModal = document.querySelector('.sky-modal-work-confirm');
+    expect(confirmModal).toExist();
+
+    // Escape key
+    let escapeEvent: any = document.createEvent('CustomEvent');
+    escapeEvent.which = 27;
+    escapeEvent.keyCode = 27;
+    escapeEvent.initEvent('keydown', true, true);
+
+    document.dispatchEvent(escapeEvent);
+
+    tick();
+    applicationRef.tick();
+    expect(document.querySelector('.sky-modal-work-confirm')).not.toExist();
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    confirmModal = document.querySelector('.sky-modal-work-confirm');
+    expect(confirmModal).toExist();
+
+    // Confirm the close
+    (confirmModal.querySelector('.sky-btn-primary') as any).click();
+    expect(document.querySelector('.sky-modal')).not.toExist();
     applicationRef.tick();
   }));
 

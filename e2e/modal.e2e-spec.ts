@@ -60,6 +60,14 @@ describe('Modal', () => {
       });
     });
 
+    it('should match previous unsaved work confirmation screenshot', (done) => {
+      element(by.css('.sky-test-large-modal')).click();
+      element(by.css('.sky-modal-btn-close')).click();
+      expect('body').toMatchBaselineScreenshot(done, {
+        screenshotName: 'modal-lg-unsaved-work-screenshot'
+      });
+    });
+
     it('should match previous large size modal screenshot', (done) => {
       element(by.css('.sky-test-large-size-modal')).click();
       expect('body').toMatchBaselineScreenshot(done, {

@@ -7,10 +7,6 @@ import { SkyModalService } from '../../public';
   templateUrl: './modal-demo.component.html',
   providers: [SkyModalService]
 })
-export class ModalDemoComponent implements OnInit {
+export class ModalDemoComponent {
   public title = 'Hello world';
-
-  public ngOnInit() {
-    console.log('init happened');
-  }
 }

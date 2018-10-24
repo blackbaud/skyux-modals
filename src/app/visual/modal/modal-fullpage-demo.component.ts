@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SkyModalService } from '../../public';
 
@@ -7,10 +7,6 @@ import { SkyModalService } from '../../public';
   templateUrl: './modal-fullpage-demo.component.html',
   providers: [SkyModalService]
 })
-export class ModalFullPageDemoComponent implements OnInit {
+export class ModalFullPageDemoComponent {
   public title = 'Hello world';
-
-  public ngOnInit() {
-    console.log('init happened');
-  }
 }

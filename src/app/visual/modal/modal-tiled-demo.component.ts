@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SkyModalService } from '../../public';
 
@@ -7,10 +7,6 @@ import { SkyModalService } from '../../public';
   templateUrl: './modal-tiled-demo.component.html',
   providers: [SkyModalService]
 })
-export class ModalTiledDemoComponent implements OnInit {
+export class ModalTiledDemoComponent {
   public title = 'Hello world';
-
-  public ngOnInit() {
-    console.log('init happened');
-  }
 }
