@@ -41,6 +41,10 @@
 .sky-modal-content {
   background-color: #fff;
   z-index: 1;
+
+  &:focus {
+    outline: thin dotted #4d90fe;
+  }
 }
 
 .sky-modal-tiled .sky-modal-content {
