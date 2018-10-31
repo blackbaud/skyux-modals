@@ -18,6 +18,10 @@ import {
 } from '@skyux/core';
 
 import {
+  SkyModalCloseConfirmComponent,
+  SkyModalCloseConfirmConfiguration
+} from './close-confirmation';
+import {
   SkyModalHostService
 } from './modal-host.service';
 import {
@@ -29,9 +33,6 @@ import {
 import {
   SkyModalService
 } from './modal.service';
-import {
-  SkyModalWorkConfirmComponent
-} from './unsaved-work-confirmation/modal-work-confirm.component';
 import {
   SkyModalInstance
 } from './modal-instance';
@@ -73,7 +74,7 @@ export class SkyModalComponent implements AfterViewInit {
   }
 
   @Input()
-  public hasUnsavedWork = false;
+  public closeConfirmation: SkyModalCloseConfirmConfiguration;
 
   public get modalZIndex() {
     return this.hostService.getModalZIndex();
@@ -188,11 +189,15 @@ export class SkyModalComponent implements AfterViewInit {
   }
 
   public closeButtonClick() {
-    if (!this.hasUnsavedWork) {
+    if (!this.closeConfirmation) {
       this.hostService.onClose();
     } else {
       const modalInstance: SkyModalInstance = this.modalService.open(
-        SkyModalWorkConfirmComponent
+        SkyModalCloseConfirmComponent,
+        [{
+          provide: SkyModalCloseConfirmConfiguration,
+          useValue: this.closeConfirmation
+        }]
       );
 
       modalInstance.closed.take(1).subscribe((value: SkyModalCloseArgs) => {

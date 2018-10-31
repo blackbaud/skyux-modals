@@ -60,11 +60,11 @@ describe('Modal', () => {
       });
     });
 
-    it('should match previous unsaved work confirmation screenshot', (done) => {
-      element(by.css('.sky-test-large-modal')).click();
+    it('should match previous close confirmation screenshot', (done) => {
+      element(by.css('.sky-test-large-modal-close-confirmation')).click();
       element(by.css('.sky-modal-btn-close')).click();
       expect('body').toMatchBaselineScreenshot(done, {
-        screenshotName: 'modal-lg-unsaved-work-screenshot'
+        screenshotName: 'modal-lg-close-confirmation-screenshot'
       });
     });
 

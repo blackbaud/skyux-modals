@@ -40,7 +40,9 @@ import {
 import {
   SkyModalService
 } from './modal.service';
-import { SkyModalWorkConfirmComponent } from './unsaved-work-confirmation/modal-work-confirm.component';
+import {
+  SkyModalCloseConfirmComponent
+} from './close-confirmation';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { SkyModalWorkConfirmComponent } from './unsaved-work-confirmation/modal-
     SkyModalFooterComponent,
     SkyModalHeaderComponent,
     SkyModalHostComponent,
-    SkyModalWorkConfirmComponent
+    SkyModalCloseConfirmComponent
   ],
   providers: [
     SkyModalAdapterService,
@@ -71,7 +73,7 @@ import { SkyModalWorkConfirmComponent } from './unsaved-work-confirmation/modal-
   ],
   entryComponents: [
     SkyModalHostComponent,
-    SkyModalWorkConfirmComponent
+    SkyModalCloseConfirmComponent
   ]
 })
 export class SkyModalModule { }

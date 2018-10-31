@@ -24,6 +24,9 @@ import {
 import {
   ModalContentAutofocusComponent
 } from './modal-content-autofocus.component';
+import {
+  ModalCloseConfirmComponent
+} from './modal-close-confirm.component';
 
 @Component({
   selector: 'modal-visual',
@@ -74,5 +77,10 @@ export class ModalVisualComponent {
   public openAutofocusModal() {
     this.modal.open(
       ModalContentAutofocusComponent, { 'providers': [], 'fullPage': false , 'size': 'large'});
+  }
+
+  public openCloseConfirmationModal() {
+    this.modal.open(
+      ModalCloseConfirmComponent, { 'providers': [], 'fullPage': false , 'size': 'large'});
   }
 }

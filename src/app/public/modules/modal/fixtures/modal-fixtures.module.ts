@@ -37,8 +37,8 @@ import {
   ModalWithFocusContentTestComponent
 } from './modal-with-focus-content.fixture';
 import {
-  ModalWithWorkTestComponent
-} from './modal-with-work.component.fixture';
+  ModalWithCloseConfirmTestComponent
+} from './modal-with-close-confirm.component.fixture';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import {
     ModalNoHeaderTestComponent,
     ModalTiledBodyTestComponent,
     ModalWithFocusContentTestComponent,
-    ModalWithWorkTestComponent
+    ModalWithCloseConfirmTestComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +67,7 @@ import {
     ModalNoHeaderTestComponent,
     ModalTiledBodyTestComponent,
     ModalWithFocusContentTestComponent,
-    ModalWithWorkTestComponent
+    ModalWithCloseConfirmTestComponent
   ]
 })
 export class SkyModalFixturesModule { }

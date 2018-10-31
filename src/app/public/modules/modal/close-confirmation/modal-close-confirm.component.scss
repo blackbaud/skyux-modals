@@ -1,15 +1,15 @@
 @import "~@skyux/theme/scss/mixins";
 @import "~@skyux/theme/scss/_compat/mixins";
 
-.sky-modal-work-confirm-message {
+.sky-modal-close-confirm-message {
   margin-top: $sky-margin-half;
 }
 
-.sky-modal-work-confirm-body {
+.sky-modal-close-confirm-body {
   margin-top: $sky-margin;
 }
 
-.sky-modal-work-confirm-buttons {
+.sky-modal-close-confirm-buttons {
   margin-top: $sky-margin-double;
   .sky-btn {
     margin-right: $sky-margin-half;
