@@ -3,7 +3,7 @@
     ariaRole="alertdialog">
     <sky-modal-content>
       <div class="sky-modal-close-confirm-message sky-emphasized">
-        {{ (configuration | async).message }}
+        {{ (configurationStream | async).message }}
       </div>
       <div class="sky-modal-close-confirm-buttons">
         <button
@@ -12,14 +12,14 @@
           type="button"
           (click)="close('yes')"
         >
-          {{ (configuration | async).confirmButtonText }}
+          {{ (configurationStream | async).confirmButtonText }}
         </button>
         <button
           class="sky-btn sky-btn-link"
           type="button"
           (click)="close('cancel')"
         >
-          {{ (configuration | async).cancelButtonText }}
+          {{ (configurationStream | async).cancelButtonText }}
         </button>
       </div>
     </sky-modal-content>

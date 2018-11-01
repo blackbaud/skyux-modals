@@ -39,6 +39,7 @@ import {
 import {
   SkyModalCloseArgs
 } from './modal-close-args';
+import { isBoolean } from 'util';
 
 let skyModalUniqueIdentifier: number = 0;
 
@@ -74,7 +75,7 @@ export class SkyModalComponent implements AfterViewInit {
   }
 
   @Input()
-  public closeConfirmation: SkyModalCloseConfirmConfiguration;
+  public closeConfirmation: SkyModalCloseConfirmConfiguration | boolean;
 
   public get modalZIndex() {
     return this.hostService.getModalZIndex();
@@ -192,11 +193,12 @@ export class SkyModalComponent implements AfterViewInit {
     if (!this.closeConfirmation) {
       this.hostService.onClose();
     } else {
+      const confirmConfig = isBoolean(this.closeConfirmation) ? {} : this.closeConfirmation;
       const modalInstance: SkyModalInstance = this.modalService.open(
         SkyModalCloseConfirmComponent,
         [{
           provide: SkyModalCloseConfirmConfiguration,
-          useValue: this.closeConfirmation
+          useValue: confirmConfig
         }]
       );
 

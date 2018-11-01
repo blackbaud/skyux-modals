@@ -2,5 +2,23 @@
   [closeConfirmation]="config"
 >
   <sky-modal-header>Test</sky-modal-header>
-  <sky-modal-content>Content</sky-modal-content>
+  <sky-modal-content>
+    Content
+    <button
+      id="to-boolean-btn"
+      class="sky-btn sky-btn-secondary"
+      type="button"
+      (click)="switchToBoolean()"
+    >
+      Switch to Boolean
+    </button>
+    <button
+      id="to-custom-btn"
+      class="sky-btn sky-btn-secondary"
+      type="button"
+      (click)="changeConfig()"
+    >
+      Change configuration
+    </button>
+  </sky-modal-content>
 </sky-modal>

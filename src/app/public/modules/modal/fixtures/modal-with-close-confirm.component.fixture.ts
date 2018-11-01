@@ -8,4 +8,16 @@ import {
 })
 export class ModalWithCloseConfirmTestComponent {
   public config = {};
+
+  public switchToBoolean() {
+    this.config = true;
+  }
+
+  public changeConfig() {
+    this.config = {
+      message: 'I am a custom message',
+      confirmButtonText: 'Custom Confirm',
+      cancelButtonText: 'Custom Cancel'
+    };
+  }
 }

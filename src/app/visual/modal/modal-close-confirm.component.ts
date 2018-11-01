@@ -8,7 +8,7 @@ import { SkyModalInstance } from '../../public';
 })
 export class ModalCloseConfirmComponent {
   public hasUnsavedWork = true;
-  public confirmationConfig = {};
+  public confirmationConfig = true;
 
   constructor(public instance: SkyModalInstance) {}
 }

@@ -345,6 +345,54 @@ describe('Modal component', () => {
     applicationRef.tick();
   }));
 
+  fit('should prompt to confirm close with a custom configuration', fakeAsync(() => {
+    openModal(ModalWithCloseConfirmTestComponent);
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    (<any>document.querySelector('#to-custom-btn')).click();
+    applicationRef.tick();
+    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    applicationRef.tick();
+
+    let confirmModal = document.querySelector('.sky-modal-close-confirm');
+    expect(confirmModal).toExist();
+
+    expect(
+      (confirmModal.querySelector('.sky-modal-close-confirm-message') as any).innerText.trim()
+    ).toBe('I am a custom message');
+    expect(
+      (confirmModal.querySelector('.sky-btn-primary') as any).innerText.trim()
+    ).toBe('Custom Confirm');
+    expect(
+      (confirmModal.querySelector('.sky-btn-link') as any).innerText.trim()
+    ).toBe('Custom Cancel');
+    applicationRef.tick();
+  }));
+
+  it('should prompt to confirm close with the default configuration', fakeAsync(() => {
+    openModal(ModalWithCloseConfirmTestComponent);
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    (<any>document.querySelector('#to-boolean-btn')).click();
+    applicationRef.tick();
+    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    applicationRef.tick();
+
+    let confirmModal = document.querySelector('.sky-modal-close-confirm');
+    expect(confirmModal).toExist();
+
+    expect(
+      (confirmModal.querySelector('.sky-modal-close-confirm-message') as any).innerText.trim()
+    ).toBe('Are you sure you want to close this dialog?');
+    expect(
+      (confirmModal.querySelector('.sky-btn-primary') as any).innerText.trim()
+    ).toBe('Yes');
+    expect(
+      (confirmModal.querySelector('.sky-btn-link') as any).innerText.trim()
+    ).toBe('Cancel');
+    applicationRef.tick();
+  }));
+
   it('should close when the user navigates through history', fakeAsync(() => {
     openModal(ModalTestComponent);
 

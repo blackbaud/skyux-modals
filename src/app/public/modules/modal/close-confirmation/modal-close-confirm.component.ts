@@ -25,7 +25,7 @@ import {
   styleUrls: ['./modal-close-confirm.component.scss']
 })
 export class SkyModalCloseConfirmComponent {
-  public configuration = new BehaviorSubject<SkyModalCloseConfirmConfiguration>({
+  public configurationStream = new BehaviorSubject<SkyModalCloseConfirmConfiguration>({
     message: '',
     confirmButtonText: '',
     cancelButtonText: ''
@@ -36,12 +36,13 @@ export class SkyModalCloseConfirmComponent {
     private resourcesSvc: SkyLibResourcesService,
     customConfig: SkyModalCloseConfirmConfiguration
   ) {
+    this.configurationStream.next(customConfig);
     Observable.zip(
       this.resourcesSvc.getString('skyux_modal_close_confirm_message'),
       this.resourcesSvc.getString('skyux_confirm_dialog_default_yes_text'),
       this.resourcesSvc.getString('skyux_confirm_dialog_default_cancel_text')
-    ).subscribe(vals => {
-      this.configuration.next({
+    ).take(1).subscribe(vals => {
+      this.configurationStream.next({
         message: (customConfig && customConfig.message) || vals[0],
         confirmButtonText: (customConfig && customConfig.confirmButtonText) || vals[1],
         cancelButtonText: (customConfig && customConfig.cancelButtonText) || vals[2]
