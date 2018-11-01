@@ -298,7 +298,7 @@ describe('Modal component', () => {
 
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
 
     expect(document.querySelector('.sky-modal')).not.toExist();
 
@@ -309,7 +309,7 @@ describe('Modal component', () => {
     openModal(ModalWithCloseConfirmTestComponent);
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
     let confirmModal = document.querySelector('.sky-modal-close-confirm');
     expect(confirmModal).toExist();
 
@@ -318,7 +318,7 @@ describe('Modal component', () => {
     expect(document.querySelector('.sky-modal-close-confirm')).not.toExist();
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
     confirmModal = document.querySelector('.sky-modal-close-confirm');
     expect(confirmModal).toExist();
 
@@ -335,7 +335,7 @@ describe('Modal component', () => {
     expect(document.querySelector('.sky-modal-close-confirm')).not.toExist();
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
     confirmModal = document.querySelector('.sky-modal-close-confirm');
     expect(confirmModal).toExist();
 
@@ -345,13 +345,13 @@ describe('Modal component', () => {
     applicationRef.tick();
   }));
 
-  fit('should prompt to confirm close with a custom configuration', fakeAsync(() => {
+  it('should prompt to confirm close with a custom configuration', fakeAsync(() => {
     openModal(ModalWithCloseConfirmTestComponent);
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<any>document.querySelector('#to-custom-btn')).click();
+    (<HTMLElement>document.querySelector('#to-custom-btn')).click();
     applicationRef.tick();
-    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
     applicationRef.tick();
 
     let confirmModal = document.querySelector('.sky-modal-close-confirm');
@@ -373,9 +373,9 @@ describe('Modal component', () => {
     openModal(ModalWithCloseConfirmTestComponent);
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<any>document.querySelector('#to-boolean-btn')).click();
+    (<HTMLElement>document.querySelector('#to-boolean-btn')).click();
     applicationRef.tick();
-    (<any>document.querySelector('.sky-modal-btn-close')).click();
+    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
     applicationRef.tick();
 
     let confirmModal = document.querySelector('.sky-modal-close-confirm');
@@ -430,7 +430,7 @@ describe('Modal component', () => {
 
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<any>document.querySelector('button[name="help-button"]')).click();
+    (<HTMLElement>document.querySelector('button[name="help-button"]')).click();
 
     expect(modalInstance.openHelp).toHaveBeenCalledWith('default.html');
 

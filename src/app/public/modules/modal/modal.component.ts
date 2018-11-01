@@ -75,7 +75,7 @@ export class SkyModalComponent implements AfterViewInit {
   }
 
   @Input()
-  public closeConfirmation: SkyModalCloseConfirmConfiguration | boolean;
+  public closeConfirmation: SkyModalCloseConfirmConfiguration | boolean = false;
 
   public get modalZIndex() {
     return this.hostService.getModalZIndex();
@@ -140,7 +140,7 @@ export class SkyModalComponent implements AfterViewInit {
         switch (event.which) {
           case 27: { // Esc key pressed
             event.preventDefault();
-            this.closeButtonClick();
+            this.close();
             break;
           }
 
@@ -189,7 +189,7 @@ export class SkyModalComponent implements AfterViewInit {
     this.hostService.onOpenHelp(this.helpKey);
   }
 
-  public closeButtonClick() {
+  public close() {
     if (!this.closeConfirmation) {
       this.hostService.onClose();
     } else {
