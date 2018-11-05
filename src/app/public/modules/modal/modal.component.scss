@@ -43,7 +43,8 @@
   z-index: 1;
 
   &:focus {
-    outline: thin dotted #4d90fe;
+    outline-style: dotted;
+    outline-width: thin;
   }
 }
 
