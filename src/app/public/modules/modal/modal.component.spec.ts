@@ -350,8 +350,10 @@ describe('Modal component', () => {
     expect(document.querySelector('.sky-modal')).toExist();
 
     (<HTMLElement>document.querySelector('#to-custom-btn')).click();
+    tick();
     applicationRef.tick();
     (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
+    tick();
     applicationRef.tick();
 
     let confirmModal = document.querySelector('.sky-modal-close-confirm');
@@ -366,6 +368,13 @@ describe('Modal component', () => {
     expect(
       (confirmModal.querySelector('.sky-btn-link') as any).innerText.trim()
     ).toBe('Custom Cancel');
+    tick();
+    applicationRef.tick();
+
+    // Confirm the close
+    (confirmModal.querySelector('.sky-btn-primary') as any).click();
+    expect(document.querySelector('.sky-modal')).not.toExist();
+    tick();
     applicationRef.tick();
   }));
 
@@ -374,8 +383,10 @@ describe('Modal component', () => {
     expect(document.querySelector('.sky-modal')).toExist();
 
     (<HTMLElement>document.querySelector('#to-boolean-btn')).click();
+    tick();
     applicationRef.tick();
     (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
+    tick();
     applicationRef.tick();
 
     let confirmModal = document.querySelector('.sky-modal-close-confirm');
@@ -390,6 +401,13 @@ describe('Modal component', () => {
     expect(
       (confirmModal.querySelector('.sky-btn-link') as any).innerText.trim()
     ).toBe('Cancel');
+    tick();
+    applicationRef.tick();
+
+    // Confirm the close
+    (confirmModal.querySelector('.sky-btn-primary') as any).click();
+    expect(document.querySelector('.sky-modal')).not.toExist();
+    tick();
     applicationRef.tick();
   }));
 
