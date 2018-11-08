@@ -1,12 +1,9 @@
 {
   "name": "@skyux/modals",
-  "version": "3.0.0-rc.3",
+  "version": "3.0.0-rc.4",
   "description": "SKY UX Modals",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
-  "engines": {
-    "node": ">=8.11.1"
-  },
   "scripts": {
     "build": "skyux build-public-library",
     "skyux": "skyux",
