@@ -1,8 +1,9 @@
 import {
-  Injectable
+  Injectable, RendererFactory2, Renderer2, ComponentRef, EmbeddedViewRef
 } from '@angular/core';
 
 import { SkyWindowRefService } from '@skyux/core';
+import { SkyModalHostComponent } from './modal-host.component';
 
 @Injectable()
 export class SkyModalAdapterService {
@@ -11,22 +12,37 @@ export class SkyModalAdapterService {
 
   private docRef: any;
   private bodyEl: HTMLElement;
+  private renderer: Renderer2;
+  private hostRef: ComponentRef<SkyModalHostComponent>;
 
   constructor(
-    private windowRef: SkyWindowRefService) {
+    private rendererFactory: RendererFactory2,
+    private windowRef: SkyWindowRefService
+  ) {
+      this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
       this.docRef = this.windowRef.getWindow().document;
       this.bodyEl = this.windowRef.getWindow().document.body;
   }
 
   public addHostEl(): void {
-    this.bodyEl.appendChild(this.docRef.createElement('sky-modal-host'));
+    const domElem = (this.hostRef.hostView as EmbeddedViewRef<any>).rootNodes[0];
+
+    this.renderer.appendChild(this.bodyEl, domElem);
   }
 
   public removeHostEl(): void {
     const element = this.docRef.querySelector('sky-modal-host');
     if (element) {
-      this.bodyEl.removeChild(element);
+      this.renderer.removeChild(document.body, element);
     }
+  }
+
+  // TODO: In future breaking change remove this method and change `addHostEl` to take in the dom
+  // element. This could not currently be done as it would have been a breaking change to
+  // `addHostEl`. Also could not move the ComponentRef creating into adapter as the `Injector`
+  // dependency is a circular dependency in this injectable service
+  public setHostRef(ref: ComponentRef<SkyModalHostComponent>) {
+    this.hostRef = ref;
   }
 
   public toggleFullPageModalClass(isAddFull: boolean): void {
@@ -50,10 +66,10 @@ export class SkyModalAdapterService {
   }
 
   private addClassToBody(className: string): void {
-    this.bodyEl.classList.add(className);
+    this.renderer.addClass(this.bodyEl, className);
   }
 
   private removeClassFromBody(className: string): void {
-    this.bodyEl.classList.remove(className);
+    this.renderer.removeClass(this.bodyEl, className);
   }
 }

@@ -4,7 +4,8 @@ import {
   Injector,
   ReflectiveInjector,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import {
@@ -43,7 +44,8 @@ export class SkyModalHostComponent {
     private resolver: ComponentFactoryResolver,
     private adapter: SkyModalAdapterService,
     private injector: Injector,
-    private router: Router
+    private router: Router,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   public open(modalInstance: SkyModalInstance, component: any, config?: IConfig) {
@@ -105,5 +107,8 @@ export class SkyModalHostComponent {
       isOpen = false;
       closeModal();
     });
+
+    // Necessary if the host was created via a consumer's lifecycle hook such as ngOnInit
+    this.changeDetector.detectChanges();
   }
 }

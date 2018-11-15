@@ -2,7 +2,8 @@ import {
   ApplicationRef,
   ComponentFactoryResolver,
   ComponentRef,
-  Injectable
+  Injectable,
+  Injector
 } from '@angular/core';
 
 import { SkyModalInstance } from './modal-instance';
@@ -17,7 +18,8 @@ export class SkyModalService {
   constructor(
     private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private adapter: SkyModalAdapterService
+    private adapter: SkyModalAdapterService,
+    private injector: Injector
   ) { }
 
   // Open Overloads
@@ -80,13 +82,15 @@ export class SkyModalService {
 
   private createHostComponent() {
     if (!SkyModalService.host) {
-      let factory = this.resolver.resolveComponentFactory(SkyModalHostComponent);
+      const componentRef = this.resolver
+        .resolveComponentFactory(SkyModalHostComponent)
+        .create(this.injector);
 
+      this.appRef.attachView(componentRef.hostView);
+      this.adapter.setHostRef(componentRef);
       this.adapter.addHostEl();
 
-      let cmpRef = this.appRef.bootstrap(factory);
-
-      SkyModalService.host = cmpRef;
+      SkyModalService.host = componentRef;
     }
   }
 }
