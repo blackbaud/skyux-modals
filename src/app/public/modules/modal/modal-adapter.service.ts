@@ -1,5 +1,6 @@
 import {
   Injectable,
+  Optional,
   Renderer2,
   RendererFactory2
 } from '@angular/core';
@@ -18,9 +19,11 @@ export class SkyModalAdapterService {
   private renderer: Renderer2;
   private hostDomElem: Element;
 
+  // NOTE: In future breaking change - remove optional from RendererFactory2 paramater.
+  // Currently there to avoid a breaking change
   constructor(
-    private rendererFactory: RendererFactory2,
-    private windowRef: SkyWindowRefService
+    private windowRef: SkyWindowRefService,
+    @Optional() private rendererFactory?: RendererFactory2
   ) {
       this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
       this.docRef = this.windowRef.getWindow().document;

@@ -4,7 +4,8 @@ import {
   ComponentRef,
   EmbeddedViewRef,
   Injectable,
-  Injector
+  Injector,
+  Optional
 } from '@angular/core';
 
 import {
@@ -27,11 +28,13 @@ import {
 export class SkyModalService {
   private static host: ComponentRef<SkyModalHostComponent>;
 
+  // NOTE: In future breaking change - remove optional from Injector paramater. Currently there to
+  // avoid a breaking change
   constructor(
     private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private adapter: SkyModalAdapterService,
-    private injector: Injector
+    @Optional() private injector?: Injector
   ) { }
 
   // Open Overloads
