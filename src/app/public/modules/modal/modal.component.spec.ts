@@ -1,12 +1,15 @@
 import {
   ApplicationRef
 } from '@angular/core';
+
 import {
   fakeAsync,
   inject,
   tick,
-  TestBed
+  TestBed,
+  async
 } from '@angular/core/testing';
+
 import {
   Router
 } from '@angular/router';
@@ -19,9 +22,11 @@ import {
 import {
   SkyModalInstance
 } from './modal-instance';
+
 import {
   SkyModalService
 } from './modal.service';
+
 import {
   SkyModalComponentAdapterService
 } from './modal-component-adapter.service';
@@ -29,24 +34,34 @@ import {
 import {
   SkyModalFixturesModule
 } from './fixtures/modal-fixtures.module';
+
 import {
   ModalTestComponent
 } from './fixtures/modal.component.fixture';
+
 import {
   ModalAutofocusTestComponent
 } from './fixtures/modal-autofocus.component.fixture';
+
 import {
   ModalFooterTestComponent
 } from './fixtures/modal-footer.component.fixture';
+
 import {
   ModalNoHeaderTestComponent
 } from './fixtures/modal-no-header.component.fixture';
+
 import {
   ModalTiledBodyTestComponent
 } from './fixtures/modal-tiled-body.component.fixture';
+
 import {
   ModalWithFocusContentTestComponent
 } from './fixtures/modal-with-focus-content.fixture';
+
+import {
+  ModalOninitFixtureComponent
+} from './fixtures/modal-oninit.component.fixture';
 
 describe('Modal component', () => {
   let applicationRef: ApplicationRef;

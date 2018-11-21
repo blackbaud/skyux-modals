@@ -1,9 +1,12 @@
 import {
-  Injectable, RendererFactory2, Renderer2, ComponentRef, EmbeddedViewRef
+  Injectable,
+  Renderer2,
+  RendererFactory2
 } from '@angular/core';
 
-import { SkyWindowRefService } from '@skyux/core';
-import { SkyModalHostComponent } from './modal-host.component';
+import {
+  SkyWindowRefService
+} from '@skyux/core';
 
 @Injectable()
 export class SkyModalAdapterService {
@@ -13,7 +16,7 @@ export class SkyModalAdapterService {
   private docRef: any;
   private bodyEl: HTMLElement;
   private renderer: Renderer2;
-  private hostRef: ComponentRef<SkyModalHostComponent>;
+  private hostDomElem: Element;
 
   constructor(
     private rendererFactory: RendererFactory2,
@@ -25,15 +28,13 @@ export class SkyModalAdapterService {
   }
 
   public addHostEl(): void {
-    const domElem = (this.hostRef.hostView as EmbeddedViewRef<any>).rootNodes[0];
-
-    this.renderer.appendChild(this.bodyEl, domElem);
+    this.renderer.appendChild(this.bodyEl, this.hostDomElem);
   }
 
   public removeHostEl(): void {
     const element = this.docRef.querySelector('sky-modal-host');
     if (element) {
-      this.renderer.removeChild(document.body, element);
+      this.renderer.removeChild(this.bodyEl, element);
     }
   }
 
@@ -41,8 +42,8 @@ export class SkyModalAdapterService {
   // element. This could not currently be done as it would have been a breaking change to
   // `addHostEl`. Also could not move the ComponentRef creating into adapter as the `Injector`
   // dependency is a circular dependency in this injectable service
-  public setHostRef(ref: ComponentRef<SkyModalHostComponent>) {
-    this.hostRef = ref;
+  public setHostDomElem(domElem: Element) {
+    this.hostDomElem = domElem;
   }
 
   public toggleFullPageModalClass(isAddFull: boolean): void {

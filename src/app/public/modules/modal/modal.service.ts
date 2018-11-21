@@ -2,14 +2,26 @@ import {
   ApplicationRef,
   ComponentFactoryResolver,
   ComponentRef,
+  EmbeddedViewRef,
   Injectable,
   Injector
 } from '@angular/core';
 
-import { SkyModalInstance } from './modal-instance';
-import { SkyModalHostComponent } from './modal-host.component';
-import { SkyModalAdapterService } from './modal-adapter.service';
-import { SkyModalConfigurationInterface as IConfig } from './modal.interface';
+import {
+  SkyModalInstance
+} from './modal-instance';
+
+import {
+  SkyModalHostComponent
+} from './modal-host.component';
+
+import {
+  SkyModalAdapterService
+} from './modal-adapter.service';
+
+import {
+  SkyModalConfigurationInterface as IConfig
+} from './modal.interface';
 
 @Injectable()
 export class SkyModalService {
@@ -86,8 +98,10 @@ export class SkyModalService {
         .resolveComponentFactory(SkyModalHostComponent)
         .create(this.injector);
 
+      const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0];
+
       this.appRef.attachView(componentRef.hostView);
-      this.adapter.setHostRef(componentRef);
+      this.adapter.setHostDomElem(domElem);
       this.adapter.addHostEl();
 
       SkyModalService.host = componentRef;
