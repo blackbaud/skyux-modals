@@ -6,8 +6,7 @@ import {
   fakeAsync,
   inject,
   tick,
-  TestBed,
-  async
+  TestBed
 } from '@angular/core/testing';
 
 import {
@@ -58,10 +57,6 @@ import {
 import {
   ModalWithFocusContentTestComponent
 } from './fixtures/modal-with-focus-content.fixture';
-
-import {
-  ModalOninitFixtureComponent
-} from './fixtures/modal-oninit.component.fixture';
 
 describe('Modal component', () => {
   let applicationRef: ApplicationRef;
