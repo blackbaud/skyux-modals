@@ -1,5 +1,5 @@
 <sky-modal
-  [closeConfirmation]="hasUnsavedWork ? confirmationConfig : undefined"
+  (beforeClose)="onClose($event)"
 >
   <sky-modal-header>
     Title

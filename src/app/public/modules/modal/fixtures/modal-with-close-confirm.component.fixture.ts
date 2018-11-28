@@ -2,22 +2,24 @@ import {
   Component
 } from '@angular/core';
 
+import {
+  SkyModalBeforeCloseHandler
+} from '../types';
+
 @Component({
   selector: 'sky-test-cmp',
   templateUrl: './modal-with-close-confirm.component.fixture.html'
 })
 export class ModalWithCloseConfirmTestComponent {
-  public config = {};
+  public unsavedWork = true;
 
-  public switchToBoolean() {
-    this.config = true;
+  public toggleUnsavedWork() {
+    this.unsavedWork = !this.unsavedWork;
   }
 
-  public changeConfig() {
-    this.config = {
-      message: 'I am a custom message',
-      confirmButtonText: 'Custom Confirm',
-      cancelButtonText: 'Custom Cancel'
-    };
+  public close(handler: SkyModalBeforeCloseHandler) {
+    if (!this.unsavedWork) {
+      handler.close();
+    }
   }
 }

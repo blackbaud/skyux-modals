@@ -1,24 +1,18 @@
 <sky-modal
-  [closeConfirmation]="config"
+  (beforeClose)="close($event)"
 >
-  <sky-modal-header>Test</sky-modal-header>
+  <sky-modal-header>
+    Test
+  </sky-modal-header>
   <sky-modal-content>
     Content
     <button
-      id="to-boolean-btn"
+      id="toggle-btn"
       class="sky-btn sky-btn-secondary"
       type="button"
-      (click)="switchToBoolean()"
+      (click)="toggleUnsavedWork()"
     >
-      Switch to Boolean
-    </button>
-    <button
-      id="to-custom-btn"
-      class="sky-btn sky-btn-secondary"
-      type="button"
-      (click)="changeConfig()"
-    >
-      Change configuration
+      Toggle unsaved work
     </button>
   </sky-modal-content>
 </sky-modal>

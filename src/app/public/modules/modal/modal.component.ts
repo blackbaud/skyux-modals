@@ -11,7 +11,9 @@ import {
   Input,
   ElementRef,
   AfterViewInit,
-  HostListener
+  HostListener,
+  EventEmitter,
+  Output
 } from '@angular/core';
 
 import 'rxjs/add/operator/take';
@@ -21,28 +23,20 @@ import {
 } from '@skyux/core';
 
 import {
-  SkyModalCloseConfirmComponent,
-  SkyModalCloseConfirmConfiguration
-} from './close-confirmation';
-import {
   SkyModalHostService
 } from './modal-host.service';
+
 import {
   SkyModalConfiguration
 } from './modal-configuration';
+
 import {
   SkyModalComponentAdapterService
 } from './modal-component-adapter.service';
+
 import {
-  SkyModalService
-} from './modal.service';
-import {
-  SkyModalInstance
-} from './modal-instance';
-import {
-  SkyModalCloseArgs
-} from './modal-close-args';
-import { isBoolean } from 'util';
+  SkyModalBeforeCloseHandler
+} from './types/modal-before-close-handler';
 
 let skyModalUniqueIdentifier: number = 0;
 
@@ -76,9 +70,6 @@ export class SkyModalComponent implements AfterViewInit {
   public set tiledBody(value: boolean) {
     this.config.tiledBody = value;
   }
-
-  @Input()
-  public closeConfirmation: SkyModalCloseConfirmConfiguration | boolean = false;
 
   public get modalZIndex() {
     return this.hostService.getModalZIndex();
@@ -124,13 +115,15 @@ export class SkyModalComponent implements AfterViewInit {
     return this.config.helpKey;
   }
 
+  @Output()
+  public beforeClose = new EventEmitter<SkyModalBeforeCloseHandler>();
+
   constructor(
     private hostService: SkyModalHostService,
     private config: SkyModalConfiguration,
     private elRef: ElementRef,
     private windowRef: SkyWindowRefService,
-    private componentAdapter: SkyModalComponentAdapterService,
-    private modalService: SkyModalService
+    private componentAdapter: SkyModalComponentAdapterService
   ) { }
 
   @HostListener('document:keydown', ['$event'])
@@ -193,23 +186,12 @@ export class SkyModalComponent implements AfterViewInit {
   }
 
   public close() {
-    if (!this.closeConfirmation) {
+    if (this.beforeClose.observers.length === 0) {
       this.hostService.onClose();
     } else {
-      const confirmConfig = isBoolean(this.closeConfirmation) ? {} : this.closeConfirmation;
-      const modalInstance: SkyModalInstance = this.modalService.open(
-        SkyModalCloseConfirmComponent,
-        [{
-          provide: SkyModalCloseConfirmConfiguration,
-          useValue: confirmConfig
-        }]
-      );
-
-      modalInstance.closed.take(1).subscribe((value: SkyModalCloseArgs) => {
-        if (value.data === 'yes') {
-          this.hostService.onClose();
-        }
-      });
+      this.beforeClose.emit(new SkyModalBeforeCloseHandler(() => {
+        this.hostService.onClose();
+      }));
     }
   }
 

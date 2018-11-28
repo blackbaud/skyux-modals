@@ -1,12 +1,14 @@
 import {
   ApplicationRef
 } from '@angular/core';
+
 import {
   fakeAsync,
   inject,
   tick,
   TestBed
 } from '@angular/core/testing';
+
 import {
   Router
 } from '@angular/router';
@@ -19,9 +21,11 @@ import {
 import {
   SkyModalInstance
 } from './modal-instance';
+
 import {
   SkyModalService
 } from './modal.service';
+
 import {
   SkyModalComponentAdapterService
 } from './modal-component-adapter.service';
@@ -29,24 +33,31 @@ import {
 import {
   SkyModalFixturesModule
 } from './fixtures/modal-fixtures.module';
+
 import {
   ModalTestComponent
 } from './fixtures/modal.component.fixture';
+
 import {
   ModalWithCloseConfirmTestComponent
 } from './fixtures/modal-with-close-confirm.component.fixture';
+
 import {
   ModalAutofocusTestComponent
 } from './fixtures/modal-autofocus.component.fixture';
+
 import {
   ModalFooterTestComponent
 } from './fixtures/modal-footer.component.fixture';
+
 import {
   ModalNoHeaderTestComponent
 } from './fixtures/modal-no-header.component.fixture';
+
 import {
   ModalTiledBodyTestComponent
 } from './fixtures/modal-tiled-body.component.fixture';
+
 import {
   ModalWithFocusContentTestComponent
 } from './fixtures/modal-with-focus-content.fixture';
@@ -305,22 +316,12 @@ describe('Modal component', () => {
     applicationRef.tick();
   }));
 
-  it('should prompt to confirm close when a closeConfirmation config is supplied and the close button is clicked', fakeAsync(() => {
+  it('should stop close event when beforeClose is subscribed to', fakeAsync(() => {
     openModal(ModalWithCloseConfirmTestComponent);
     expect(document.querySelector('.sky-modal')).toExist();
 
     (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
-    let confirmModal = document.querySelector('.sky-modal-close-confirm');
-    expect(confirmModal).toExist();
-
-    // Cancel button
-    (confirmModal.querySelector('.sky-btn-link') as any).click();
-    expect(document.querySelector('.sky-modal-close-confirm')).not.toExist();
     expect(document.querySelector('.sky-modal')).toExist();
-
-    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
-    confirmModal = document.querySelector('.sky-modal-close-confirm');
-    expect(confirmModal).toExist();
 
     // Escape key
     let escapeEvent: any = document.createEvent('CustomEvent');
@@ -332,82 +333,19 @@ describe('Modal component', () => {
 
     tick();
     applicationRef.tick();
-    expect(document.querySelector('.sky-modal-close-confirm')).not.toExist();
     expect(document.querySelector('.sky-modal')).toExist();
 
-    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
-    confirmModal = document.querySelector('.sky-modal-close-confirm');
-    expect(confirmModal).toExist();
-
+    console.log(document.querySelectorAll('.sky-modal').length);
     // Confirm the close
-    (confirmModal.querySelector('.sky-btn-primary') as any).click();
-    expect(document.querySelector('.sky-modal')).not.toExist();
-    applicationRef.tick();
-  }));
-
-  it('should prompt to confirm close with a custom configuration', fakeAsync(() => {
-    openModal(ModalWithCloseConfirmTestComponent);
-    expect(document.querySelector('.sky-modal')).toExist();
-
-    (<HTMLElement>document.querySelector('#to-custom-btn')).click();
+    (<HTMLElement>document.querySelector('#toggle-btn')).click();
     tick();
     applicationRef.tick();
     (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
     tick();
     applicationRef.tick();
 
-    let confirmModal = document.querySelector('.sky-modal-close-confirm');
-    expect(confirmModal).toExist();
-
-    expect(
-      (confirmModal.querySelector('.sky-modal-close-confirm-message') as any).innerText.trim()
-    ).toBe('I am a custom message');
-    expect(
-      (confirmModal.querySelector('.sky-btn-primary') as any).innerText.trim()
-    ).toBe('Custom Confirm');
-    expect(
-      (confirmModal.querySelector('.sky-btn-link') as any).innerText.trim()
-    ).toBe('Custom Cancel');
-    tick();
-    applicationRef.tick();
-
-    // Confirm the close
-    (confirmModal.querySelector('.sky-btn-primary') as any).click();
+    console.log(document.querySelectorAll('.sky-modal').length);
     expect(document.querySelector('.sky-modal')).not.toExist();
-    tick();
-    applicationRef.tick();
-  }));
-
-  it('should prompt to confirm close with the default configuration', fakeAsync(() => {
-    openModal(ModalWithCloseConfirmTestComponent);
-    expect(document.querySelector('.sky-modal')).toExist();
-
-    (<HTMLElement>document.querySelector('#to-boolean-btn')).click();
-    tick();
-    applicationRef.tick();
-    (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
-    tick();
-    applicationRef.tick();
-
-    let confirmModal = document.querySelector('.sky-modal-close-confirm');
-    expect(confirmModal).toExist();
-
-    expect(
-      (confirmModal.querySelector('.sky-modal-close-confirm-message') as any).innerText.trim()
-    ).toBe('Are you sure you want to close this dialog?');
-    expect(
-      (confirmModal.querySelector('.sky-btn-primary') as any).innerText.trim()
-    ).toBe('Yes');
-    expect(
-      (confirmModal.querySelector('.sky-btn-link') as any).innerText.trim()
-    ).toBe('Cancel');
-    tick();
-    applicationRef.tick();
-
-    // Confirm the close
-    (confirmModal.querySelector('.sky-btn-primary') as any).click();
-    expect(document.querySelector('.sky-modal')).not.toExist();
-    tick();
     applicationRef.tick();
   }));
 
