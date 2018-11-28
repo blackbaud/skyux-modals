@@ -335,7 +335,6 @@ describe('Modal component', () => {
     applicationRef.tick();
     expect(document.querySelector('.sky-modal')).toExist();
 
-    console.log(document.querySelectorAll('.sky-modal').length);
     // Confirm the close
     (<HTMLElement>document.querySelector('#toggle-btn')).click();
     tick();
@@ -344,7 +343,6 @@ describe('Modal component', () => {
     tick();
     applicationRef.tick();
 
-    console.log(document.querySelectorAll('.sky-modal').length);
     expect(document.querySelector('.sky-modal')).not.toExist();
     applicationRef.tick();
   }));
