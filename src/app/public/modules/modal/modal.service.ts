@@ -35,7 +35,13 @@ export class SkyModalService {
     private appRef: ApplicationRef,
     private adapter: SkyModalAdapterService,
     @Optional() private injector?: Injector
-  ) { }
+  ) {
+    // Injector is optional to avoid breaking changes for consumer unit tests. However, due to
+    // this being core functionality we are throwing an error
+    if (!this.injector) {
+      throw('Please inject Injector');
+    }
+  }
 
   // Open Overloads
   public open(component: any, providers?: any[]): SkyModalInstance;
