@@ -25,11 +25,6 @@ export class SkyModalAdapterService {
     private windowRef: SkyWindowRefService,
     @Optional() private rendererFactory?: RendererFactory2
   ) {
-    // RendererFactory2 is optional to avoid breaking changes for consumer unit tests.
-    // However, due to this being core functionality we are throwing an error
-    if (!this.rendererFactory) {
-      throw ('Please inject RenderFactory2');
-    }
     this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
     this.docRef = this.windowRef.getWindow().document;
     this.bodyEl = this.windowRef.getWindow().document.body;
