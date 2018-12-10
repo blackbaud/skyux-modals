@@ -7,10 +7,10 @@ import {
 } from '@angular/animations';
 
 import {
+  AfterContentInit,
   Component,
   Input,
   ElementRef,
-  AfterViewInit,
   HostListener
 } from '@angular/core';
 
@@ -43,7 +43,7 @@ let skyModalUniqueIdentifier: number = 0;
     SkyModalComponentAdapterService
   ]
 })
-export class SkyModalComponent implements AfterViewInit {
+export class SkyModalComponent implements AfterContentInit {
   public modalState = 'in';
   public modalContentId: string = 'sky-modal-content-id-' + skyModalUniqueIdentifier.toString();
   public modalHeaderId: string = 'sky-modal-header-id-' + skyModalUniqueIdentifier.toString();
@@ -149,14 +149,18 @@ export class SkyModalComponent implements AfterViewInit {
     }
   }
 
-  public ngAfterViewInit() {
+  public ngAfterContentInit(): void {
     skyModalUniqueIdentifier++;
-    this.componentAdapter.handleWindowChange(this.elRef);
 
     // Adding a timeout to avoid ExpressionChangedAfterItHasBeenCheckedError.
     // https://stackoverflow.com/questions/40562845
     this.windowRef.getWindow().setTimeout(() => {
       this.componentAdapter.modalOpened(this.elRef);
+
+      // Check the modal's height after its content children have been initialized.
+      // (A timeout is needed so that the child components have time to render
+      // before dimensions are calculated.)
+      this.windowResize();
     });
   }
 
