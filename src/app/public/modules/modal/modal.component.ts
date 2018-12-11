@@ -11,9 +11,7 @@ import {
   Input,
   ElementRef,
   AfterViewInit,
-  HostListener,
-  EventEmitter,
-  Output
+  HostListener
 } from '@angular/core';
 
 import 'rxjs/add/operator/take';
@@ -115,9 +113,6 @@ export class SkyModalComponent implements AfterViewInit {
     return this.config.helpKey;
   }
 
-  @Output()
-  public beforeClose = new EventEmitter<SkyModalBeforeCloseHandler>();
-
   constructor(
     private hostService: SkyModalHostService,
     private config: SkyModalConfiguration,
@@ -186,13 +181,7 @@ export class SkyModalComponent implements AfterViewInit {
   }
 
   public close() {
-    if (this.beforeClose.observers.length === 0) {
-      this.hostService.onClose();
-    } else {
-      this.beforeClose.emit(new SkyModalBeforeCloseHandler(() => {
-        this.hostService.onClose();
-      }));
-    }
+    this.hostService.onClose();
   }
 
   public windowResize() {

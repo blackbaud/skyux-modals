@@ -21,7 +21,11 @@ export class ModalCloseConfirmComponent {
   constructor(
     public instance: SkyModalInstance,
     public confirmService: SkyConfirmService
-  ) {}
+  ) {
+    this.instance.beforeClose.subscribe((closeHandler: SkyModalBeforeCloseHandler) => {
+      this.onClose(closeHandler);
+    });
+  }
 
   public onClose(closeHandler: SkyModalBeforeCloseHandler) {
     if (this.hasUnsavedWork) {

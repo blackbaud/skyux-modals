@@ -14,11 +14,25 @@ import {
 
 import 'rxjs/add/operator/takeWhile';
 
-import { SkyModalAdapterService } from './modal-adapter.service';
-import { SkyModalInstance } from './modal-instance';
-import { SkyModalHostService } from './modal-host.service';
-import { SkyModalConfigurationInterface as IConfig } from './modal.interface';
-import { SkyModalConfiguration } from './modal-configuration';
+import {
+  SkyModalAdapterService
+} from './modal-adapter.service';
+
+import {
+  SkyModalInstance
+} from './modal-instance';
+
+import {
+  SkyModalHostService
+} from './modal-host.service';
+
+import {
+  SkyModalConfigurationInterface as IConfig
+} from './modal.interface';
+
+import {
+  SkyModalConfiguration
+} from './modal-configuration';
 
 @Component({
   selector: 'sky-modal-host',

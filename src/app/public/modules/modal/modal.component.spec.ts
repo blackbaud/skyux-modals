@@ -317,10 +317,17 @@ describe('Modal component', () => {
   }));
 
   it('should stop close event when beforeClose is subscribed to', fakeAsync(() => {
-    openModal(ModalWithCloseConfirmTestComponent);
+    let instance = openModal(ModalWithCloseConfirmTestComponent);
     expect(document.querySelector('.sky-modal')).toExist();
 
     (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
+    tick();
+    applicationRef.tick();
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    instance.close();
+    tick();
+    applicationRef.tick();
     expect(document.querySelector('.sky-modal')).toExist();
 
     // Escape key
@@ -340,6 +347,18 @@ describe('Modal component', () => {
     tick();
     applicationRef.tick();
     (<HTMLElement>document.querySelector('.sky-modal-btn-close')).click();
+    tick();
+    applicationRef.tick();
+
+    expect(document.querySelector('.sky-modal')).not.toExist();
+    applicationRef.tick();
+  }));
+
+  it('should close the modal anyway if ignoreBeforeClose is passed in', fakeAsync(() => {
+    let instance = openModal(ModalWithCloseConfirmTestComponent);
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    instance.close('', '', true);
     tick();
     applicationRef.tick();
 

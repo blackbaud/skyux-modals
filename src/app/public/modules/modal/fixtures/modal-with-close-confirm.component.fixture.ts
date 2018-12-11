@@ -6,6 +6,10 @@ import {
   SkyModalBeforeCloseHandler
 } from '../types';
 
+import {
+  SkyModalInstance
+} from '../modal-instance';
+
 @Component({
   selector: 'sky-test-cmp',
   templateUrl: './modal-with-close-confirm.component.fixture.html'
@@ -13,13 +17,21 @@ import {
 export class ModalWithCloseConfirmTestComponent {
   public unsavedWork = true;
 
-  public toggleUnsavedWork() {
-    this.unsavedWork = !this.unsavedWork;
+  constructor(
+    private modalInstance: SkyModalInstance
+  ) {
+    this.modalInstance.beforeClose.subscribe((closeHandler: SkyModalBeforeCloseHandler) => {
+      this.beforeCloseHandler(closeHandler);
+    });
   }
 
-  public close(handler: SkyModalBeforeCloseHandler) {
+  public beforeCloseHandler(handler: SkyModalBeforeCloseHandler): void {
     if (!this.unsavedWork) {
       handler.close();
     }
+  }
+
+  public toggleUnsavedWork(): void {
+    this.unsavedWork = !this.unsavedWork;
   }
 }
