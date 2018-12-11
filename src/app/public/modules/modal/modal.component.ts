@@ -32,10 +32,6 @@ import {
   SkyModalComponentAdapterService
 } from './modal-component-adapter.service';
 
-import {
-  SkyModalBeforeCloseHandler
-} from './types/modal-before-close-handler';
-
 let skyModalUniqueIdentifier: number = 0;
 
 @Component({
