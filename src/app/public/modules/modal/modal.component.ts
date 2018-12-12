@@ -14,8 +14,6 @@ import {
   HostListener
 } from '@angular/core';
 
-import 'rxjs/add/operator/take';
-
 import {
   SkyWindowRefService
 } from '@skyux/core';
