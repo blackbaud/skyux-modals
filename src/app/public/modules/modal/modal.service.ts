@@ -2,9 +2,7 @@ import {
   ApplicationRef,
   ComponentFactoryResolver,
   ComponentRef,
-  EmbeddedViewRef,
   Injectable,
-  Injector,
   Optional
 } from '@angular/core';
 
@@ -23,18 +21,19 @@ import {
 import {
   SkyModalConfigurationInterface as IConfig
 } from './modal.interface';
+import { SkyDynamicComponentService } from '@skyux/core';
 
 @Injectable()
 export class SkyModalService {
   private static host: ComponentRef<SkyModalHostComponent>;
 
-  // NOTE: In future breaking change - remove optional from Injector paramater. Currently there to
-  // avoid a breaking change
+  // TODO: In future breaking change - remove extra parameters as they are no longer used.
+  /* tslint:disable:no-unused-variable */
   constructor(
     private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private adapter: SkyModalAdapterService,
-    @Optional() private injector?: Injector
+    @Optional() private dynamicComponentService?: SkyDynamicComponentService
   ) { }
 
   // Open Overloads
@@ -61,13 +60,10 @@ export class SkyModalService {
 
   public dispose() {
     if (SkyModalService.host) {
-      // Trigger the host component's OnDestroy method:
-      this.appRef.detachView(SkyModalService.host.hostView);
-      SkyModalService.host.destroy();
+      this.dynamicComponentService.removeComponent(SkyModalService.host);
       SkyModalService.host = undefined;
     }
 
-    this.adapter.removeHostEl();
   }
 
   private getConfigFromParameter(providersOrConfig: any) {
@@ -97,17 +93,7 @@ export class SkyModalService {
 
   private createHostComponent() {
     if (!SkyModalService.host) {
-      const componentRef = this.resolver
-        .resolveComponentFactory(SkyModalHostComponent)
-        .create(this.injector);
-
-      const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0];
-
-      this.appRef.attachView(componentRef.hostView);
-      this.adapter.setHostDomElem(domElem);
-      this.adapter.addHostEl();
-
-      SkyModalService.host = componentRef;
+      SkyModalService.host = this.dynamicComponentService.createComponent(SkyModalHostComponent);
     }
   }
 }

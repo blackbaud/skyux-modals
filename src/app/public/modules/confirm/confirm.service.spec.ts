@@ -22,9 +22,6 @@ describe('Confirm service', () => {
       } as any,
       {
         addHostEl: function (): any {}
-      } as any,
-      {
-        get() {}
       } as any
     );
     confirmService = new SkyConfirmService(modalService);

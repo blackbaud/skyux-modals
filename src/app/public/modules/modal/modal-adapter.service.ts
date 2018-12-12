@@ -1,8 +1,5 @@
 import {
-  Injectable,
-  Optional,
-  Renderer2,
-  RendererFactory2
+  Injectable
 } from '@angular/core';
 
 import {
@@ -16,37 +13,22 @@ export class SkyModalAdapterService {
 
   private docRef: any;
   private bodyEl: HTMLElement;
-  private renderer: Renderer2;
-  private hostDomElem: Element;
 
   // NOTE: In future breaking change - remove optional from RendererFactory2 paramater.
   // Currently there to avoid a breaking change
   constructor(
-    private windowRef: SkyWindowRefService,
-    @Optional() private rendererFactory?: RendererFactory2
+    private windowRef: SkyWindowRefService
   ) {
-    this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
     this.docRef = this.windowRef.getWindow().document;
     this.bodyEl = this.windowRef.getWindow().document.body;
   }
 
+  // Deprecated
   public addHostEl(): void {
-    this.renderer.appendChild(this.bodyEl, this.hostDomElem);
   }
 
+  // Deprecated
   public removeHostEl(): void {
-    const element = this.docRef.querySelector('sky-modal-host');
-    if (element) {
-      this.renderer.removeChild(this.bodyEl, element);
-    }
-  }
-
-  // TODO: In future breaking change remove this method and change `addHostEl` to take in the dom
-  // element. This could not currently be done as it would have been a breaking change to
-  // `addHostEl`. Also could not move the ComponentRef creating into adapter as the `Injector`
-  // dependency is a circular dependency in this injectable service
-  public setHostDomElem(domElem: Element) {
-    this.hostDomElem = domElem;
   }
 
   public toggleFullPageModalClass(isAddFull: boolean): void {
@@ -70,10 +52,10 @@ export class SkyModalAdapterService {
   }
 
   private addClassToBody(className: string): void {
-    this.renderer.addClass(this.bodyEl, className);
+    this.bodyEl.classList.add(className);
   }
 
   private removeClassFromBody(className: string): void {
-    this.renderer.removeClass(this.bodyEl, className);
+    this.bodyEl.classList.remove(className);
   }
 }
