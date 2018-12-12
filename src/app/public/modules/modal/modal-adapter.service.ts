@@ -23,11 +23,15 @@ export class SkyModalAdapterService {
     this.bodyEl = this.windowRef.getWindow().document.body;
   }
 
-  // Deprecated
+  /**
+   * @deprecated since `SkyDynamicComponentService` was added to `SkyModalService`
+   */
   public addHostEl(): void {
   }
 
-  // Deprecated
+  /**
+   * @deprecated since `SkyDynamicComponentService` was added to `SkyModalService`
+   */
   public removeHostEl(): void {
   }
 

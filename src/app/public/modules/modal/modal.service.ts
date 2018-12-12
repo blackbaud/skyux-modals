@@ -1,10 +1,11 @@
 import {
-  ApplicationRef,
-  ComponentFactoryResolver,
   ComponentRef,
-  Injectable,
-  Optional
+  Injectable
 } from '@angular/core';
+
+import {
+  SkyDynamicComponentService
+} from '@skyux/core';
 
 import {
   SkyModalInstance
@@ -15,13 +16,8 @@ import {
 } from './modal-host.component';
 
 import {
-  SkyModalAdapterService
-} from './modal-adapter.service';
-
-import {
   SkyModalConfigurationInterface as IConfig
 } from './modal.interface';
-import { SkyDynamicComponentService } from '@skyux/core';
 
 @Injectable()
 export class SkyModalService {
@@ -30,10 +26,7 @@ export class SkyModalService {
   // TODO: In future breaking change - remove extra parameters as they are no longer used.
   /* tslint:disable:no-unused-variable */
   constructor(
-    private resolver: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
-    private adapter: SkyModalAdapterService,
-    @Optional() private dynamicComponentService?: SkyDynamicComponentService
+    private dynamicComponentService?: SkyDynamicComponentService
   ) { }
 
   // Open Overloads
