@@ -21,18 +21,6 @@ export class SkyModalAdapterService {
     this.bodyEl = this.windowRef.getWindow().document.body;
   }
 
-  /**
-   * @deprecated since `SkyDynamicComponentService` was added to `SkyModalService`
-   */
-  public addHostEl(): void {
-  }
-
-  /**
-   * @deprecated since `SkyDynamicComponentService` was added to `SkyModalService`
-   */
-  public removeHostEl(): void {
-  }
-
   public toggleFullPageModalClass(isAddFull: boolean): void {
     if (isAddFull) {
       this.addClassToBody(SkyModalAdapterService.MODAL_BODY_FULL_CLASS);
