@@ -14,8 +14,6 @@ export class SkyModalAdapterService {
   private docRef: any;
   private bodyEl: HTMLElement;
 
-  // NOTE: In future breaking change - remove optional from RendererFactory2 paramater.
-  // Currently there to avoid a breaking change
   constructor(
     private windowRef: SkyWindowRefService
   ) {
