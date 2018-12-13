@@ -25,13 +25,8 @@ describe('Confirm service', () => {
   beforeEach(() => {
     modalService = new MockSkyModalService(
       {
-        resolveComponentFactory() {}
-      } as any,
-      {
-        bootstrap() {}
-      } as any,
-      {
-        addHostEl: function (): any {}
+        removeComponent: function (): any {},
+        addComponent: function (ref: any): any {}
       } as any
     );
     confirmService = new SkyConfirmService(modalService);

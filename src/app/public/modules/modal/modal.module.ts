@@ -11,7 +11,8 @@ import {
 } from '@angular/router';
 
 import {
-  SkyWindowRefService
+  SkyWindowRefService,
+  SkyDynamicComponentModule
 } from '@skyux/core';
 
 import {
@@ -70,6 +71,7 @@ import {
   imports: [
     CommonModule,
     RouterModule,
+    SkyDynamicComponentModule,
     SkyI18nModule,
     SkyIconModule,
     SkyModalsResourcesModule
