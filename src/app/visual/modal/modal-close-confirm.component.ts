@@ -34,11 +34,11 @@ export class ModalCloseConfirmComponent {
         type: SkyConfirmType.YesCancel
       }).closed.subscribe((closeArgs: SkyConfirmCloseEventArgs) => {
         if (closeArgs.action.toLowerCase() === 'yes') {
-          closeHandler.close();
+          closeHandler.closeModal();
         }
       });
     } else {
-      closeHandler.close();
+      closeHandler.closeModal();
     }
   }
 }

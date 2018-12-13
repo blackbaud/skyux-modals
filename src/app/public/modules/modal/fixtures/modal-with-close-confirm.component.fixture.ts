@@ -27,7 +27,7 @@ export class ModalWithCloseConfirmTestComponent {
 
   public beforeCloseHandler(handler: SkyModalBeforeCloseHandler): void {
     if (!this.unsavedWork) {
-      handler.close();
+      handler.closeModal();
     }
   }
 
