@@ -1,3 +1,5 @@
 export class SkyModalBeforeCloseHandler {
-  constructor(public closeModal: Function) {}
+  constructor(
+    public closeModal: Function
+  ) { }
 }

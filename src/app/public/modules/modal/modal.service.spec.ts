@@ -13,16 +13,37 @@ import {
   ApplicationRef
 } from '@angular/core';
 
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
 
-import { SkyModalInstance } from './modal-instance';
-import { SkyModalService } from './modal.service';
-import { SkyModalModule } from './modal.module';
+import {
+  SkyModalInstance
+} from './modal-instance';
 
-import { SkyModalFixturesModule } from './fixtures/modal-fixtures.module';
-import { ModalTestValues } from './fixtures/modal-values.fixture';
-import { ModalTestComponent } from './fixtures/modal.component.fixture';
-import { ModalWithValuesTestComponent } from './fixtures/modal-with-values.component.fixture';
+import {
+  SkyModalService
+} from './modal.service';
+
+import {
+  SkyModalModule
+} from './modal.module';
+
+import {
+  SkyModalFixturesModule
+} from './fixtures/modal-fixtures.module';
+
+import {
+  ModalTestValues
+} from './fixtures/modal-values.fixture';
+
+import {
+  ModalTestComponent
+} from './fixtures/modal.component.fixture';
+
+import {
+  ModalWithValuesTestComponent
+} from './fixtures/modal-with-values.component.fixture';
 
 describe('Modal service', () => {
   let modalService: SkyModalService;

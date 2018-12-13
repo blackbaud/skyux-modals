@@ -9,21 +9,27 @@ import {
 import {
   ModalDemoComponent
 } from './modal-demo.component';
+
 import {
   ModalLargeDemoComponent
 } from './modal-large-demo.component';
+
 import {
   ModalFullPageDemoComponent
 } from './modal-fullpage-demo.component';
+
 import {
   ModalContentDemoComponent
 } from './modal-content-demo.component';
+
 import {
   ModalTiledDemoComponent
 } from './modal-tiled-demo.component';
+
 import {
   ModalContentAutofocusComponent
 } from './modal-content-autofocus.component';
+
 import {
   ModalCloseConfirmComponent
 } from './modal-close-confirm.component';

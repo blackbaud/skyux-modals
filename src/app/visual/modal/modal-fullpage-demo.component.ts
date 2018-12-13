@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component
+} from '@angular/core';
 
-import { SkyModalService } from '../../public';
+import {
+  SkyModalService
+} from '../../public';
 
 @Component({
   selector: 'sky-test-cmp-modal-fullpage',

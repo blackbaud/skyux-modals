@@ -5,10 +5,21 @@ import {
   Injectable
 } from '@angular/core';
 
-import { SkyModalInstance } from './modal-instance';
-import { SkyModalHostComponent } from './modal-host.component';
-import { SkyModalAdapterService } from './modal-adapter.service';
-import { SkyModalConfigurationInterface as IConfig } from './modal.interface';
+import {
+  SkyModalInstance
+} from './modal-instance';
+
+import {
+  SkyModalHostComponent
+} from './modal-host.component';
+
+import {
+  SkyModalAdapterService
+} from './modal-adapter.service';
+
+import {
+  SkyModalConfigurationInterface as IConfig
+} from './modal.interface';
 
 @Injectable()
 export class SkyModalService {
