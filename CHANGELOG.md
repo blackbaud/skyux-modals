@@ -1,3 +1,7 @@
+# 3.0.0-rc.7 (2018-12-13)
+
+- Added option to take action before modals are closed and prevent them from closing. [#7](https://github.com/blackbaud/skyux-modals/pull/7)
+
 # 3.0.0-rc.6 (2018-11-30)
 
 - Fixed modal focus to ignore hidden elements. [#12](https://github.com/blackbaud/skyux-modals/pull/12)
