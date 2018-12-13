@@ -2,6 +2,7 @@
 
 - Added option to take action before modals are closed and prevent them from closing. [#7](https://github.com/blackbaud/skyux-modals/pull/7)
 - Fixed section forms in modals always being 460px. [#18](https://github.com/blackbaud/skyux-modals/pull/18)
+- Fixed modal service to stop throwing errors during initialization. [#13](https://github.com/blackbaud/skyux-modals/pull/13)
 
 # 3.0.0-rc.6 (2018-11-30)
 
