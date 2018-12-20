@@ -1,6 +1,6 @@
 # 3.0.0-rc.8 (2018-12-20)
 
-- Updated `@skyux/core`peer dependency to ensure proper modal host component removal [#20](https://github.com/blackbaud/skyux-modals/pull/20)
+- Updated `@skyux/core` peer dependency to ensure proper modal host component removal [#20](https://github.com/blackbaud/skyux-modals/pull/20)
 
 # 3.0.0-rc.7 (2018-12-13)
 
