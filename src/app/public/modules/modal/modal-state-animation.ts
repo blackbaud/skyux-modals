@@ -16,4 +16,4 @@ export const skyAnimationModalState = trigger('modalState', [
   transition('* => void', [
     animate(150, style({ opacity: '0.0' }))
   ])
-]);
+]) as any;
