@@ -16,30 +16,28 @@ import {
 } from './modal-host.component';
 
 import {
-  SkyModalConfigurationInterface as IConfig
+  SkyModalConfigurationInterface
 } from './modal.interface';
 
+// Need to add the following to classes which contain static methods.
+// See: https://github.com/ng-packagr/ng-packagr/issues/641
+// @dynamic
 @Injectable()
 export class SkyModalService {
   private static host: ComponentRef<SkyModalHostComponent>;
 
-  // TODO: In future breaking change - remove extra parameters as they are no longer used.
-  /* tslint:disable:no-unused-variable */
   constructor(
-    private dynamicComponentService?: SkyDynamicComponentService
+    private dynamicComponentService: SkyDynamicComponentService
   ) { }
 
-  // Open Overloads
-  public open(component: any, providers?: any[]): SkyModalInstance;
-  public open(component: any, config?: IConfig): SkyModalInstance;
-
-  // Open Method
-  public open(): SkyModalInstance {
-    let modalInstance = new SkyModalInstance();
+  public open(
+    component: any,
+    providersOrConfig?: any[] | SkyModalConfigurationInterface
+  ): SkyModalInstance {
     this.createHostComponent();
-    let providersOrConfig: IConfig = arguments[1];
+
+    let modalInstance = new SkyModalInstance();
     let params = this.getConfigFromParameter(providersOrConfig);
-    let component = arguments[0];
 
     params.providers.push({
       provide: SkyModalInstance,
@@ -60,7 +58,7 @@ export class SkyModalService {
   }
 
   private getConfigFromParameter(providersOrConfig: any) {
-    let defaultParams: IConfig = {
+    let defaultParams: SkyModalConfigurationInterface = {
       'providers': [],
       'fullPage': false,
       'size': 'medium',

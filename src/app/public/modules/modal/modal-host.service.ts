@@ -2,6 +2,9 @@ import {
   EventEmitter
 } from '@angular/core';
 
+// Need to add the following to classes which contain static methods.
+// See: https://github.com/ng-packagr/ng-packagr/issues/641
+// @dynamic
 export class SkyModalHostService {
   public static get openModalCount(): number {
     return SkyModalHostService.modalHosts.length;
@@ -29,7 +32,9 @@ export class SkyModalHostService {
   public close = new EventEmitter<void>();
   public openHelp = new EventEmitter<any>();
 
-  constructor(private fullPage: boolean) {
+  constructor(
+    private fullPage: boolean
+  ) {
     SkyModalHostService.modalHosts.push(this);
   }
 

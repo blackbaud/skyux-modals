@@ -109,13 +109,17 @@ export class SkyModalHostComponent {
       modalInstance.close();
     });
 
-    this.router.events
-      .takeWhile(() => isOpen)
-      .subscribe((event) => {
-        if (event instanceof NavigationStart) {
-          modalInstance.close();
-        }
-      });
+    // Added this to fix a race condition when a modal is opened in ngOnInit.
+    // See: https://github.com/blackbaud/skyux-modals/issues/30
+    setTimeout(() => {
+      this.router.events
+        .takeWhile(() => isOpen)
+        .subscribe((event) => {
+          if (event instanceof NavigationStart) {
+            modalInstance.close();
+          }
+        });
+    });
 
     modalInstance.closed.subscribe(() => {
       isOpen = false;
