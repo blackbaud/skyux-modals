@@ -33,6 +33,9 @@ BrowserStackLocal
 # OS specific files
 .DS_Store
 
+# IDE files
+.idea/
+
 *.ngfactory.ts
 *.ngsummary.json
 yarn.lock
