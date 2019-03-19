@@ -5,7 +5,7 @@ import {
 import {
   SkyModalService,
   SkyModalInstance
-} from '../../modal';
+} from '../modules/modal';
 
 export class MockSkyModalInstance extends SkyModalInstance {
   public closed = new EventEmitter<any>();

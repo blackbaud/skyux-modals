@@ -8,7 +8,7 @@ import {
 
 import {
   MockSkyModalService
-} from './fixtures/mocks';
+} from '../../testing/mocks';
 
 import {
   SkyConfirmComponent

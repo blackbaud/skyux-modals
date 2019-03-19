@@ -26,7 +26,7 @@ import {
 import {
   MockSkyModalHostService,
   MockSkyModalInstance
-} from './fixtures/mocks';
+} from '../../testing/mocks';
 
 import {
   SkyConfirmConfig,
