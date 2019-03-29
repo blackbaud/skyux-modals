@@ -1,3 +1,5 @@
+
+import { takeWhile } from 'rxjs/operators';
 import {
   Component,
   ComponentFactoryResolver,
@@ -12,8 +14,6 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
-
-import 'rxjs/add/operator/takeWhile';
 
 import {
   SkyModalAdapterService
@@ -112,8 +112,8 @@ export class SkyModalHostComponent {
     // Added this to fix a race condition when a modal is opened in ngOnInit.
     // See: https://github.com/blackbaud/skyux-modals/issues/30
     setTimeout(() => {
-      this.router.events
-        .takeWhile(() => isOpen)
+      this.router.events.pipe(
+        takeWhile(() => isOpen))
         .subscribe((event) => {
           if (event instanceof NavigationStart) {
             modalInstance.close();
