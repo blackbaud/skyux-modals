@@ -558,15 +558,22 @@ describe('Modal component', () => {
 
   it('should prevent click events from bubbling beyond host element', fakeAsync(function () {
     const modalInstance = openModal(ModalTiledBodyTestComponent);
+    const modalElement = document.querySelector('.sky-modal');
 
-    let numClicks = 0;
-    document.body.addEventListener('click', function () {
-      numClicks++;
+    let numDocumentClicks = 0;
+    document.addEventListener('click', function () {
+      numDocumentClicks++;
     });
 
-    SkyAppTestUtility.fireDomEvent(document.querySelector('.sky-modal'), 'click');
+    let numModalClicks = 0;
+    modalElement.addEventListener('click', function () {
+      numModalClicks++;
+    });
 
-    expect(numClicks).toEqual(0);
+    SkyAppTestUtility.fireDomEvent(modalElement, 'click');
+
+    expect(numDocumentClicks).toEqual(0);
+    expect(numModalClicks).toEqual(1);
 
     closeModal(modalInstance);
   }));
