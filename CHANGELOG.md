@@ -1,6 +1,6 @@
-# 3.0.2 (2019-04-22)
+# 3.0.2 (2019-04-23)
 
-- Updated modal component to prevent clicks from propagating. [#35](https://github.com/blackbaud/skyux-modals/pull/35)
+- Fixed modal component to prevent clicks from propagating. [#35](https://github.com/blackbaud/skyux-modals/pull/35)
 
 # 3.0.1 (2019-01-18)
 
