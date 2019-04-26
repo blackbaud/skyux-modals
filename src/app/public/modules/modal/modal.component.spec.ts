@@ -577,4 +577,17 @@ describe('Modal component', () => {
 
     closeModal(modalInstance);
   }));
+
+  it('should allow inner components to receive and complete click events', fakeAsync(function () {
+    const modalInstance = openModal(ModalTestComponent);
+    const checkbox = document.querySelector('#sky-test-checkbox') as HTMLInputElement;
+
+    expect(checkbox).not.toBeNull();
+    expect(checkbox.checked).toBe(false);
+
+    checkbox.click();
+    expect(checkbox.checked).toBe(true);
+
+    closeModal(modalInstance);
+  }));
 });

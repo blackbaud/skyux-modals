@@ -1,4 +1,13 @@
 <sky-modal>
   <sky-modal-header>Test</sky-modal-header>
-  <sky-modal-content>Content</sky-modal-content>
+  <sky-modal-content>
+    Content
+    <input
+      id="sky-test-checkbox"
+      name="checkbox"
+      type="checkbox"
+      [attr.checked]="isChecked"
+      (click)="isChecked = true"
+    />
+  </sky-modal-content>
 </sky-modal>
