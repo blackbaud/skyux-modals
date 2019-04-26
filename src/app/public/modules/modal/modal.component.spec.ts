@@ -59,6 +59,10 @@ import {
 } from './fixtures/modal-tiled-body.component.fixture';
 
 import {
+  ModalWithCheckboxTestComponent
+} from './fixtures/modal-with-checkbox.component.fixture';
+
+import {
   ModalWithFocusContentTestComponent
 } from './fixtures/modal-with-focus-content.fixture';
 
@@ -579,7 +583,7 @@ describe('Modal component', () => {
   }));
 
   it('should allow inner components to receive and complete click events', fakeAsync(function () {
-    const modalInstance = openModal(ModalTestComponent);
+    const modalInstance = openModal(ModalWithCheckboxTestComponent);
     const checkbox = document.querySelector('#sky-test-checkbox') as HTMLInputElement;
 
     expect(checkbox).not.toBeNull();
