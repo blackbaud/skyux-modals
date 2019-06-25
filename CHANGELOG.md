@@ -1,6 +1,6 @@
 # 3.0.5 (2019-06-25)
 
-- Fixed the tiled modal component to properly align the expand and collapse chevron in tile headers. [#49](https://github.com/blackbaud/skyux-modals/pull/49)
+- Fixed the modal component to properly align the expand and collapse chevron in tile headers. [#49](https://github.com/blackbaud/skyux-modals/pull/49)
 
 # 3.0.4 (2019-06-07)
 
