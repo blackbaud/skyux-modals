@@ -42,8 +42,8 @@ import {
   styleUrls: ['./modal-host.component.scss'],
   viewProviders: [SkyModalAdapterService]
 })
-export class SkyModalHostComponent {
 
+export class SkyModalHostComponent {
   public get modalOpen() {
     return SkyModalHostService.openModalCount > 0;
   }
@@ -73,7 +73,7 @@ export class SkyModalHostComponent {
     const factory = this.resolver.resolveComponentFactory(component);
 
     const hostService = new SkyModalHostService();
-    hostService.fullPage = params.fullPage;
+    hostService.fullPage = !!params.fullPage;
 
     const adapter = this.adapter;
     const modalOpener: HTMLElement = adapter.getModalOpener();
