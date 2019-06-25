@@ -8,8 +8,7 @@ import {
 
 import {
   SkyConfirmModule,
-  SkyModalModule,
-  SkyModalService
+  SkyModalModule
 } from './public';
 
 import {
