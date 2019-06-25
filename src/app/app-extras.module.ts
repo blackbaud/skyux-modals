@@ -43,18 +43,10 @@ import {
 require('style-loader!./visual.scss');
 
 @NgModule({
-  imports: [
-    SkyConfirmModule,
-    SkyModalModule,
-    SkyTilesModule
-  ],
   exports: [
     SkyConfirmModule,
     SkyModalModule,
     SkyTilesModule
-  ],
-  providers: [
-    SkyModalService
   ],
   entryComponents: [
     ModalDemoComponent,
