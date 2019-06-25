@@ -3,6 +3,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyAppLinkModule
+} from '@skyux/router';
+
+import {
   SkyTilesModule
 } from '@skyux/tiles';
 
@@ -43,6 +47,7 @@ require('style-loader!./visual.scss');
 
 @NgModule({
   exports: [
+    SkyAppLinkModule,
     SkyConfirmModule,
     SkyModalModule,
     SkyTilesModule
