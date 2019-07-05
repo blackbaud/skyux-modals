@@ -1,6 +1,6 @@
 # 3.0.6 (2019-07-05)
 
-- Updated development dependencies to support `@skyux-sdk/builder@3.7.1`. [#52](https://github.com/blackbaud/skyux-modals/issues/52)
+- Updated development dependencies to support `@skyux-sdk/builder@3.7.1`. [#51](https://github.com/blackbaud/skyux-modals/pull/51)
 
 # 3.0.5 (2019-06-26)
 
