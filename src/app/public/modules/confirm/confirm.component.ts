@@ -9,14 +9,10 @@ import {
 } from '@skyux/i18n';
 
 import {
-  Observable
-} from 'rxjs/Observable';
-
-import {
-  BehaviorSubject
-} from 'rxjs/BehaviorSubject';
-
-import 'rxjs/add/observable/zip';
+  BehaviorSubject,
+  Observable,
+  zip as observableZip
+} from 'rxjs';
 
 import {
   SkyModalInstance
@@ -90,7 +86,7 @@ export class SkyConfirmComponent implements OnInit {
         break;
 
       case SkyConfirmType.YesNoCancel:
-        Observable.zip(
+        observableZip(
           this.resourcesService.getString('skyux_confirm_dialog_default_yes_text'),
           this.resourcesService.getString('skyux_confirm_dialog_default_no_text'),
           this.resourcesService.getString('skyux_confirm_dialog_default_cancel_text')
@@ -117,7 +113,7 @@ export class SkyConfirmComponent implements OnInit {
         break;
 
       case SkyConfirmType.YesCancel:
-        Observable.zip(
+        observableZip(
           this.resourcesService.getString('skyux_confirm_dialog_default_yes_text'),
           this.resourcesService.getString('skyux_confirm_dialog_default_cancel_text')
         ).subscribe((values: any) => {
