@@ -122,7 +122,8 @@ export class SkyModalHostComponent {
     });
 
     this.router.events.pipe(
-      takeWhile(() => isOpen))
+      takeWhile(() => isOpen)
+    )
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
           modalInstance.close();
