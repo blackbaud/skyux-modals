@@ -4,7 +4,6 @@ import {
   ComponentFactoryResolver,
   HostListener,
   Injector,
-  ReflectiveInjector,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -92,10 +91,14 @@ export class SkyModalHostComponent {
     adapter.setPageScroll(SkyModalHostService.openModalCount > 0);
     adapter.toggleFullPageModalClass(SkyModalHostService.fullPageModalCount > 0);
 
-    let providers = params.providers /* istanbul ignore next */ || [];
-    let resolvedProviders = ReflectiveInjector.resolve(providers);
-    let injector = ReflectiveInjector.fromResolvedProviders(resolvedProviders, this.injector);
-    let modalComponentRef = this.target.createComponent(factory, undefined, injector);
+    const providers = params.providers /* istanbul ignore next */ || [];
+
+    const injector = Injector.create({
+      parent: this.injector,
+      providers
+    });
+
+    const modalComponentRef = this.target.createComponent(factory, undefined, injector);
 
     modalInstance.componentInstance = modalComponentRef.instance;
 

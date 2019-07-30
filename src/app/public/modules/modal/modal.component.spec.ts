@@ -150,8 +150,7 @@ describe('Modal component', () => {
   it('should handle escape key press when modal is the top modal', fakeAsync(() => {
     openModal(ModalFooterTestComponent);
     let escapeEvent: any = document.createEvent('CustomEvent');
-    escapeEvent.which = 27;
-    escapeEvent.keyCode = 27;
+    escapeEvent.key = 'ESCAPE';
     escapeEvent.initEvent('keydown', true, true);
 
     document.dispatchEvent(escapeEvent);
@@ -166,8 +165,7 @@ describe('Modal component', () => {
   it('should handle tab with shift when focus is on modal and in top modal', fakeAsync(() => {
     let modalInstance1 = openModal(ModalFooterTestComponent);
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 9;
-    tabEvent.keyCode = 9;
+    tabEvent.key = 'TAB';
     tabEvent.shiftKey = true;
     tabEvent.initEvent('keydown', true, true);
 
@@ -186,8 +184,7 @@ describe('Modal component', () => {
     let modalInstance1 = openModal(ModalFooterTestComponent);
 
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 9;
-    tabEvent.keyCode = 9;
+    tabEvent.key = 'TAB';
     tabEvent.shiftKey = true;
     tabEvent.initEvent('keydown', true, true);
 
@@ -207,8 +204,7 @@ describe('Modal component', () => {
     let modalInstance1 = openModal(ModalFooterTestComponent);
 
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 9;
-    tabEvent.keyCode = 9;
+    tabEvent.key = 'TAB';
     tabEvent.shiftKey = true;
     tabEvent.initEvent('keydown', true, true);
 
@@ -227,8 +223,7 @@ describe('Modal component', () => {
     let modalInstance1 = openModal(ModalFooterTestComponent);
 
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 9;
-    tabEvent.keyCode = 9;
+    tabEvent.key = 'TAB';
     tabEvent.shiftKey = false;
     tabEvent.initEvent('keydown', true, true);
 
@@ -246,8 +241,7 @@ describe('Modal component', () => {
     let modalInstance1 = openModal(ModalFooterTestComponent);
 
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 9;
-    tabEvent.keyCode = 9;
+    tabEvent.key = 'TAB';
     tabEvent.shiftKey = false;
     tabEvent.initEvent('keydown', true, true);
 
@@ -266,8 +260,7 @@ describe('Modal component', () => {
     let modalInstance1 = openModal(ModalFooterTestComponent);
 
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 9;
-    tabEvent.keyCode = 9;
+    tabEvent.key = 'TAB';
     tabEvent.shiftKey = false;
     tabEvent.initEvent('keydown', true, true);
 
@@ -286,8 +279,7 @@ describe('Modal component', () => {
     let modalInstance1 = openModal(ModalFooterTestComponent);
 
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 3;
-    tabEvent.keyCode = 3;
+    tabEvent.key = 'A';
     tabEvent.shiftKey = false;
     tabEvent.initEvent('keydown', true, true);
 
@@ -305,8 +297,7 @@ describe('Modal component', () => {
     let modalInstance1 = openModal(ModalNoHeaderTestComponent);
 
     let tabEvent: any = document.createEvent('CustomEvent');
-    tabEvent.which = 9;
-    tabEvent.keyCode = 9;
+    tabEvent.key = 'TAB';
     tabEvent.shiftKey = false;
     tabEvent.initEvent('keydown', true, true);
 
@@ -357,8 +348,7 @@ describe('Modal component', () => {
 
     // Escape key
     let escapeEvent: any = document.createEvent('CustomEvent');
-    escapeEvent.which = 27;
-    escapeEvent.keyCode = 27;
+    escapeEvent.key = 'ESCAPE';
     escapeEvent.initEvent('keydown', true, true);
 
     document.dispatchEvent(escapeEvent);

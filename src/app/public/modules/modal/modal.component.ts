@@ -108,16 +108,16 @@ export class SkyModalComponent implements AfterViewInit {
     if (SkyModalHostService.openModalCount > 0) {
       let topModal = SkyModalHostService.topModal;
       if (topModal && topModal === this.hostService) {
-        switch (event.which) {
-          case 27: { // Esc key pressed
+        const key = event.key.toLowerCase();
+
+        switch (key) {
+          case 'escape':
             event.preventDefault();
             this.closeButtonClick();
             break;
-          }
 
-          case 9: {  // Tab pressed
+          case 'tab':
             let focusChanged = false;
-
             let focusElementList = this.componentAdapter.loadFocusElementList(this.elRef);
 
             if (
@@ -136,7 +136,6 @@ export class SkyModalComponent implements AfterViewInit {
               event.stopPropagation();
             }
             break;
-          }
 
           default:
             break;
