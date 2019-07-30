@@ -122,6 +122,7 @@ export class SkyModalHostComponent {
     this.router.events
       .takeWhile(() => isOpen)
       .subscribe((event) => {
+        /* istanbul ignore else */
         if (event instanceof NavigationStart) {
           modalInstance.close();
         }
