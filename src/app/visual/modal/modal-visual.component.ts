@@ -50,7 +50,7 @@ export class ModalVisualComponent {
   }
 
   public openModalWithExtendedTitle() {
-    let instance = this.modal.open(ModalDemoComponent, { 'providers': [], 'helpKey': 'demo-key.html' });
+    const instance = this.modal.open(ModalDemoComponent, { 'providers': [], 'helpKey': 'demo-key.html' });
     instance.componentInstance.title = 'This is a modal title with an extended header text that must wrap by default';
   }
 
