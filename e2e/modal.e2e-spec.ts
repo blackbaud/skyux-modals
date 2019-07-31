@@ -32,6 +32,13 @@ describe('Modal', () => {
       });
     });
 
+    it('should match previous modal screenshot with extended header title', (done) => {
+      element(by.css('.sky-modal-with-extended-title')).click();
+      expect('body').toMatchBaselineScreenshot(done, {
+        screenshotName: 'modal-lg-with-extended-title'
+      });
+    });
+
     it('should match previous screenshot of modal without header or footer', (done) => {
       element(by.css('.sky-test-content-only')).click();
       expect('body').toMatchBaselineScreenshot(done, {
@@ -112,6 +119,13 @@ describe('Modal', () => {
       element(by.css('.sky-modal-with-help')).click();
       expect('body').toMatchBaselineScreenshot(done, {
         screenshotName: 'modal-xs-with-help-screenshot'
+      });
+    });
+
+    it('should match previous modal screenshot with extended header title on small screens', (done) => {
+      element(by.css('.sky-modal-with-extended-title')).click();
+      expect('body').toMatchBaselineScreenshot(done, {
+        screenshotName: 'modal-xs-with-extended-title-screenshot'
       });
     });
 
