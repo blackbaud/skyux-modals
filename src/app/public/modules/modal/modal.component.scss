@@ -54,10 +54,6 @@
   ::ng-deep .sky-tile-title {
     @include sky-subsection-heading();
   }
-
-  ::ng-deep .sky-tile-tools .sky-chevron {
-    margin: 9px ($sky-tile-header-tool-padding - 6) 8px 0;
-  }
 }
 
 .sky-modal-header {
@@ -74,8 +70,12 @@
   @include sky-border(light, bottom);
 }
 
-
 .sky-modal-header-buttons {
+
+  // An extremely small value is needed to allow the
+  // buttons to wrap on extra-small breakpoints (<200px).
+  flex-shrink: 0.0001;
+
   .sky-btn {
     border: none;
     @include sky-icon-button-borderless;
@@ -120,10 +120,10 @@
   .sky-modal-header-buttons sky-icon[icon="close"] {
     font-size: 20px;
   }
-
 }
+
 .sky-modal-full-page .sky-modal-content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 :host ::ng-deep .sky-sectioned-form {

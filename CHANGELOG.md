@@ -1,3 +1,20 @@
+# 3.0.7 (2019-08-01)
+
+- Fixed the modal component to only close when the escape key is released. [#62](https://github.com/blackbaud/skyux-modals/pull/62) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+- Fixed the modal header buttons to wrap properly when the heading wraps to a new line. [#61](https://github.com/blackbaud/skyux-modals/pull/61) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+
+# 3.0.6 (2019-07-05)
+
+- Updated development dependencies to support `@skyux-sdk/builder@3.7.1`. [#51](https://github.com/blackbaud/skyux-modals/pull/51)
+
+# 3.0.5 (2019-06-26)
+
+- Fixed the modal component to properly align the expand and collapse chevron in tile headers. [#49](https://github.com/blackbaud/skyux-modals/pull/49)
+
+# 3.0.4 (2019-06-07)
+
+- Fixed the modal component to correct accessibility tab controls. [#46](https://github.com/blackbaud/skyux-modals/pull/46) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+
 # 3.0.3 (2019-04-26)
 
 - Fixed modal component to handle click events that originate within its contents. [#40](https://github.com/blackbaud/skyux-modals/pull/40)
