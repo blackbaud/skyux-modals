@@ -25,9 +25,9 @@
   .sky-modal-small {
     width: 300px;
 
-    & .sky-modal-content,
-    & .sky-modal-header,
-    & .sky-modal-footer {
+    .sky-modal-content,
+    .sky-modal-header,
+    .sky-modal-footer {
       max-width: 300px;
     }
   }
@@ -35,9 +35,9 @@
   .sky-modal-medium {
     width: 600px;
 
-    & .sky-modal-content,
-    & .sky-modal-header,
-    & .sky-modal-footer {
+    .sky-modal-content,
+    .sky-modal-header,
+    .sky-modal-footer {
       max-width: 600px;
     }
   }
@@ -48,9 +48,9 @@
     margin: 0 auto;
     width: 900px;
 
-    & .sky-modal-content,
-    & .sky-modal-header,
-    & .sky-modal-footer {
+    .sky-modal-content,
+    .sky-modal-header,
+    .sky-modal-footer {
       max-width: 900px;
     }
   }
