@@ -1,7 +1,7 @@
 # 3.1.0 (2019-08-30)
 
 - Added `preserveWhiteSpace` property to `SkyConfirmConfig` to allow consumers to preserve whitespace and new lines inside the confirm component. [#65](https://github.com/blackbaud/skyux-modals/pull/65) (Thanks [@Blackbaud-ShaydeNofziger](https://github.com/Blackbaud-ShaydeNofziger)!)
-- Fixed text from being displayed vertically in IE11 when select field components and list view checklist components are inside a modal. [#64](https://github.com/blackbaud/skyux-modals/pull/64)
+- Fixed text from being displayed vertically in IE11 when the select field component and the list view checklist component are inside a modal. [#64](https://github.com/blackbaud/skyux-modals/pull/64)
 
 # 3.0.7 (2019-08-01)
 
