@@ -48,6 +48,13 @@ describe('Confirm (lg screen)', () => {
       screenshotName: 'confirm-custom'
     });
   });
+
+  it('should match previous preserve white space screenshot', (done) => {
+    element(by.css('.sky-confirm-btn-preserve-white-space')).click();
+    expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
+      screenshotName: 'confirm-preserve-white-space'
+    });
+  });
 });
 
 describe('Confirm (small screen)', () => {
@@ -88,6 +95,13 @@ describe('Confirm (small screen)', () => {
     element(by.css('.sky-confirm-btn-custom')).click();
     expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
       screenshotName: 'confirm-custom-xs'
+    });
+  });
+
+  it('should match previous preserve white space screenshot on small screens', (done) => {
+    element(by.css('.sky-confirm-btn-preserve-white-space')).click();
+    expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
+      screenshotName: 'confirm-preserve-white-space-xs'
     });
   });
 });
