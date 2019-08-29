@@ -1,3 +1,8 @@
+# 3.1.0 (2019-08-30)
+
+- Added `preserveWhiteSpace` property to `SkyConfirmConfig` to allow consumers to preserve whitespace and new lines inside the confirm component. [#65](https://github.com/blackbaud/skyux-modals/pull/65) (Thanks [@Blackbaud-ShaydeNofziger](https://github.com/Blackbaud-ShaydeNofziger)!)
+- Fixed text from being displayed vertically in IE11 when select field components and list view checklist components were inside a modal. [#64](https://github.com/blackbaud/skyux-modals/pull/64)
+
 # 3.0.7 (2019-08-01)
 
 - Fixed the modal component to only close when the escape key is released. [#62](https://github.com/blackbaud/skyux-modals/pull/62) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
