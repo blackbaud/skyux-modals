@@ -59,6 +59,10 @@ import {
 } from './fixtures/modal-tiled-body.component.fixture';
 
 import {
+  ModalWithCheckboxTestComponent
+} from './fixtures/modal-with-checkbox.component.fixture';
+
+import {
   ModalWithFocusContentTestComponent
 } from './fixtures/modal-with-focus-content.fixture';
 
@@ -148,7 +152,7 @@ describe('Modal component', () => {
     let escapeEvent: any = document.createEvent('CustomEvent');
     escapeEvent.which = 27;
     escapeEvent.keyCode = 27;
-    escapeEvent.initEvent('keydown', true, true);
+    escapeEvent.initEvent('keyup', true, true);
 
     document.dispatchEvent(escapeEvent);
 
@@ -157,6 +161,48 @@ describe('Modal component', () => {
 
     expect(document.querySelector('.sky-modal')).not.toExist();
 
+  }));
+
+  it('should handle escape when modals are stacked', fakeAsync(() => {
+    let modalInstance2 = openModal(ModalAutofocusTestComponent);
+    let modalInstance1 = openModal(ModalFooterTestComponent);
+
+    let escapeEvent: any = document.createEvent('CustomEvent');
+    escapeEvent.which = 27;
+    escapeEvent.keyCode = 27;
+    escapeEvent.shiftKey = false;
+    escapeEvent.initEvent('keyup', true, true);
+
+    document.querySelector('.sky-modal').dispatchEvent(escapeEvent);
+    document.querySelector('.sky-modal').dispatchEvent(escapeEvent);
+
+    tick();
+    applicationRef.tick();
+
+    expect(document.querySelector('.sky-modal')).not.toExist();
+
+    closeModal(modalInstance1);
+    closeModal(modalInstance2);
+  }));
+
+  it('should handle a different key code with keyup event', fakeAsync(() => {
+    let modalInstance1 = openModal(ModalFooterTestComponent);
+
+    let unknownEvent: any = document.createEvent('CustomEvent');
+    unknownEvent.which = 3;
+    unknownEvent.keyCode = 3;
+    unknownEvent.shiftKey = false;
+    unknownEvent.initEvent('keyup', true, true);
+
+    document.querySelector('.sky-btn-primary').dispatchEvent(unknownEvent);
+
+    tick();
+    applicationRef.tick();
+
+    expect(document.activeElement).not.toEqual(document.querySelector('.sky-modal-btn-close'));
+    expect(document.querySelector('.sky-modal')).toExist();
+
+    closeModal(modalInstance1);
   }));
 
   it('should handle tab with shift when focus is on modal and in top modal', fakeAsync(() => {
@@ -193,6 +239,27 @@ describe('Modal component', () => {
     applicationRef.tick();
 
     expect(document.activeElement).toEqual(document.querySelector('.sky-btn-primary'));
+
+    closeModal(modalInstance1);
+
+  }));
+
+  it('should handle tab with shift when focus is in last item and in top modal', fakeAsync(() => {
+
+    let modalInstance1 = openModal(ModalFooterTestComponent);
+
+    let tabEvent: any = document.createEvent('CustomEvent');
+    tabEvent.which = 9;
+    tabEvent.keyCode = 9;
+    tabEvent.shiftKey = true;
+    tabEvent.initEvent('keydown', true, true);
+
+    document.querySelector('.sky-btn-primary').dispatchEvent(tabEvent);
+
+    tick();
+    applicationRef.tick();
+
+    expect(document.activeElement).toEqual(document.querySelector('input'));
 
     closeModal(modalInstance1);
 
@@ -334,7 +401,7 @@ describe('Modal component', () => {
     let escapeEvent: any = document.createEvent('CustomEvent');
     escapeEvent.which = 27;
     escapeEvent.keyCode = 27;
-    escapeEvent.initEvent('keydown', true, true);
+    escapeEvent.initEvent('keyup', true, true);
 
     document.dispatchEvent(escapeEvent);
 
@@ -552,6 +619,41 @@ describe('Modal component', () => {
     let modalInstance = openModal(ModalTiledBodyTestComponent);
 
     expect(document.querySelector('.sky-modal-tiled')).toExist();
+
+    closeModal(modalInstance);
+  }));
+
+  it('should prevent click events from bubbling beyond host element', fakeAsync(function () {
+    const modalInstance = openModal(ModalTiledBodyTestComponent);
+    const modalElement = document.querySelector('.sky-modal');
+
+    let numDocumentClicks = 0;
+    document.addEventListener('click', function () {
+      numDocumentClicks++;
+    });
+
+    let numModalClicks = 0;
+    modalElement.addEventListener('click', function () {
+      numModalClicks++;
+    });
+
+    SkyAppTestUtility.fireDomEvent(modalElement, 'click');
+
+    expect(numDocumentClicks).toEqual(0);
+    expect(numModalClicks).toEqual(1);
+
+    closeModal(modalInstance);
+  }));
+
+  it('should allow inner components to receive and complete click events', fakeAsync(function () {
+    const modalInstance = openModal(ModalWithCheckboxTestComponent);
+    const checkbox = document.querySelector('#sky-test-checkbox') as HTMLInputElement;
+
+    expect(checkbox).not.toBeNull();
+    expect(checkbox.checked).toBe(false);
+
+    checkbox.click();
+    expect(checkbox.checked).toBe(true);
 
     closeModal(modalInstance);
   }));

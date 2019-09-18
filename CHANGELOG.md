@@ -1,3 +1,33 @@
+# 3.1.0 (2019-08-30)
+
+- Added the `preserveWhiteSpace` property to `SkyConfirmConfig` to let consumers preserve whitespace and new lines inside the confirm component. [#65](https://github.com/blackbaud/skyux-modals/pull/65) (Thanks [@Blackbaud-ShaydeNofziger](https://github.com/Blackbaud-ShaydeNofziger)!)
+- Fixed the modal component to display text correctly in IE11 when modal content is wider than the modal body. [#64](https://github.com/blackbaud/skyux-modals/pull/64)
+
+# 3.0.7 (2019-08-01)
+
+- Fixed the modal component to only close when the escape key is released. [#62](https://github.com/blackbaud/skyux-modals/pull/62) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+- Fixed the modal header buttons to wrap properly when the heading wraps to a new line. [#61](https://github.com/blackbaud/skyux-modals/pull/61) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+
+# 3.0.6 (2019-07-05)
+
+- Updated development dependencies to support `@skyux-sdk/builder@3.7.1`. [#51](https://github.com/blackbaud/skyux-modals/pull/51)
+
+# 3.0.5 (2019-06-26)
+
+- Fixed the modal component to properly align the expand and collapse chevron in tile headers. [#49](https://github.com/blackbaud/skyux-modals/pull/49)
+
+# 3.0.4 (2019-06-07)
+
+- Fixed the modal component to correct accessibility tab controls. [#46](https://github.com/blackbaud/skyux-modals/pull/46) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+
+# 3.0.3 (2019-04-26)
+
+- Fixed modal component to handle click events that originate within its contents. [#40](https://github.com/blackbaud/skyux-modals/pull/40)
+
+# 3.0.2 (2019-04-23)
+
+- Fixed modal component to prevent clicks from propagating. [#35](https://github.com/blackbaud/skyux-modals/pull/35)
+
 # 3.0.1 (2019-01-18)
 
 - Fixed modal component animation to support required changes in Angular 7. [#23](https://github.com/blackbaud/skyux-modals/pull/23)

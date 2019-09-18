@@ -1,11 +1,12 @@
 import {
+  ChangeDetectorRef,
   Component,
   ComponentFactoryResolver,
+  HostListener,
   Injector,
   ReflectiveInjector,
   ViewChild,
-  ViewContainerRef,
-  ChangeDetectorRef
+  ViewContainerRef
 } from '@angular/core';
 
 import {
@@ -62,12 +63,21 @@ export class SkyModalHostComponent {
     private changeDetector: ChangeDetectorRef
   ) { }
 
+  @HostListener('click', ['$event'])
+  public onHostClick(event: any): void {
+    event.stopPropagation();
+  }
+
   public open(modalInstance: SkyModalInstance, component: any, config?: IConfig) {
-    let params: IConfig = Object.assign({}, config);
-    let factory = this.resolver.resolveComponentFactory(component);
-    let hostService = new SkyModalHostService(params.fullPage);
-    let adapter = this.adapter;
-    let modalOpener: HTMLElement = adapter.getModalOpener();
+    const params: IConfig = Object.assign({}, config);
+    const factory = this.resolver.resolveComponentFactory(component);
+
+    const hostService = new SkyModalHostService();
+    hostService.fullPage = !!params.fullPage;
+
+    const adapter = this.adapter;
+    const modalOpener: HTMLElement = adapter.getModalOpener();
+
     let isOpen = true;
 
     params.providers.push({
