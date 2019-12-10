@@ -62,6 +62,7 @@
   &:focus {
     outline-style: dotted;
     outline-width: thin;
+    outline-offset: -1px;
   }
 }
 
