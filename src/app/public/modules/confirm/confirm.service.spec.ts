@@ -4,7 +4,7 @@ import {
 
 import {
   SkyConfirmConfig
-} from './types';
+} from './types/confirm-config';
 
 import {
   MockSkyModalService
