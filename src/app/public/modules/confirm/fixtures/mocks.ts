@@ -3,9 +3,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyModalService,
   SkyModalInstance
-} from '../../modal';
+} from '../../modal/modal-instance';
+
+import {
+  SkyModalService
+} from '../../modal/modal.service';
 
 export class MockSkyModalInstance extends SkyModalInstance {
   public closed = new EventEmitter<any>();
