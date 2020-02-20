@@ -16,11 +16,11 @@ import {
 
 import {
   SkyConfirmCloseEventArgs
-} from './types/confirm-closed-event-args';
+} from './confirm-closed-event-args';
 
 import {
   SkyConfirmConfig
-} from './types/confirm-config';
+} from './confirm-config';
 
 import {
   SkyConfirmModalContext

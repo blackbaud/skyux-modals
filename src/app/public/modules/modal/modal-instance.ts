@@ -8,7 +8,7 @@ import {
 
 import {
   SkyModalBeforeCloseHandler
-} from './types/modal-before-close-handler';
+} from './modal-before-close-handler';
 
 export class SkyModalInstance {
   public componentInstance: any;

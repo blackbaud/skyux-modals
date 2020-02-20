@@ -31,11 +31,11 @@ import {
 
 import {
   SkyConfirmConfig
-} from './types/confirm-config';
+} from './confirm-config';
 
 import {
   SkyConfirmType
-} from './types/confirm-type';
+} from './confirm-type';
 
 import {
   SkyConfirmModule
