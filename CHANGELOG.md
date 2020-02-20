@@ -1,3 +1,9 @@
+# 4.0.0-rc.2 (2020-02-20)
+
+### Bug fixes
+
+- Added missing types to the exports API. [#78](https://github.com/blackbaud/skyux-modals/pull/78)
+
 # 4.0.0-rc.1 (2020-02-20)
 
 ### Bug fixes
