@@ -9,6 +9,7 @@ export * from './modules/confirm/types/confirm-closed-event-args';
 export * from './modules/confirm/types/confirm-config';
 export * from './modules/confirm/types/confirm-type';
 
+export * from './modules/modal/modal-close-args';
 export * from './modules/modal/modal-instance';
 export * from './modules/modal/modal.module';
 export * from './modules/modal/modal.service';
