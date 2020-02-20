@@ -1,3 +1,9 @@
+# 4.0.0-rc.1 (2020-02-20)
+
+### Bug fixes
+
+- Added the missing `SkyModalCloseArgs` type to the package exports.
+
 # 4.0.0-rc.0 (2020-02-19)
 
 ### New features
