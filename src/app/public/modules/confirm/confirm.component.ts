@@ -20,19 +20,19 @@ import {
 
 import {
   SkyConfirmButton
-} from './types/confirm-button';
+} from './confirm-button';
 
 import {
   SkyConfirmButtonConfig
-} from './types/confirm-button-config';
+} from './confirm-button-config';
 
 import {
   SkyConfirmCloseEventArgs
-} from './types/confirm-closed-event-args';
+} from './confirm-closed-event-args';
 
 import {
   SkyConfirmType
-} from './types/confirm-type';
+} from './confirm-type';
 
 import {
   SkyConfirmModalContext
