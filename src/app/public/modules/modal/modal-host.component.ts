@@ -2,7 +2,6 @@ import {
   ChangeDetectorRef,
   Component,
   ComponentFactoryResolver,
-  HostListener,
   Injector,
   ViewChild,
   ViewContainerRef
