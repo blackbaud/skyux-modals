@@ -70,11 +70,6 @@ export class SkyModalHostComponent {
     private changeDetector: ChangeDetectorRef
   ) { }
 
-  @HostListener('click', ['$event'])
-  public onHostClick(event: any): void {
-    event.stopPropagation();
-  }
-
   public open(modalInstance: SkyModalInstance, component: any, config?: IConfig) {
     const params: IConfig = Object.assign({}, config);
     const factory = this.resolver.resolveComponentFactory(component);
