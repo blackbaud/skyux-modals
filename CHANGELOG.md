@@ -1,3 +1,8 @@
+# 3.2.0 (2020-04-03)
+
+- Added the `args` property to the `beforeClose` event to let consumers access the provided `SkyModalCloseArgs` data. [#84](https://github.com/blackbaud/skyux-modals/pull/84)
+- Fixed the modal component to allow clicks to propagate to the document. [#83](https://github.com/blackbaud/skyux-modals/pull/83)
+
 # 4.0.0-rc.2 (2020-02-20)
 
 ### Bug fixes

@@ -59,12 +59,12 @@ import {
 } from './fixtures/modal-tiled-body.component.fixture';
 
 import {
-  ModalWithCheckboxTestComponent
-} from './fixtures/modal-with-checkbox.component.fixture';
-
-import {
   ModalWithFocusContentTestComponent
 } from './fixtures/modal-with-focus-content.fixture';
+
+import {
+  SkyModalBeforeCloseHandler
+} from './modal-before-close-handler';
 
 describe('Modal component', () => {
   let applicationRef: ApplicationRef;
@@ -392,10 +392,18 @@ describe('Modal component', () => {
     applicationRef.tick();
     expect(document.querySelector('.sky-modal')).toExist();
 
+    const closeHandlerSpy = spyOn(instance.componentInstance, 'beforeCloseHandler').and.callThrough();
+
     instance.close();
     tick();
     applicationRef.tick();
     expect(document.querySelector('.sky-modal')).toExist();
+
+    // Verify the close handler has the correct data.
+    const closeHandler = closeHandlerSpy.calls.allArgs()[0][0] as SkyModalBeforeCloseHandler;
+    expect(typeof closeHandler.closeModal).toEqual('function');
+    expect(closeHandler.closeArgs.reason).toEqual('close');
+    expect(closeHandler.closeArgs.data).toBeUndefined();
 
     // Escape key
     let escapeEvent: any = document.createEvent('CustomEvent');
@@ -623,7 +631,7 @@ describe('Modal component', () => {
     closeModal(modalInstance);
   }));
 
-  it('should prevent click events from bubbling beyond host element', fakeAsync(function () {
+  it('should allow click events to bubble beyond host element', fakeAsync(function () {
     const modalInstance = openModal(ModalTiledBodyTestComponent);
     const modalElement = document.querySelector('.sky-modal');
 
@@ -639,21 +647,8 @@ describe('Modal component', () => {
 
     SkyAppTestUtility.fireDomEvent(modalElement, 'click');
 
-    expect(numDocumentClicks).toEqual(0);
+    expect(numDocumentClicks).toEqual(1);
     expect(numModalClicks).toEqual(1);
-
-    closeModal(modalInstance);
-  }));
-
-  it('should allow inner components to receive and complete click events', fakeAsync(function () {
-    const modalInstance = openModal(ModalWithCheckboxTestComponent);
-    const checkbox = document.querySelector('#sky-test-checkbox') as HTMLInputElement;
-
-    expect(checkbox).not.toBeNull();
-    expect(checkbox.checked).toBe(false);
-
-    checkbox.click();
-    expect(checkbox.checked).toBe(true);
 
     closeModal(modalInstance);
   }));
