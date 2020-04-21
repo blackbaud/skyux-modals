@@ -1,3 +1,7 @@
+# 4.0.0-rc.3 (2020-04-21)
+
+- Added bug fixes and features from the `master` branch. [#89](https://github.com/blackbaud/skyux-modals/pull/89)
+
 # 3.2.0 (2020-04-03)
 
 - Added the `args` property to the `beforeClose` event to let consumers access the provided `SkyModalCloseArgs` data. [#84](https://github.com/blackbaud/skyux-modals/pull/84)
