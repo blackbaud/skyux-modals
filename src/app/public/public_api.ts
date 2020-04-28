@@ -12,6 +12,7 @@ export * from './modules/confirm/confirm.service';
 export * from './modules/modal/modal-before-close-handler';
 export * from './modules/modal/modal-close-args';
 export * from './modules/modal/modal-configuration';
+export * from './modules/modal/modal-host.service';
 export * from './modules/modal/modal-instance';
 export * from './modules/modal/modal.interface';
 export * from './modules/modal/modal.module';
