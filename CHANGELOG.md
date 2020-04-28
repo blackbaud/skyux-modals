@@ -1,3 +1,9 @@
+# 4.0.0-rc.4 (2020-04-28)
+
+### Bug fixes
+
+- Added `SkyModalHostService` to the public exports API. [#90](https://github.com/blackbaud/skyux-modals/pull/90)
+
 # 4.0.0-rc.3 (2020-04-21)
 
 - Added bug fixes and features from the `master` branch. [#89](https://github.com/blackbaud/skyux-modals/pull/89)
