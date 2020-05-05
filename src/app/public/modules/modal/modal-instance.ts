@@ -9,7 +9,7 @@ import {
 
 import {
   SkyModalBeforeCloseHandler
-} from './types';
+} from './modal-before-close-handler';
 
 export class SkyModalInstance {
   public componentInstance: any;
@@ -63,7 +63,7 @@ export class SkyModalInstance {
     } else {
       this._beforeClose.next(new SkyModalBeforeCloseHandler(() => {
         this.notifyClosed(args);
-      }));
+      }, args));
     }
   }
 

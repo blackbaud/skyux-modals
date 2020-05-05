@@ -1,3 +1,58 @@
+# 4.0.0-rc.4 (2020-04-28)
+
+### Bug fixes
+
+- Added `SkyModalHostService` to the public exports API. [#90](https://github.com/blackbaud/skyux-modals/pull/90)
+
+# 4.0.0-rc.3 (2020-04-21)
+
+- Added bug fixes and features from the `master` branch. [#89](https://github.com/blackbaud/skyux-modals/pull/89)
+
+# 3.2.0 (2020-04-03)
+
+- Added the `args` property to the `beforeClose` event to let consumers access the provided `SkyModalCloseArgs` data. [#84](https://github.com/blackbaud/skyux-modals/pull/84)
+- Fixed the modal component to allow clicks to propagate to the document. [#83](https://github.com/blackbaud/skyux-modals/pull/83)
+
+# 4.0.0-rc.2 (2020-02-20)
+
+### Bug fixes
+
+- Added missing types to the exports API. [#78](https://github.com/blackbaud/skyux-modals/pull/78)
+
+# 4.0.0-rc.1 (2020-02-20)
+
+### Bug fixes
+
+- Added the missing `SkyModalCloseArgs` type to the package exports.
+
+# 4.0.0-rc.0 (2020-02-19)
+
+### New features
+
+- Updated the pipeline to transpile to the [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview). [#77](https://github.com/blackbaud/skyux-modals/pull/77)
+
+### Breaking changes
+
+- Dropped support for `rxjs@5`. Consumers may install `rxjs-compat@^6` to support older versions of `rxjs`. [#77](https://github.com/blackbaud/skyux-modals/pull/77)
+
+# 3.1.2 (2019-12-12)
+
+- Fixed the modal component to correctly stack child elements inside the modal. [#73](https://github.com/blackbaud/skyux-modals/pull/73)
+
+# 3.1.1 (2019-11-22)
+
+- Fixed the modal component to support Angular versions greater than 8. [#71](https://github.com/blackbaud/skyux-modals/pull/71)
+
+# 3.1.0 (2019-08-30)
+
+- Added the `preserveWhiteSpace` property to `SkyConfirmConfig` to let consumers preserve whitespace and new lines inside the confirm component. [#65](https://github.com/blackbaud/skyux-modals/pull/65) (Thanks [@Blackbaud-ShaydeNofziger](https://github.com/Blackbaud-ShaydeNofziger)!)
+- Fixed the modal component to display text correctly in IE11 when modal content is wider than the modal body. [#64](https://github.com/blackbaud/skyux-modals/pull/64)
+
+# 3.0.7 (2019-08-01)
+
+- Fixed the modal component to only close when the escape key is released. [#62](https://github.com/blackbaud/skyux-modals/pull/62) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+- Fixed the modal header buttons to wrap properly when the heading wraps to a new line. [#61](https://github.com/blackbaud/skyux-modals/pull/61) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
+
 # 3.0.6 (2019-07-05)
 
 - Updated development dependencies to support `@skyux-sdk/builder@3.7.1`. [#51](https://github.com/blackbaud/skyux-modals/pull/51)
@@ -8,7 +63,7 @@
 
 # 3.0.4 (2019-06-07)
 
-- Fixed the modal component to correct accessibility tab controls. [#46](https://github.com/blackbaud/skyux-modals/pull/46) (Thanks @Blackbaud-JackMcElhinney)
+- Fixed the modal component to correct accessibility tab controls. [#46](https://github.com/blackbaud/skyux-modals/pull/46) (Thanks [@Blackbaud-JackMcElhinney](https://github.com/Blackbaud-JackMcElhinney)!)
 
 # 3.0.3 (2019-04-26)
 

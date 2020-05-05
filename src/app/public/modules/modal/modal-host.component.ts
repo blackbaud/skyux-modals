@@ -2,9 +2,7 @@ import {
   ChangeDetectorRef,
   Component,
   ComponentFactoryResolver,
-  HostListener,
   Injector,
-  ReflectiveInjector,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -14,7 +12,9 @@ import {
   Router
 } from '@angular/router';
 
-import 'rxjs/add/operator/takeWhile';
+import {
+  takeWhile
+} from 'rxjs/operators';
 
 import {
   SkyModalAdapterService
@@ -42,7 +42,6 @@ import {
   styleUrls: ['./modal-host.component.scss'],
   viewProviders: [SkyModalAdapterService]
 })
-
 export class SkyModalHostComponent {
   public get modalOpen() {
     return SkyModalHostService.openModalCount > 0;
@@ -52,7 +51,16 @@ export class SkyModalHostComponent {
     return SkyModalHostService.backdropZIndex;
   }
 
-  @ViewChild('target', { read: ViewContainerRef })
+  /**
+   * Use `any` for backwards-compatibility with Angular 4-7.
+   * See: https://github.com/angular/angular/issues/30654
+   * TODO: Remove the `any` in a breaking change.
+   * @internal
+   */
+  @ViewChild('target', {
+    read: ViewContainerRef,
+    static: true
+  } as any)
   public target: ViewContainerRef;
 
   constructor(
@@ -62,11 +70,6 @@ export class SkyModalHostComponent {
     private router: Router,
     private changeDetector: ChangeDetectorRef
   ) { }
-
-  @HostListener('click', ['$event'])
-  public onHostClick(event: any): void {
-    event.stopPropagation();
-  }
 
   public open(modalInstance: SkyModalInstance, component: any, config?: IConfig) {
     const params: IConfig = Object.assign({}, config);
@@ -93,8 +96,11 @@ export class SkyModalHostComponent {
     adapter.toggleFullPageModalClass(SkyModalHostService.fullPageModalCount > 0);
 
     let providers = params.providers /* istanbul ignore next */ || [];
-    let resolvedProviders = ReflectiveInjector.resolve(providers);
-    let injector = ReflectiveInjector.fromResolvedProviders(resolvedProviders, this.injector);
+    const injector = Injector.create({
+      providers,
+      parent: this.injector
+    });
+
     let modalComponentRef = this.target.createComponent(factory, undefined, injector);
 
     modalInstance.componentInstance = modalComponentRef.instance;
@@ -120,7 +126,9 @@ export class SkyModalHostComponent {
     });
 
     this.router.events
-      .takeWhile(() => isOpen)
+      .pipe(
+        takeWhile(() => isOpen)
+      )
       .subscribe((event) => {
         /* istanbul ignore else */
         if (event instanceof NavigationStart) {

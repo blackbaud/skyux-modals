@@ -4,7 +4,7 @@ import {
 
 import {
   SkyModalService
-} from '../../public';
+} from '../../public/public_api';
 
 import {
   ModalDemoComponent
@@ -47,6 +47,11 @@ export class ModalVisualComponent {
 
   public openModalWithHelp() {
     this.modal.open(ModalDemoComponent, { 'providers': [], 'helpKey': 'demo-key.html' });
+  }
+
+  public openModalWithExtendedTitle() {
+    const instance = this.modal.open(ModalDemoComponent, { 'providers': [], 'helpKey': 'demo-key.html' });
+    instance.componentInstance.title = 'This is a modal title with an extended header text that must wrap by default';
   }
 
   public openLargeModal() {

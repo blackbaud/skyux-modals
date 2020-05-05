@@ -24,10 +24,22 @@
 
   .sky-modal-small {
     width: 300px;
+
+    .sky-modal-content,
+    .sky-modal-header,
+    .sky-modal-footer {
+      max-width: 300px;
+    }
   }
 
   .sky-modal-medium {
     width: 600px;
+
+    .sky-modal-content,
+    .sky-modal-header,
+    .sky-modal-footer {
+      max-width: 600px;
+    }
   }
 }
 
@@ -35,16 +47,22 @@
   .sky-modal-large {
     margin: 0 auto;
     width: 900px;
+
+    .sky-modal-content,
+    .sky-modal-header,
+    .sky-modal-footer {
+      max-width: 900px;
+    }
   }
 }
 
 .sky-modal-content {
   background-color: #fff;
-  z-index: 1;
 
   &:focus {
     outline-style: dotted;
     outline-width: thin;
+    outline-offset: -1px;
   }
 }
 
@@ -70,8 +88,12 @@
   @include sky-border(light, bottom);
 }
 
-
 .sky-modal-header-buttons {
+
+  // An extremely small value is needed to allow the
+  // buttons to wrap on extra-small breakpoints (<200px).
+  flex-shrink: 0.0001;
+
   .sky-btn {
     border: none;
     @include sky-icon-button-borderless;
@@ -116,10 +138,10 @@
   .sky-modal-header-buttons sky-icon[icon="close"] {
     font-size: 20px;
   }
-
 }
+
 .sky-modal-full-page .sky-modal-content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 :host ::ng-deep .sky-sectioned-form {

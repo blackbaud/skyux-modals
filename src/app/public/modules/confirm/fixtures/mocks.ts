@@ -4,7 +4,7 @@ import {
 
 import {
   SkyModalCloseArgs
-} from '../../modal';
+} from '../../modal/modal-close-args';
 
 export class MockSkyModalInstance {
   public closed = new Subject<SkyModalCloseArgs>();

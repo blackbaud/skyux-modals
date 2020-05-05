@@ -5,7 +5,7 @@ import {
 import {
   SkyConfirmService,
   SkyConfirmType
-} from '../../public';
+} from '../../public/public_api';
 
 @Component({
   selector: 'confirm-visual',
@@ -58,6 +58,20 @@ export class ConfirmVisualComponent {
         { text: '2', action: 'bar', autofocus: true },
         { text: '3', action: 'baz' }
       ]
+    });
+  }
+
+  public openPreserveWhiteSpaceConfirm(): void {
+    const body = 'If you are seeing this message because of a problem with the form please contact:\n\t- email@email.com.';
+
+    const message = `Are you sure you wish to cancel?
+  - All unsaved progress will be lost!`;
+
+    this.confirmService.open({
+      body,
+      message,
+      preserveWhiteSpace: true,
+      type: SkyConfirmType.OK
     });
   }
 }
