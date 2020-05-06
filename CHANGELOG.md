@@ -1,3 +1,9 @@
+# 4.0.0-rc.5 (2020-05-06)
+
+### Breaking changes
+
+- Changed the `SkyModalInstance` event emitters (`closed`, `beforeClosed`, and `helpOpened`) to observables. Deliberate calls to these events' `emit` methods will no longer work. [#57](https://github.com/blackbaud/skyux-modals/pull/57)
+
 # 4.0.0-rc.4 (2020-04-28)
 
 ### Bug fixes
