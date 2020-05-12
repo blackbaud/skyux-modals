@@ -39,7 +39,7 @@
 
 ### Breaking changes
 
-- Dropped support for `rxjs@5`. Consumers may install `rxjs-compat@^6` to support older versions of `rxjs`. [#77](https://github.com/blackbaud/skyux-modals/pull/77)
+- Dropped support for `rxjs@5`. Consumers can install `rxjs-compat@^6` to support older versions of `rxjs`. [#77](https://github.com/blackbaud/skyux-modals/pull/77)
 
 # 3.1.2 (2019-12-12)
 
