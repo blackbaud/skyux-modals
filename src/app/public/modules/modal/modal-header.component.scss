@@ -1,0 +1,11 @@
+@import "~@skyux/theme/scss/mixins";
+@import "~@skyux/theme/scss/_compat/mixins";
+
+// Modal header should mimic a regular paragraph with .sky-emphasized applied.
+h1 {
+  font-family: $sky-font-family;
+  color: $sky-text-color-default;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+}
