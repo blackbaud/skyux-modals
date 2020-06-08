@@ -16,14 +16,16 @@ import {
 } from './modal-host.component';
 
 import {
-  SkyModalConfigurationInterface as IConfig
+  SkyModalConfigurationInterface
 } from './modal.interface';
 
-// Need to add the following to classes which contain static methods.
-// See: https://github.com/ng-packagr/ng-packagr/issues/641
-// @dynamic
+/**
+ * A service that lauches modals.
+ * @dynamic
+ */
 @Injectable()
 export class SkyModalService {
+
   private static host: ComponentRef<SkyModalHostComponent>;
 
   // TODO: In future breaking change - remove extra parameters as they are no longer used.
@@ -32,15 +34,37 @@ export class SkyModalService {
     private dynamicComponentService?: SkyDynamicComponentService
   ) { }
 
-  // Open Overloads
-  public open(component: any, providers?: any[]): SkyModalInstance;
-  public open(component: any, config?: IConfig): SkyModalInstance;
+  /**
+   * @private
+   * Removes the modal host from the DOM.
+   */
+  public dispose(): void {
+    if (SkyModalService.host) {
+      this.dynamicComponentService.removeComponent(SkyModalService.host);
+      SkyModalService.host = undefined;
+    }
+  }
 
-  // Open Method
+  /**
+   * Opens a modal using the specified component.
+   * @param component Determines the component to render.
+   * Since you generate the component dynamically instead of with HTML selectors,
+   * you must register it with the `entryComponents` property in the `app-extras.module.ts` file.
+   * For more information, see the
+   * [entry components tutorial](https://developer.blackbaud.com/skyux/learn/get-started/advanced/entry-components).
+   * @param config Populates the modal based on the `SkyModalConfigurationInterface` object.
+   */
+  public open(component: any, config?: SkyModalConfigurationInterface): SkyModalInstance;
+
+  public open(component: any, providers?: any[]): SkyModalInstance;
+
+  // TODO: skyux-docs-tools doesn't know how to interpret overloads yet.
+  // As a result, some of these parameters will still show up in the docs, until this work is done:
+  // https://github.com/blackbaud/skyux-docs-tools/issues/66
   public open(): SkyModalInstance {
     let modalInstance = new SkyModalInstance();
     this.createHostComponent();
-    let providersOrConfig: IConfig = arguments[1];
+    let providersOrConfig: SkyModalConfigurationInterface = arguments[1];
     let params = this.getConfigFromParameter(providersOrConfig);
     let component = arguments[0];
 
@@ -54,16 +78,8 @@ export class SkyModalService {
     return modalInstance;
   }
 
-  public dispose() {
-    if (SkyModalService.host) {
-      this.dynamicComponentService.removeComponent(SkyModalService.host);
-      SkyModalService.host = undefined;
-    }
-
-  }
-
-  private getConfigFromParameter(providersOrConfig: any) {
-    let defaultParams: IConfig = {
+  private getConfigFromParameter(providersOrConfig: any): any {
+    let defaultParams: SkyModalConfigurationInterface = {
       'providers': [],
       'fullPage': false,
       'size': 'medium',
@@ -87,7 +103,7 @@ export class SkyModalService {
     return params;
   }
 
-  private createHostComponent() {
+  private createHostComponent(): void {
     if (!SkyModalService.host) {
       SkyModalService.host = this.dynamicComponentService.createComponent(SkyModalHostComponent);
     }
