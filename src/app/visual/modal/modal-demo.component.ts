@@ -13,6 +13,4 @@ import {
 })
 export class ModalDemoComponent {
   public title = 'Hello world';
-
-  public ariaRole = 'asdf';
 }

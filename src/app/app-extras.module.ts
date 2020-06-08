@@ -71,8 +71,8 @@ require('style-loader!./visual.scss');
     {
       provide: SkyDocsToolsOptions,
       useValue: {
-        gitRepoUrl: 'https://github.com/blackbaud/skyux-datetime',
-        packageName: '@skyux/datetime'
+        gitRepoUrl: 'https://github.com/blackbaud/skyux-modals',
+        packageName: '@skyux/modals'
       }
     }
   ]
