@@ -99,7 +99,7 @@ export class SkyModalInstance {
 
   /**
    * Triggers the `helpOpened` event that broadcasts a `helpKey` parameter to open
-   * when users click the ? button.
+   * when users click the <i class="fa fa-question-circle" aria-hidden="true"></i> button.
    * @param helpKey Specifies a string to emit to subscribers of
    * the modal instance's `helpOpened` event. Consumers can inject the `SkyModalInstance` provider
    * into a component's constructor to call the `openHelp` function in the modal template.
