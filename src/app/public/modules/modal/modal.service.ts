@@ -69,14 +69,14 @@ export class SkyModalService {
     return modalInstance;
   }
 
-  private getConfigFromParameter(providersOrConfig: any): any {
+  private getConfigFromParameter(providersOrConfig: any): SkyModalConfigurationInterface {
     let defaultParams: SkyModalConfigurationInterface = {
       'providers': [],
       'fullPage': false,
       'size': 'medium',
       'tiledBody': false
     };
-    let params: any = undefined;
+    let params: SkyModalConfigurationInterface = undefined;
     let method: any = undefined;
 
     // Object Literal Lookup for backwards compatability.
