@@ -63,12 +63,11 @@ export class SkyModalInstance {
 
   /**
    * Closes the modal instance.
-   * @param result Specifies an object that will be emitted to
-   * subscribers of the `closed` event of the modal instance.
-   * The `SkyModalInstance` provider can be injected into a component's constructor
+   * @param result Specifies an object to emit to subscribers of the `closed` event of the
+   * modal instance. The `SkyModalInstance` provider can be injected into a component's constructor
    * so that this `close` function can be called from a button in the `sky-modal-footer`.
    * @param reason Specifies the reason for the modal closing, with the default reason of `close`.
-   * @param ignoreBeforeClose Ignores the modal instance's `beforeClose` event.
+   * @param ignoreBeforeClose Indicates whether to ignore the modal instance's `beforeClose` event.
    */
   public close(result?: any, reason?: string, ignoreBeforeClose?: boolean): void {
     if (reason === undefined) {
@@ -80,10 +79,9 @@ export class SkyModalInstance {
 
   /**
    * Closes the modal instance with `reason=cancel`.
-   * @param result Specifies an object that will be emitted to subscribers
-   * of the closed event of the modal instance. The SkyModalInstance provider
-   * can be injected into a component's constructor so that this cancel function can be called
-   * from a button in the sky-modal-footer.
+   * @param result Specifies an object to emit to subscribers of the `closed` event of the modal
+   * instance. The `SkyModalInstance` provider can be injected into a component's constructor so
+   * that this cancel function can be called from a button in the `sky-modal-footer`.
    */
   public cancel(result?: any): void {
     this.closeModal('cancel', result);
@@ -91,20 +89,20 @@ export class SkyModalInstance {
 
   /**
    * Closes the modal instance with `reason=save`.
-   * @param result Specifies an object that will be emitted to subscribers of the
-   * `closed` event of the modal instance. The `SkyModalInstance` provider can be injected
-   * into a component's constructor so that this save function can be called
-   * from a button in `the sky-modal-footer`.
+   * @param result Specifies an object to emit to subscribers of the `closed` event of the modal
+   * instance. The `SkyModalInstance` provider can be injected into a component's constructor so
+   * that this `save` function can be called from a button in `the sky-modal-footer`.
    */
   public save(result?: any): void {
     this.closeModal('save', result);
   }
 
   /**
-   * Triggers the helpOpened event.
+   * Triggers the `helpOpened` event that broadcasts a `helpKey` parameter to open
+   * when users click the ? button.
    * @param helpKey Specifies a string to emit to subscribers of
-   * the modal instance's `helpOpened` event. You can inject the SkyModalInstance provider
-   * into a component's constructor to call the openHelp function in the modal template.
+   * the modal instance's `helpOpened` event. Consumers can inject the `SkyModalInstance` provider
+   * into a component's constructor to call the `openHelp` function in the modal template.
    */
   public openHelp(helpKey?: string): void {
     this._helpOpened.next(helpKey);

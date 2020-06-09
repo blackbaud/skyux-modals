@@ -14,7 +14,7 @@ export interface SkyModalConfigurationInterface {
 
   /**
    * Specifies a size for the modal. The valid options are `small`, `medium`, and `large`.
-   * If no value is provided, the size will be set to `medium`.
+   * This property defaults to `medium`.
    */
   size?: string;
 
@@ -43,16 +43,15 @@ export interface SkyModalConfigurationInterface {
   ariaLabelledBy?: string;
 
   /**
-   * Specifies an ARIA role for the modal dialog to support accessibility
-   * by indicating how the modal functions and what it controls. The ARIA role indicates
-   * what the modal component represents on the web page. For information about ARIA roles,
-   * see the [WAI-ARIA roles model](https://www.w3.org/WAI/PF/aria/roles).
-   * If no value is provided, the ARIA role will be set to `dialog`.
+   * Specifies [an ARIA role](http://www.w3.org/WAI/PF/aria/roles) for the modal dialog
+   * to support accessibility by indicating how the modal functions and what it controls.
+   * The ARIA role indicates what the modal component represents on the web page.
+   * This property defaults to `dialog`.
    */
   ariaRole?: string;
 
   /**
-   * Indicates whether the modal uses tiles. When set to true, the modal's background switches
+   * Indicates whether the modal uses tiles. When set to `true`, the modal's background switches
    * to `$sky-background-color-neutral-light` and tile headings are styled as subsection headings.
    * This property defaults to `false`.
    */
