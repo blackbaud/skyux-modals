@@ -52,21 +52,12 @@ export class SkyModalService {
    * register it with the `entryComponents` property in the `app-extras.module.ts` file.
    * For more information, see the
    * [entry components tutorial](https://developer.blackbaud.com/skyux/learn/get-started/advanced/entry-components).
-   * @param config Populates the modal based on the `SkyModalConfigurationInterface` object.
+   * @param {SkyModalConfigurationInterface} config Populates the modal based on the `SkyModalConfigurationInterface` object.
    */
-  public open(component: any, config?: SkyModalConfigurationInterface): SkyModalInstance;
-
-  public open(component: any, providers?: any[]): SkyModalInstance;
-
-  // TODO: skyux-docs-tools doesn't know how to interpret overloads yet.
-  // As a result, some of these parameters will still show up in the docs, until this work is done:
-  // https://github.com/blackbaud/skyux-docs-tools/issues/66
-  public open(): SkyModalInstance {
+  public open(component: any, config?: SkyModalConfigurationInterface | any[]): SkyModalInstance {
     let modalInstance = new SkyModalInstance();
     this.createHostComponent();
-    let providersOrConfig: SkyModalConfigurationInterface = arguments[1];
-    let params = this.getConfigFromParameter(providersOrConfig);
-    let component = arguments[0];
+    let params = this.getConfigFromParameter(config);
 
     params.providers.push({
       provide: SkyModalInstance,
