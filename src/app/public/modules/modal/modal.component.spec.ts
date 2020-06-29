@@ -4,7 +4,6 @@ import {
 
 import {
   fakeAsync,
-  inject,
   tick,
   TestBed
 } from '@angular/core/testing';
@@ -12,6 +11,17 @@ import {
 import {
   Router
 } from '@angular/router';
+
+import {
+  MutationObserverService
+} from '@skyux/core';
+
+import {
+  SkyTheme,
+  SkyThemeMode,
+  SkyThemeSettings,
+  SkyThemeService
+} from '@skyux/theme';
 
 import {
   expect,
@@ -63,6 +73,14 @@ import {
 } from './fixtures/modal-with-focus-content.fixture';
 
 import {
+  ModalMockThemeService
+} from './fixtures/mock-theme.service';
+
+import {
+  ModalMockMutationObserverService
+} from './fixtures/mock-modal-mutation-observer';
+
+import {
   SkyModalBeforeCloseHandler
 } from './modal-before-close-handler';
 
@@ -70,6 +88,7 @@ describe('Modal component', () => {
   let applicationRef: ApplicationRef;
   let modalService: SkyModalService;
   let router: Router;
+  let mockMutationObserverService: ModalMockMutationObserverService;
 
   function openModal(modalType: any, config?: Object) {
     let modalInstance = modalService.open(modalType, config);
@@ -92,27 +111,14 @@ describe('Modal component', () => {
         SkyModalFixturesModule
       ]
     });
-  });
 
-  beforeEach(
-    inject(
-      [
-        ApplicationRef,
-        SkyModalService,
-        Router
-      ],
-      (
-        _applicationRef: ApplicationRef,
-        _modalService: SkyModalService,
-        _router: Router
-      ) => {
-        applicationRef = _applicationRef;
-        modalService = _modalService;
-        modalService.dispose();
-        router = _router;
-      }
-    )
-  );
+    applicationRef = TestBed.inject(ApplicationRef);
+    modalService = TestBed.inject(SkyModalService);
+    router = TestBed.inject(Router);
+    mockMutationObserverService = TestBed.inject<any>(MutationObserverService);
+
+    modalService.dispose();
+  });
 
   it('should render on top of previously-opened modals', fakeAsync(() => {
     let modalInstance1 = openModal(ModalTestComponent);
@@ -534,6 +540,24 @@ describe('Modal component', () => {
     closeModal(modalInstance);
   }));
 
+  it('should account for margins when setting full-page modal height', fakeAsync(() => {
+    let modalInstance = openModal(ModalTestComponent, {'fullPage': true});
+    let modalEl = document.querySelector('.sky-modal-full-page') as HTMLElement;
+
+    modalEl.style.marginBottom = '20px';
+    modalEl.style.marginTop = '20px';
+
+    SkyAppTestUtility.fireDomEvent(window, 'resize');
+    applicationRef.tick();
+
+    let height = parseInt(getComputedStyle(modalEl).height, 10);
+
+    // innerHeight -2 is for IE Box Model Fix
+    expect([window.innerHeight - 2, window.innerHeight]).toContain(height + 40);
+
+    closeModal(modalInstance);
+  }));
+
   it('should default to medium size', fakeAsync(() => {
     let modalInstance = openModal(ModalTestComponent, {'fullPage': false});
 
@@ -652,4 +676,140 @@ describe('Modal component', () => {
 
     closeModal(modalInstance);
   }));
+
+  describe('when modern theme', () => {
+    let mutationObserverCreateSpy: jasmine.Spy;
+
+    function scrollContent(contentEl: HTMLElement, top: number): void {
+      contentEl.scroll({
+        top
+      });
+
+      SkyAppTestUtility.fireDomEvent(contentEl, 'scroll');
+
+      tick();
+      applicationRef.tick();
+    }
+
+    function validateShadow(el: HTMLElement, alpha?: string): void {
+      const expectedShadow = !alpha ? 'none' : `rgba(0, 0, 0, ${alpha}) 0px 1px 8px 0px`;
+
+      expect(getComputedStyle(el).boxShadow).toBe(expectedShadow);
+    }
+
+    function setModernTheme(): void {
+      let themeSvc: ModalMockThemeService = TestBed.inject<any>(SkyThemeService);
+
+      themeSvc.settingsChange.next({
+        currentSettings: new SkyThemeSettings(
+          SkyTheme.presets.modern,
+          SkyThemeMode.presets.light
+        ),
+        previousSettings: themeSvc.settingsChange.value.currentSettings
+      });
+    }
+
+    beforeEach(() => {
+      mutationObserverCreateSpy = spyOn(mockMutationObserverService, 'create').and.callThrough();
+
+      setModernTheme();
+    });
+
+    it('should progressively show a drop shadow as the modal content scrolls', fakeAsync(() => {
+      let modalInstance1 = openModal(ModalTestComponent);
+
+      const modalHeaderEl = document.querySelector('.sky-modal-header') as HTMLElement;
+      const modalContentEl = document.querySelector('.sky-modal-content') as HTMLElement;
+      const modalFooterEl = document.querySelector('.sky-modal-footer') as HTMLElement;
+
+      const fixtureContentEl = document.querySelector('.modal-fixture-content') as HTMLElement;
+      fixtureContentEl.style.height = `${(window.innerHeight + 100)}px`;
+
+      scrollContent(modalContentEl, 0);
+      validateShadow(modalHeaderEl);
+      validateShadow(modalFooterEl, '0.3');
+
+      scrollContent(modalContentEl, 15);
+      validateShadow(modalHeaderEl, '0.15');
+      validateShadow(modalFooterEl, '0.3');
+
+      scrollContent(modalContentEl, 30);
+      validateShadow(modalHeaderEl, '0.3');
+      validateShadow(modalFooterEl, '0.3');
+
+      scrollContent(
+        modalContentEl,
+        (modalContentEl.scrollHeight - 15) - modalContentEl.clientHeight
+      );
+      validateShadow(modalHeaderEl, '0.3');
+      validateShadow(modalFooterEl, '0.15');
+
+      scrollContent(modalContentEl, modalContentEl.scrollHeight - modalContentEl.clientHeight);
+      validateShadow(modalHeaderEl, '0.3');
+      validateShadow(modalFooterEl);
+
+      closeModal(modalInstance1);
+    }));
+
+    it('should check for shadow when elements are added to the modal content', fakeAsync(() => {
+      let mutateCallback: any;
+
+      const fakeMutationObserver = {
+        observe: jasmine.createSpy('observe'),
+        disconnect: jasmine.createSpy('disconnect')
+      };
+
+      mutationObserverCreateSpy
+        .and
+        .callFake((cb) => {
+          mutateCallback = cb;
+
+          return fakeMutationObserver;
+        });
+
+      let modalInstance1 = openModal(ModalTestComponent);
+
+      const modalFooterEl = document.querySelector('.sky-modal-footer') as HTMLElement;
+
+      const fixtureContentEl = document.querySelector('.modal-fixture-content') as HTMLElement;
+
+      const childEl = document.createElement('div');
+      childEl.style.height = `${(window.innerHeight + 100)}px`;
+      childEl.style.backgroundColor = 'red';
+
+      fixtureContentEl.appendChild(childEl);
+
+      mutateCallback();
+
+      tick();
+      applicationRef.tick();
+
+      validateShadow(modalFooterEl, '0.3');
+
+      fixtureContentEl.removeChild(childEl);
+
+      mutateCallback();
+
+      tick();
+      applicationRef.tick();
+
+      validateShadow(modalFooterEl);
+
+      closeModal(modalInstance1);
+    }));
+
+    it('should not create multiple mutation observers', fakeAsync(() => {
+      let modalInstance1 = openModal(ModalTestComponent);
+
+      setModernTheme();
+      setModernTheme();
+      setModernTheme();
+
+      expect(mutationObserverCreateSpy.calls.count()).toBe(1);
+
+      closeModal(modalInstance1);
+    }));
+
+  });
+
 });
