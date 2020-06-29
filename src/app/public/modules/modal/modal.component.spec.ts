@@ -704,9 +704,7 @@ describe('Modal component', () => {
     let mutationObserverCreateSpy: jasmine.Spy;
 
     function scrollContent(contentEl: HTMLElement, top: number): void {
-      contentEl.scroll({
-        top
-      });
+      contentEl.scrollTop = top;
 
       SkyAppTestUtility.fireDomEvent(contentEl, 'scroll');
 
@@ -715,9 +713,13 @@ describe('Modal component', () => {
     }
 
     function validateShadow(el: HTMLElement, alpha?: string): void {
-      const expectedShadow = !alpha ? 'none' : `rgba(0, 0, 0, ${alpha}) 0px 1px 8px 0px`;
+      const boxShadowStyle = getComputedStyle(el).boxShadow;
 
-      expect(getComputedStyle(el).boxShadow).toBe(expectedShadow);
+      if (alpha) {
+        expect(boxShadowStyle).toContain(`rgba(0, 0, 0, ${alpha})`);
+      } else {
+        expect(boxShadowStyle).toBe('none');
+      }
     }
 
     function setModernTheme(): void {
