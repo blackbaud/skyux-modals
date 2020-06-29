@@ -89,12 +89,23 @@ describe('Modal component', () => {
   let modalService: SkyModalService;
   let router: Router;
   let mockMutationObserverService: ModalMockMutationObserverService;
+  let testModals: SkyModalInstance[];
 
   function openModal(modalType: any, config?: Object) {
     let modalInstance = modalService.open(modalType, config);
 
+    modalInstance.closed.subscribe(() => {
+      const modalIndex = testModals.indexOf(modalInstance);
+
+      if (modalIndex >= 0) {
+        testModals.splice(modalIndex, 1);
+      }
+    });
+
     applicationRef.tick();
     tick();
+
+    testModals.push(modalInstance);
 
     return modalInstance;
   }
@@ -118,7 +129,19 @@ describe('Modal component', () => {
     mockMutationObserverService = TestBed.inject<any>(MutationObserverService);
 
     modalService.dispose();
+
+    testModals = [];
   });
+
+  afterEach(fakeAsync(() => {
+    // Clean up any modals that did not close due to a test failure so subsequent tests
+    // do not fail.
+    const testModalsToClose = testModals.slice();
+
+    for (let i = testModalsToClose.length - 1; i >= 0; i--) {
+      closeModal(testModalsToClose[i]);
+    }
+  }));
 
   it('should render on top of previously-opened modals', fakeAsync(() => {
     let modalInstance1 = openModal(ModalTestComponent);
