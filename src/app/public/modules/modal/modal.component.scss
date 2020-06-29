@@ -108,7 +108,7 @@
 
 .sky-modal-header {
   flex-shrink: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .sky-modal-content {
@@ -117,7 +117,7 @@
 
 .sky-modal-footer {
   flex-shrink: 0;
-  z-index: 1;
+  z-index: 2;
 
   ::ng-deep sky-tabset-nav-button + sky-tabset-nav-button {
     margin-left: $sky-margin;
