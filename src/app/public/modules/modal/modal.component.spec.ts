@@ -716,7 +716,6 @@ describe('Modal component', () => {
       const boxShadowStyle = getComputedStyle(el).boxShadow;
 
       if (expectedAlpha) {
-        debugger;
         const rgbaMatch = boxShadowStyle.match(/rgba\(0,\s*0,\s*0,\s*([0-9\.]*)\)/);
         const alpha = parseFloat(rgbaMatch[1]);
 
