@@ -59,61 +59,61 @@ export class ModalVisualComponent {
     private themeSvc: SkyThemeService
   ) { }
 
-  public openModal() {
+  public openModal(): void {
     this.openModalInstance(ModalDemoComponent, { 'providers': [] });
   }
 
-  public openModalWithHelp() {
+  public openModalWithHelp(): void {
     this.openModalInstance(ModalDemoComponent, { 'providers': [], 'helpKey': 'demo-key.html' });
   }
 
-  public openModalWithExtendedTitle() {
+  public openModalWithExtendedTitle(): void {
     const instance = this.openModalInstance(ModalDemoComponent, { 'providers': [], 'helpKey': 'demo-key.html' });
     instance.componentInstance.title = 'This is a modal title with an extended header text that must wrap by default';
   }
 
-  public openLargeModal() {
+  public openLargeModal(): void {
     this.openModalInstance(ModalLargeDemoComponent, { 'providers': [] });
   }
 
-  public openFullScreenModal() {
+  public openFullScreenModal(): void {
     this.openModalInstance(ModalFullPageDemoComponent, { 'providers': [], 'fullPage': true });
   }
 
-  public openContentModal() {
+  public openContentModal(): void {
     this.openModalInstance(ModalContentDemoComponent);
   }
 
-  public openSmallSizeModal() {
+  public openSmallSizeModal(): void {
     this.openModalInstance(
       ModalDemoComponent, { 'providers': [], 'fullPage': false , 'size': 'small'});
   }
 
-  public openMediumSizeModal() {
+  public openMediumSizeModal(): void {
     this.openModalInstance(
       ModalDemoComponent, { 'providers': [], 'fullPage': false , 'size': 'medium'});
   }
 
-  public openLargeSizeModal() {
+  public openLargeSizeModal(): void {
     this.openModalInstance(
       ModalDemoComponent, { 'providers': [], 'fullPage': false , 'size': 'large'});
   }
 
-  public openTiledModal() {
+  public openTiledModal(): void {
     this.openModalInstance(ModalTiledDemoComponent, { 'providers': [] });
   }
 
-  public openAutofocusModal() {
+  public openAutofocusModal(): void {
     this.openModalInstance(
       ModalContentAutofocusComponent, { 'providers': [], 'fullPage': false , 'size': 'large'});
   }
 
-  public openCloseConfirmationModal() {
+  public openCloseConfirmationModal(): void {
     this.openModalInstance(
       ModalCloseConfirmComponent, { 'providers': [], 'fullPage': false , 'size': 'large'});
   }
 
-  public openFormModal() {
+  public openFormModal(): void {
     this.openModalInstance(ModalFormDemoComponent);
   }
 
