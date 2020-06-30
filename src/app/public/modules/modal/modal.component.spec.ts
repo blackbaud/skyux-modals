@@ -712,11 +712,14 @@ describe('Modal component', () => {
       applicationRef.tick();
     }
 
-    function validateShadow(el: HTMLElement, alpha?: string): void {
+    function validateShadow(el: HTMLElement, expectedAlpha?: number): void {
       const boxShadowStyle = getComputedStyle(el).boxShadow;
 
-      if (alpha) {
-        expect(boxShadowStyle).toContain(`rgba(0, 0, 0, ${alpha})`);
+      if (expectedAlpha) {
+        const rgbaMatch = boxShadowStyle.match(/rgba\(0, 0, 0, ([0-9\.]*)\)/);
+        const alpha = parseFloat(rgbaMatch[1]);
+
+        expect(expectedAlpha).toBeCloseTo(alpha, 2);
       } else {
         expect(boxShadowStyle).toBe('none');
       }
@@ -752,25 +755,25 @@ describe('Modal component', () => {
 
       scrollContent(modalContentEl, 0);
       validateShadow(modalHeaderEl);
-      validateShadow(modalFooterEl, '0.3');
+      validateShadow(modalFooterEl, 0.3);
 
       scrollContent(modalContentEl, 15);
-      validateShadow(modalHeaderEl, '0.15');
-      validateShadow(modalFooterEl, '0.3');
+      validateShadow(modalHeaderEl, 0.15);
+      validateShadow(modalFooterEl, 0.3);
 
       scrollContent(modalContentEl, 30);
-      validateShadow(modalHeaderEl, '0.3');
-      validateShadow(modalFooterEl, '0.3');
+      validateShadow(modalHeaderEl, 0.3);
+      validateShadow(modalFooterEl, 0.3);
 
       scrollContent(
         modalContentEl,
         (modalContentEl.scrollHeight - 15) - modalContentEl.clientHeight
       );
-      validateShadow(modalHeaderEl, '0.3');
-      validateShadow(modalFooterEl, '0.15');
+      validateShadow(modalHeaderEl, 0.3);
+      validateShadow(modalFooterEl, 0.15);
 
       scrollContent(modalContentEl, modalContentEl.scrollHeight - modalContentEl.clientHeight);
-      validateShadow(modalHeaderEl, '0.3');
+      validateShadow(modalHeaderEl, 0.3);
       validateShadow(modalFooterEl);
 
       closeModal(modalInstance1);
@@ -809,7 +812,7 @@ describe('Modal component', () => {
       tick();
       applicationRef.tick();
 
-      validateShadow(modalFooterEl, '0.3');
+      validateShadow(modalFooterEl, 0.3);
 
       fixtureContentEl.removeChild(childEl);
 

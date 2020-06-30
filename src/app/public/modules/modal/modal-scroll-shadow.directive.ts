@@ -139,7 +139,7 @@ export class SkyModalScrollShadowDirective implements OnInit, OnDestroy {
   private buildShadowStyle(pixelsFromEnd: number): string {
     // Progressively darken the shadow until the user scrolls 30 pixels from the top or bottom
     // of the scrollable element, with a max opacity of 0.3.
-    const opacity = Math.min(Math.round(pixelsFromEnd) / 30, 1) * 0.3;
+    const opacity = Math.min(pixelsFromEnd / 30, 1) * 0.3;
 
     return opacity > 0 ?
       `0px 1px 8px 0px rgba(0, 0, 0, ${opacity})` :
