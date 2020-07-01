@@ -30,6 +30,8 @@ import {
 } from './modal-scroll-shadow-event-args';
 
 /**
+ * Raises an event when the box shadow for the modal header or footer should be adjusted
+ * based on the scroll position of the host element.
  * @internal
  */
 @Directive({
@@ -40,9 +42,9 @@ export class SkyModalScrollShadowDirective implements OnInit, OnDestroy {
   @Output()
   public skyModalScrollShadow = new EventEmitter<SkyModalScrollShadowEventArgs>();
 
-  private mutationObserver: MutationObserver;
-
   private currentTheme: SkyTheme;
+
+  private mutationObserver: MutationObserver;
 
   private ngUnsubscribe = new Subject<any>();
 
