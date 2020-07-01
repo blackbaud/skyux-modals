@@ -18,6 +18,20 @@
   white-space: pre-wrap;
 }
 
+@include sky-theme-modern {
+  .sky-confirm-content {
+    padding: $sky-theme-modern-space-lg $sky-theme-modern-space-xl;
+  }
+
+  .sky-confirm-message {
+    padding-bottom: $sky-theme-modern-space-lg;
+  }
+
+  .sky-confirm-body {
+    margin: 0;
+  }
+}
+
 @include sky-theme-modern-dark {
   .sky-confirm-message {
     color: $sky-theme-modern-mode-dark-font-body-default-color;
