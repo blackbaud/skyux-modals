@@ -1,3 +1,7 @@
+# 4.2.1 (2020-07-06)
+
+- The previous version was not correctly published.  This version contains no code change.
+
 # 4.2.0 (2020-07-02)
 
 - Added modern theme styles to the confirm and modal components. [#103](https://github.com/blackbaud/skyux-modals/pull/103)
