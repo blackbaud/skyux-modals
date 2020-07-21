@@ -128,8 +128,6 @@ describe('Modal component', () => {
     router = TestBed.inject(Router);
     mockMutationObserverService = TestBed.inject<any>(MutationObserverService);
 
-    modalService.dispose();
-
     testModals = [];
   });
 
@@ -141,6 +139,11 @@ describe('Modal component', () => {
     for (let i = testModalsToClose.length - 1; i >= 0; i--) {
       closeModal(testModalsToClose[i]);
     }
+
+    // NOTE: This is important as it ensures that the modal host component is fully disposed of
+    // between tests. This is important as the modal host might need a different set of component
+    // injectors than the previous test.
+    modalService.dispose();
   }));
 
   it('should render on top of previously-opened modals', fakeAsync(() => {
