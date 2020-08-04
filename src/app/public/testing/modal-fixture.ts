@@ -27,6 +27,8 @@ export class SkyModalFixture {
     const modalDialogElement = this.getModalDiaglogElement();
     if (modalDialogElement) {
       return modalDialogElement.getAttribute('aria-describedby') || undefined;
+    } else {
+      throw new Error(`No modal exists.`);
     }
   }
 
@@ -37,6 +39,8 @@ export class SkyModalFixture {
     const modalDialogElement = this.getModalDiaglogElement();
     if (modalDialogElement) {
       return modalDialogElement.getAttribute('aria-labelledby') || undefined;
+    } else {
+      throw new Error(`No modal exists.`);
     }
   }
 
@@ -47,6 +51,8 @@ export class SkyModalFixture {
     const modalDialogElement = this.getModalDiaglogElement();
     if (modalDialogElement) {
       return modalDialogElement.getAttribute('role') || undefined;
+    } else {
+      throw new Error(`No modal exists.`);
     }
   }
 
@@ -57,6 +63,8 @@ export class SkyModalFixture {
     const modalDivElement = this.getModalDiv();
     if (modalDivElement) {
       return modalDivElement.classList.contains('sky-modal-full-page');
+    } else {
+      throw new Error(`No modal exists.`);
     }
   }
 
@@ -74,6 +82,8 @@ export class SkyModalFixture {
           return size;
         }
       }
+    } else {
+      throw new Error(`No modal exists.`);
     }
   }
 
@@ -84,6 +94,8 @@ export class SkyModalFixture {
     const modalDivElement = this.getModalDiv();
     if (modalDivElement) {
       return modalDivElement.classList.contains('sky-modal-tiled');
+    } else {
+      throw new Error(`No modal exists.`);
     }
   }
 
@@ -121,32 +133,52 @@ export class SkyModalFixture {
    * Returns the main modal element.
    */
   public getModalDiv(): any {
-    return this.modalElement.querySelector('.sky-modal');
+    if (this.modalElement) {
+      return this.modalElement.querySelector('.sky-modal');
+    } else {
+      throw new Error(`No modal exists.`);
+    }
   }
 
   /**
    * Returns the modal's content element.
    */
   public getModalContentEl(): any {
-    return this.modalElement.querySelector('.sky-modal-content');
+    if (this.modalElement) {
+      return this.modalElement.querySelector('.sky-modal-content');
+    } else {
+      throw new Error(`No modal exists.`);
+    }
   }
 
   /**
    * Returns the modal's footer element.
    */
   public getModalFooterEl(): any {
-    return this.modalElement.querySelector('.sky-modal-footer');
+    if (this.modalElement) {
+      return this.modalElement.querySelector('.sky-modal-footer');
+    } else {
+      throw new Error(`No modal exists.`);
+    }
   }
 
   /**
    * Returns the modal's header element.
    */
   public getModalHeaderEl(): any {
-    return this.modalElement.querySelector('.sky-modal-header');
+    if (this.modalElement) {
+      return this.modalElement.querySelector('.sky-modal-header');
+    } else {
+      throw new Error(`No modal exists.`);
+    }
   }
 
   private getModalDiaglogElement(): HTMLElement {
-    return this.modalElement.querySelector('.sky-modal-dialog');
+    if (this.modalElement) {
+      return this.modalElement.querySelector('.sky-modal-dialog');
+    } else {
+      throw new Error(`No modal exists.`);
+    }
   }
 
 }
