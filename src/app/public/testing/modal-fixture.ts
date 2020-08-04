@@ -24,97 +24,122 @@ export class SkyModalFixture {
    * The modal component's ARIA describedby attribute.
    */
   public get ariaDescribedBy(): string {
-    const modalElement = this.getModalDiaglogElement();
-    return modalElement.getAttribute('aria-describedby') || undefined;
+    const modalDialogElement = this.getModalDiaglogElement();
+    if (modalDialogElement) {
+      return modalDialogElement.getAttribute('aria-describedby') || undefined;
+    }
   }
 
   /**
    * The modal component's ARIA labelledby attribute.
    */
   public get ariaLabelledBy(): string {
-    const modalElement = this.getModalDiaglogElement();
-    return modalElement.getAttribute('aria-labelledby') || undefined;
+    const modalDialogElement = this.getModalDiaglogElement();
+    if (modalDialogElement) {
+      return modalDialogElement.getAttribute('aria-labelledby') || undefined;
+    }
   }
 
   /**
    * The modal component's role attribute.
    */
   public get ariaRole(): string {
-    const modalElement = this.getModalDiaglogElement();
-    return modalElement.getAttribute('role') || undefined;
+    const modalDialogElement = this.getModalDiaglogElement();
+    if (modalDialogElement) {
+      return modalDialogElement.getAttribute('role') || undefined;
+    }
   }
 
   /**
-   * Whether or not the modal is a full page modal
+   * Whether or not the modal is a full page modal.
    */
   public get fullPage(): boolean {
-    return this.getModalEl().classList.contains('sky-modal-full-page');
+    const modalDivElement = this.getModalDiv();
+    if (modalDivElement) {
+      return modalDivElement.classList.contains('sky-modal-full-page');
+    }
   }
 
   /**
-   * The size of the modal
+   * The size of the modal.
    */
   public get size(): string {
-    const modalElement = this.getModalEl();
-    const possibleSizes = ['small', 'medium', 'large'];
+    const modalDivElement = this.getModalDiv();
 
-    for (let size of possibleSizes) {
-      if (modalElement.classList.contains('sky-modal-' + size)) {
-        return size;
+    if (modalDivElement) {
+      const possibleSizes = ['small', 'medium', 'large'];
+
+      for (let size of possibleSizes) {
+        if (modalDivElement.classList.contains('sky-modal-' + size)) {
+          return size;
+        }
       }
     }
   }
 
   /**
-   * Whether or not the modal is set up for tiled content
+   * Whether or not the modal is set up for tiled content.
    */
   public get tiledBody(): boolean {
-    return this.getModalEl().classList.contains('sky-modal-tiled');
+    const modalDivElement = this.getModalDiv();
+    if (modalDivElement) {
+      return modalDivElement.classList.contains('sky-modal-tiled');
+    }
   }
 
   /**
-   * Clicks the modal header's "close" button
+   * Clicks the modal header's "close" button.
    */
   public clickHeaderCloseButton(): void {
-    const clostButton: HTMLElement = this.modalElement
+    const closeButton: HTMLElement = this.modalElement
       .querySelector('.sky-modal .sky-modal-btn-close');
-    clostButton.click();
-    this.fixture.detectChanges();
+
+    if (closeButton) {
+      closeButton.click();
+      this.fixture.detectChanges();
+    } else {
+      throw new Error(`No header close button exists.`);
+    }
   }
 
   /**
-   * Clicks the modal header's "help" button
+   * Clicks the modal header's "help" button.
    */
   public clickHelpButton(): void {
     const helpButton: HTMLElement = this.modalElement
       .querySelector('.sky-modal .sky-modal-header-buttons button[name="help-button"]');
-    helpButton.click();
-    this.fixture.detectChanges();
+
+    if (helpButton) {
+      helpButton.click();
+      this.fixture.detectChanges();
+    } else {
+      throw new Error(`No help button exists.`);
+    }
   }
 
   /**
-   * Returns the main modal element
+   * Returns the main modal element.
    */
-  public getModalEl(): any {
+  public getModalDiv(): any {
     return this.modalElement.querySelector('.sky-modal');
   }
 
   /**
-   * Returns the modal's content element
+   * Returns the modal's content element.
    */
   public getModalContentEl(): any {
     return this.modalElement.querySelector('.sky-modal-content');
   }
 
   /**
-   * Returns the modal's footer element
+   * Returns the modal's footer element.
    */
   public getModalFooterEl(): any {
     return this.modalElement.querySelector('.sky-modal-footer');
   }
 
   /**
-   * Returns the modal's header element
+   * Returns the modal's header element.
    */
   public getModalHeaderEl(): any {
     return this.modalElement.querySelector('.sky-modal-header');

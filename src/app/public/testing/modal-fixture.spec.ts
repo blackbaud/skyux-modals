@@ -163,6 +163,22 @@ class TestModule { }
 
 describe('Modal fixture', () => {
 
+  function launchTestModal(): SkyModalFixture {
+    fixture.componentInstance.launchModal();
+
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+
+    const modal = new SkyModalFixture(
+      fixture,
+      'test-modal'
+    );
+
+    fixture.detectChanges();
+    return modal;
+  }
+
   let fixture: ComponentFixture<TestComponent>;
   let modalService: SkyModalService;
 
@@ -186,6 +202,7 @@ describe('Modal fixture', () => {
     // between tests. This is important as the modal host might need a different set of component
     // injectors than the previous test.
     modalService.dispose();
+    fixture.detectChanges();
   });
 
   it('should retun the `ariaDescribedBy` property correctly', fakeAsync(() => {
@@ -196,18 +213,7 @@ describe('Modal fixture', () => {
     fixture.detectChanges();
 
     fixture.componentInstance.ariaDescribedBy = 'describingID';
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     expect(modal.ariaDescribedBy).toBe('describingID');
   }));
@@ -220,18 +226,7 @@ describe('Modal fixture', () => {
     fixture.detectChanges();
 
     fixture.componentInstance.ariaLabelledBy = 'labellingID';
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     expect(modal.ariaLabelledBy).toBe('labellingID');
   }));
@@ -244,18 +239,7 @@ describe('Modal fixture', () => {
     fixture.detectChanges();
 
     fixture.componentInstance.ariaRole = 'modalRole';
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     expect(modal.ariaRole).toBe('modalRole');
   }));
@@ -268,18 +252,7 @@ describe('Modal fixture', () => {
     fixture.detectChanges();
 
     fixture.componentInstance.fullPage = true;
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     expect(modal.fullPage).toBeTruthy();
     expect(modal.size).toBeUndefined();
@@ -293,18 +266,7 @@ describe('Modal fixture', () => {
     fixture.detectChanges();
 
     fixture.componentInstance.size = 'small';
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     expect(modal.fullPage).toBeFalse();
     expect(modal.size).toBe('small');
@@ -318,18 +280,7 @@ describe('Modal fixture', () => {
     fixture.detectChanges();
 
     fixture.componentInstance.tiledBody = true;
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     expect(modal.tiledBody).toBeTrue();
   }));
@@ -340,19 +291,7 @@ describe('Modal fixture', () => {
     );
 
     fixture.detectChanges();
-
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     modal.clickHeaderCloseButton();
 
@@ -367,22 +306,13 @@ describe('Modal fixture', () => {
     fixture.detectChanges();
 
     fixture.componentInstance.helpKey = 'test-key';
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     spyOn(fixture.componentInstance, 'helpTriggered').and.callThrough();
 
     modal.clickHelpButton();
+
+    fixture.detectChanges();
 
     expect(fixture.componentInstance.helpTriggered).toHaveBeenCalledWith('test-key');
   }));
@@ -394,20 +324,9 @@ describe('Modal fixture', () => {
 
     fixture.detectChanges();
 
-    fixture.componentInstance.launchModal();
+    const modal = launchTestModal();
 
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
-
-    const queriedElement = modal.getModalEl();
+    const queriedElement = modal.getModalDiv();
     expect(queriedElement).not.toBeNull();
     expect(queriedElement.tagName.toLowerCase()).toBe('div');
     expect(queriedElement.classList).toContain('sky-modal');
@@ -420,18 +339,7 @@ describe('Modal fixture', () => {
 
     fixture.detectChanges();
 
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     const queriedElement = modal.getModalContentEl();
     expect(queriedElement).not.toBeNull();
@@ -446,18 +354,7 @@ describe('Modal fixture', () => {
 
     fixture.detectChanges();
 
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     const queriedElement = modal.getModalHeaderEl();
     expect(queriedElement).not.toBeNull();
@@ -472,18 +369,7 @@ describe('Modal fixture', () => {
 
     fixture.detectChanges();
 
-    fixture.componentInstance.launchModal();
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-
-    const modal = new SkyModalFixture(
-      fixture,
-      'test-modal'
-    );
-
-    fixture.detectChanges();
+    const modal = launchTestModal();
 
     const queriedElement = modal.getModalFooterEl();
     expect(queriedElement).not.toBeNull();
