@@ -29,7 +29,9 @@
     "@skyux/i18n": "^4.0.0",
     "@skyux/indicators": "^4.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@blackbaud/skyux-builder-plugin-code-block": "1.1.0"
+  },
   "devDependencies": {
     "@angular/animations": "9.1.12",
     "@angular/common": "9.1.12",

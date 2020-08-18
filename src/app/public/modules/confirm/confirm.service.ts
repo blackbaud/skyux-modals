@@ -40,6 +40,10 @@ export class SkyConfirmService {
     private modalService: SkyModalService
   ) { }
 
+/**
+ * Opens a confirmation dialog and passes the `config` parameter of type `SkyConfirmConfig`
+ * to the component's constructor. This method returns an object of type `SkyConfirmInstance`.
+ */
   public open(config: SkyConfirmConfig): SkyConfirmInstance {
     const modalInstance: SkyModalInstance = this.modalService.open(
       SkyConfirmComponent,
