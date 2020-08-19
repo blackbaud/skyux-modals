@@ -3,9 +3,6 @@
   "name": "skyux-modals",
   "mode": "easy",
   "compileMode": "aot",
-  "skyuxModules": [
-    "SkyErrorModule"
-  ],
   "plugins": [
     "@skyux-sdk/builder-plugin-skyux",
     "@blackbaud/skyux-builder-plugin-code-block"
@@ -16,6 +13,18 @@
     },
     "unit": {
       "browserSet": "paranoid"
+    }
+  },
+  "pipelineSettings": {
+    "vsts": {
+      "testSettings": {
+        "e2e": {
+          "browserSet": false
+        },
+        "unit": {
+          "browserSet": false
+        }
+      }
     }
   },
   "app": {
@@ -31,8 +40,15 @@
     }
   },
   "host": {
+    "url": "https://developer.blackbaud.com",
     "frameOptions": {
       "none": true
+    }
+  },
+  "omnibar": {},
+  "params": {
+    "svcid": {
+      "value": "skyux"
     }
   }
 }
