@@ -8,12 +8,12 @@ import {
 
 export interface SkyConfirmConfig {
   /**
-   * Specifies the message to display in a bold font at the top of the dialog.
+   * Specifies the message to display in bold at the top of the dialog.
    * @required
    */
   message: string;
   /**
-   * Specifies secondary text to display in plain font under the primary message.
+   * Specifies secondary text to display under the primary message.
    */
   body?: string;
   /**

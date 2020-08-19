@@ -34,6 +34,10 @@ import {
   SkyConfirmInstance
 } from './confirm-instance';
 
+/**
+ *  The `SkyConfirmService` provider launches the confirmation dialog.
+ * Within the service, you can specify the dialog's message and customize the button text.
+ */
 @Injectable()
 export class SkyConfirmService {
   constructor(

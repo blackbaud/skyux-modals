@@ -12,7 +12,7 @@ export interface SkyConfirmButtonConfig {
    * Specifies a
    * [SKY UX button class](https://developer.blackbaud.com/skyux-theme/docs/button;docs-active-tab=design)
    * to apply to the button. The valid options are
-   * `primary`to format the primary action on the dialog, `default` to format a secondary
+   * `primary` to format the primary action on the dialog, `default` to format a secondary
    * action, and `link` to format an action that takes users to another page.
    */
   styleType?: string;
