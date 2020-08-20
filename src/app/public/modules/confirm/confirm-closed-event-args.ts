@@ -1,7 +1,6 @@
 export interface SkyConfirmCloseEventArgs {
   /**
-   * Specifies an identifier to return when users select the button to close the
-   * confirmation dialog. This is useful to determine which button users select.
+   * The identifier for the button that users selected to close the confirmation dialog.
    */
   action: string;
 }
