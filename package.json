@@ -29,9 +29,6 @@
     "@skyux/i18n": "^4.0.0",
     "@skyux/indicators": "^4.0.0"
   },
-  "dependencies": {
-    "@blackbaud/skyux-builder-plugin-code-block": "1.1.0"
-  },
   "devDependencies": {
     "@angular/animations": "9.1.12",
     "@angular/common": "9.1.12",
@@ -43,6 +40,7 @@
     "@angular/platform-browser-dynamic": "9.1.12",
     "@angular/router": "9.1.12",
     "@blackbaud/auth-client": "2.32.0",
+    "@blackbaud/skyux-builder-plugin-code-block": "1.1.0",
     "@blackbaud/skyux-lib-clipboard": "4.0.0",
     "@blackbaud/skyux-lib-code-block": "4.0.1",
     "@blackbaud/skyux-lib-media": "4.0.0",
