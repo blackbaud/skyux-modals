@@ -16,6 +16,10 @@ import {
 } from '@skyux/forms';
 
 import {
+  SkyAuthHttpClientModule
+} from '@skyux/http';
+
+import {
   SkyAppLinkModule
 } from '@skyux/router';
 
@@ -69,6 +73,7 @@ require('style-loader!./visual.scss');
 @NgModule({
   exports: [
     SkyAppLinkModule,
+    SkyAuthHttpClientModule, // Supports docs pages with `svcid` param.
     SkyCodeModule,
     SkyConfirmModule,
     SkyDocsToolsModule,
