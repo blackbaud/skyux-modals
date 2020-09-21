@@ -150,8 +150,13 @@
   </sky-docs-design-guidelines>
 
   <sky-docs-code-examples>
-    <sky-docs-code-example
-      sourceCodePath="src/app/public/plugin-resources/code-examples/modal/"
+    <sky-docs-code-example *ngIf="(themeSvc?.settingsChange | async)?.currentSettings.theme.name === 'modern'"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/modal/basic/modern-theme"
+      theme="modern"
+    >
+    </sky-docs-code-example>
+    <sky-docs-code-example *ngIf="(themeSvc?.settingsChange | async)?.currentSettings.theme.name !== 'modern'"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/modal/basic/default-theme"
     >
     </sky-docs-code-example>
   </sky-docs-code-examples>

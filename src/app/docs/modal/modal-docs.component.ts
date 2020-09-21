@@ -1,7 +1,12 @@
 import {
   ChangeDetectionStrategy,
-  Component
+  Component,
+  Optional
 } from '@angular/core';
+
+import {
+  SkyThemeService
+} from '@skyux/theme';
 
 import {
   SkyDocsDemoControlPanelChange,
@@ -35,7 +40,8 @@ export class ModalDocsComponent {
   ];
 
   constructor(
-    private modal: SkyModalService
+    private modal: SkyModalService,
+    @Optional() public themeSvc?: SkyThemeService
   ) { }
 
   public onOpenModalClick(): void {
