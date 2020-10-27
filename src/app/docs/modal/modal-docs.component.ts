@@ -7,6 +7,7 @@ import {
   SkyDocsDemoControlPanelChange,
   SkyDocsDemoControlPanelRadioChoice
 } from '@skyux/docs-tools';
+import { SkyThemeService } from '@skyux/theme';
 
 import {
   SkyModalService
@@ -35,7 +36,8 @@ export class ModalDocsComponent {
   ];
 
   constructor(
-    private modal: SkyModalService
+    private modal: SkyModalService,
+    public themeSvc: SkyThemeService
   ) { }
 
   public onOpenModalClick(): void {
