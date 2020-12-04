@@ -50,6 +50,7 @@ export interface SkyModalConfigurationInterface {
    * by indicating how the modal functions and what it controls. For information about
    * how an ARIA role indicates what an item represents on a web page, see the
    * [WAI-ARIA roles model](http://www.w3.org/WAI/PF/aria/roles).
+   * @default "dialog"
    */
   ariaRole?: string;
 
