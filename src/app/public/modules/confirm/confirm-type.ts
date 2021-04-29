@@ -9,7 +9,7 @@ export enum SkyConfirmType {
   OK = 1,
   /**
    * Displays two buttons with **Yes** and **Cancel** labels.
-   * @deprecated Please use the `Custom` type.
+   * @deprecated Use the `Custom` type to follow the guidance that labels should clearly indicate the actions that occur when users select buttons.
    */
   YesCancel = 2,
   /**
