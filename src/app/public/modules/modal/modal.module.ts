@@ -34,10 +34,6 @@ import {
 } from '../shared/modals-resources.module';
 
 import {
-  SkyModalAdapterService
-} from './modal-adapter.service';
-
-import {
   SkyModalContentComponent
 } from './modal-content.component';
 
@@ -61,10 +57,6 @@ import {
   SkyModalComponent
 } from './modal.component';
 
-import {
-  SkyModalService
-} from './modal.service';
-
 @NgModule({
   declarations: [
     SkyModalComponent,
@@ -76,8 +68,6 @@ import {
   ],
   providers: [
     MutationObserverService,
-    SkyModalAdapterService,
-    SkyModalService,
     SkyAppWindowRef,
     SkyThemeService
   ],

@@ -24,7 +24,9 @@ import {
  * [write unit tests for modals](https://developer.blackbaud.com/skyux/learn/get-started/advanced/unit-test-modals).
  * @dynamic
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkyModalService {
 
   private static host: ComponentRef<SkyModalHostComponent>;

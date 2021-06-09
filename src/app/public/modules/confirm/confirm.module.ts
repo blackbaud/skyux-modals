@@ -24,10 +24,6 @@ import {
 } from '../shared/modals-resources.module';
 
 import {
-  SkyConfirmService
-} from './confirm.service';
-
-import {
   SkyConfirmComponent
 } from './confirm.component';
 
@@ -46,7 +42,6 @@ import {
     SkyConfirmComponent
   ],
   providers: [
-    SkyConfirmService,
     SkyThemeService
   ],
   entryComponents: [
