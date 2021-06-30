@@ -11,12 +11,6 @@ import {
 } from '@angular/router';
 
 import {
-  MutationObserverService,
-  SkyAppWindowRef,
-  SkyDynamicComponentModule
-} from '@skyux/core';
-
-import {
   SkyI18nModule
 } from '@skyux/i18n';
 
@@ -28,6 +22,10 @@ import {
   SkyThemeModule,
   SkyThemeService
 } from '@skyux/theme';
+
+import {
+  SkyModalForRootCompatModule
+} from '../shared/modal-for-root-compat.module';
 
 import {
   SkyModalsResourcesModule
@@ -67,16 +65,14 @@ import {
     SkyModalScrollShadowDirective
   ],
   providers: [
-    MutationObserverService,
-    SkyAppWindowRef,
     SkyThemeService
   ],
   imports: [
     CommonModule,
     RouterModule,
-    SkyDynamicComponentModule,
     SkyI18nModule,
     SkyIconModule,
+    SkyModalForRootCompatModule,
     SkyModalsResourcesModule,
     SkyThemeModule
   ],
