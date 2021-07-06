@@ -14,10 +14,6 @@ import {
 } from '@angular/core';
 
 import {
-  BrowserModule
-} from '@angular/platform-browser';
-
-import {
   SkyModalInstance
 } from './modal-instance';
 
@@ -66,7 +62,6 @@ describe('Modal service', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        BrowserModule,
         SkyModalModule,
         SkyModalFixturesModule
       ]

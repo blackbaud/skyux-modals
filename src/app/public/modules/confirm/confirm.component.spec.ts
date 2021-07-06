@@ -5,14 +5,6 @@ import {
 } from '@angular/core/testing';
 
 import {
-  MutationObserverService
-} from '@skyux/core';
-
-import {
-  SkyThemeService
-} from '@skyux/theme';
-
-import {
   expect
 } from '@skyux-sdk/testing';
 
@@ -31,6 +23,10 @@ import {
 import {
   SkyModalModule
 } from '../modal/modal.module';
+
+import {
+  SkyModalForRootCompatModule
+} from '../shared/modal-for-root-compat.module';
 
 import {
   MockSkyModalHostService,
@@ -76,13 +72,12 @@ describe('Confirm component', () => {
     TestBed.configureTestingModule({
       imports: [
         SkyModalModule,
-        SkyConfirmModule
+        SkyConfirmModule,
+        SkyModalForRootCompatModule
       ],
       providers: [
         { provide: SkyModalHostService, useValue: modalHost },
-        { provide: SkyModalConfiguration, useValue: {} },
-        SkyThemeService,
-        MutationObserverService
+        { provide: SkyModalConfiguration, useValue: {} }
       ]
     });
   });

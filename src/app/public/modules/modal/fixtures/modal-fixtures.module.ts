@@ -11,13 +11,16 @@ import {
 } from '@angular/router/testing';
 
 import {
-  MutationObserverService,
-  SkyAppWindowRef
+  MutationObserverService
 } from '@skyux/core';
 
 import {
   SkyThemeService
 } from '@skyux/theme';
+
+import {
+  SkyModalForRootCompatModule
+} from '../../shared/modal-for-root-compat.module';
 
 import {
   ModalMockMutationObserverService
@@ -77,10 +80,10 @@ import {
   imports: [
     CommonModule,
     RouterTestingModule,
+    SkyModalForRootCompatModule,
     SkyModalModule
   ],
   providers: [
-    SkyAppWindowRef,
     {
       provide: SkyThemeService,
       useClass: ModalMockThemeService
