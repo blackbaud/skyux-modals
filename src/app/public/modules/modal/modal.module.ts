@@ -19,8 +19,7 @@ import {
 } from '@skyux/indicators';
 
 import {
-  SkyThemeModule,
-  SkyThemeService
+  SkyThemeModule
 } from '@skyux/theme';
 
 import {
@@ -63,9 +62,6 @@ import {
     SkyModalHeaderComponent,
     SkyModalHostComponent,
     SkyModalScrollShadowDirective
-  ],
-  providers: [
-    SkyThemeService
   ],
   imports: [
     CommonModule,

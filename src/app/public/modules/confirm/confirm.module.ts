@@ -11,8 +11,7 @@ import {
 } from '@skyux/i18n';
 
 import {
-  SkyThemeModule,
-  SkyThemeService
+  SkyThemeModule
 } from '@skyux/theme';
 
 import {
@@ -40,9 +39,6 @@ import {
   ],
   exports: [
     SkyConfirmComponent
-  ],
-  providers: [
-    SkyThemeService
   ],
   entryComponents: [
     SkyConfirmComponent
