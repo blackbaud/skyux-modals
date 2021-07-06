@@ -5,10 +5,6 @@ import {
 } from '@angular/core/testing';
 
 import {
-  SkyThemeService
-} from '@skyux/theme';
-
-import {
   expect
 } from '@skyux-sdk/testing';
 
@@ -81,8 +77,7 @@ describe('Confirm component', () => {
       ],
       providers: [
         { provide: SkyModalHostService, useValue: modalHost },
-        { provide: SkyModalConfiguration, useValue: {} },
-        SkyThemeService
+        { provide: SkyModalConfiguration, useValue: {} }
       ]
     });
   });
