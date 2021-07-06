@@ -1,3 +1,8 @@
+# 5.0.0-beta.0 (2021-07-06)
+
+- Initial beta release.
+- Added support for `5.0.0-beta.*` versions of SKY UX component libraries. [#155](https://github.com/blackbaud/skyux-modals/pull/155)
+
 # 4.5.4 (2021-06-14)
 
 - Fixed a bug where `SkyThemeService` was erroneously provided by `SkyConfirmModule` and `SkyModalModule`. [#153](https://github.com/blackbaud/skyux-modals/pull/153)
