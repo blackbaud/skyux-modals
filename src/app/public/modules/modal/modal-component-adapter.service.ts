@@ -75,8 +75,14 @@ export class SkyModalComponentAdapterService {
 
   public focusFirstElement(list: Array<HTMLElement>): boolean {
     if (list.length > 0) {
-      list[0].focus();
-      return true;
+      for (let focusableElement of list) {
+        // NOTE: Normally we don't type things as `any` but in this case we don't know what type
+        // of element this is and `HTMLElement` does not include `disabled`.
+        if (!(<any> focusableElement).disabled) {
+          focusableElement.focus();
+          return true;
+        }
+      }
     }
     return false;
   }

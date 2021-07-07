@@ -73,6 +73,10 @@ import {
 } from './fixtures/modal-with-focus-content.fixture';
 
 import {
+  ModalWithFocusContext
+} from './fixtures/modal-with-focus-context.fixture';
+
+import {
   ModalMockThemeService
 } from './fixtures/mock-theme.service';
 
@@ -174,8 +178,39 @@ describe('Modal component', () => {
     closeModal(modalInstance1);
   }));
 
+  it('should focus the first non-disabled element if the first element is disabled', fakeAsync(() => {
+    let modalInstance1 = openModal(ModalWithFocusContentTestComponent, {
+      providers: [
+        {
+          provide: ModalWithFocusContext,
+          useValue: {
+            disableFirstContent: true
+          }
+        }
+      ]
+    });
+    expect(document.activeElement).toEqual(document.querySelector('#visible-btn-2'));
+    closeModal(modalInstance1);
+  }));
+
   it('should focus the dialog when no autofocus or focus element is inside of content', fakeAsync(() => {
     let modalInstance1 = openModal(ModalTestComponent);
+    expect(document.activeElement).toEqual(document.querySelector('.sky-modal-content'));
+    closeModal(modalInstance1);
+  }));
+
+  it('should focus the dialog when all focuable elements are disabled', fakeAsync(() => {
+    let modalInstance1 = openModal(ModalWithFocusContentTestComponent, {
+      providers: [
+        {
+          provide: ModalWithFocusContext,
+          useValue: {
+            disableFirstContent: true,
+            disableSecondContent: true
+          }
+        }
+      ]
+    });
     expect(document.activeElement).toEqual(document.querySelector('.sky-modal-content'));
     closeModal(modalInstance1);
   }));
