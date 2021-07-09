@@ -13,7 +13,8 @@ import {
 } from '@angular/router';
 
 import {
-  MutationObserverService
+  MutationObserverService,
+  SkyCoreAdapterService
 } from '@skyux/core';
 
 import {
@@ -437,7 +438,7 @@ describe('Modal component', () => {
   }));
 
   it('should handle empty list for focus first and last element functions', fakeAsync(() => {
-    let adapterService = new SkyModalComponentAdapterService();
+    let adapterService = new SkyModalComponentAdapterService(TestBed.inject(SkyCoreAdapterService));
     let firstResult = adapterService.focusFirstElement([]);
     expect(firstResult).toBe(false);
 
