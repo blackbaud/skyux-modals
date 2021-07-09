@@ -3,11 +3,9 @@ import {
   ElementRef
 } from '@angular/core';
 
-/* tslint:disable */
-let tabbableSelector = 'a[href], area[href], input:not([disabled]):not([tabindex=\'-1\']), ' +
-        'button:not([disabled]):not([tabindex=\'-1\']),select:not([disabled]):not([tabindex=\'-1\']), textarea:not([disabled]):not([tabindex=\'-1\']), ' +
-        'iframe, object, embed, *[tabindex]:not([tabindex=\'-1\']), *[contenteditable=true]';
-/* tslint:enable */
+import {
+  SkyCoreAdapterService
+} from '@skyux/core';
 
 /**
  * @internal
@@ -15,6 +13,7 @@ let tabbableSelector = 'a[href], area[href], input:not([disabled]):not([tabindex
 @Injectable()
 export class SkyModalComponentAdapterService {
   constructor(
+    private coreAdapter: SkyCoreAdapterService
   ) { }
 
   public handleWindowChange(modalEl: ElementRef): void {
@@ -37,10 +36,6 @@ export class SkyModalComponentAdapterService {
       let contentHeight = newHeight - 114;
       modalContentEl.style.maxHeight = contentHeight.toString() + 'px';
     }
-  }
-
-  public loadFocusElementList(modalEl: ElementRef): Array<HTMLElement> {
-    return this.loadFocusableChildren(modalEl.nativeElement);
   }
 
   public isFocusInFirstItem(event: KeyboardEvent, list: Array<HTMLElement>): boolean {
@@ -75,14 +70,8 @@ export class SkyModalComponentAdapterService {
 
   public focusFirstElement(list: Array<HTMLElement>): boolean {
     if (list.length > 0) {
-      for (let focusableElement of list) {
-        // NOTE: Normally we don't type things as `any` but in this case we don't know what type
-        // of element this is and `HTMLElement` does not include `disabled`.
-        if (!(<any> focusableElement).disabled) {
-          focusableElement.focus();
-          return true;
-        }
-      }
+      list[0].focus();
+      return true;
     }
     return false;
   }
@@ -99,40 +88,10 @@ export class SkyModalComponentAdapterService {
       if (inputWithAutofocus) {
         inputWithAutofocus.focus();
       } else {
-        let focusEl: HTMLElement = modalEl.nativeElement.querySelector('.sky-modal-content');
-        let focusableChildren = this.loadFocusableChildren(focusEl);
-
-        // Focus first focusable child if available. Otherwise focus content pane.
-        if (!this.focusFirstElement(focusableChildren)) {
-          focusEl.focus();
-        }
+        this.coreAdapter.getFocusableChildrenAndApplyFocus(modalEl, '.sky-modal-content', true);
       }
       window.scrollTo(currentScrollX, currentScrollY);
     }
-  }
-
-  private loadFocusableChildren(elem: HTMLElement) {
-    let elements: Array<HTMLElement>
-      = Array.prototype.slice.call(elem.querySelectorAll(tabbableSelector));
-
-    return elements.filter((element) => {
-      return this.isVisible(element);
-    });
-  }
-
-  private isVisible(element: HTMLElement) {
-    const style = window.getComputedStyle(element);
-    const isHidden = style.display === 'none' || style.visibility === 'hidden';
-    if (isHidden) {
-      return false;
-    }
-
-    const hasBounds = !!(
-      element.offsetWidth ||
-      element.offsetHeight ||
-      element.getClientRects().length
-    );
-    return hasBounds;
   }
 
   private setFullPageHeight(fullPageModalEl: HTMLElement): void {
