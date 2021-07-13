@@ -1,6 +1,6 @@
-# 4.5.5 (2021-07-12)
+# 4.5.5 (2021-07-13)
 
-- Fixed the modal component to properly skip disabled elements with a `tabIndex` attribute when focusing the first focusable child when the modal is created. [#158](https://github.com/blackbaud/skyux-modals/pull/158)
+- Fixed the modal component so that it does not include disabled elements with `tabIndex` attributes among the focusable elements when a modal loads. [#158](https://github.com/blackbaud/skyux-modals/pull/158)
 
 # 4.5.4 (2021-06-14)
 
