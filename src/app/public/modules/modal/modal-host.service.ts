@@ -3,11 +3,16 @@ import {
   Injectable
 } from '@angular/core';
 
+import {
+  SkyModalModule
+} from './modal.module';
+
 /**
  * @internal
- * @dynamic
  */
-@Injectable()
+@Injectable({
+  providedIn: SkyModalModule
+})
 export class SkyModalHostService {
 
   public static get openModalCount(): number {

@@ -22,10 +22,9 @@ import {
 /**
  * A service that lauches modals. For information about how to test modals in SKY UX, see
  * [write unit tests for modals](https://developer.blackbaud.com/skyux/learn/get-started/advanced/unit-test-modals).
- * @dynamic
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class SkyModalService {
 
