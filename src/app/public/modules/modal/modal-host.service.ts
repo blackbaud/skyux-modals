@@ -9,6 +9,7 @@ import {
 
 /**
  * @internal
+ * @dynamic
  */
 @Injectable({
   providedIn: SkyModalModule
