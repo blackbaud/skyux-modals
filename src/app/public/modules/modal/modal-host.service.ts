@@ -3,16 +3,12 @@ import {
   Injectable
 } from '@angular/core';
 
-import {
-  SkyModalModule
-} from './modal.module';
-
 /**
  * @internal
  * @dynamic
  */
 @Injectable({
-  providedIn: SkyModalModule
+  providedIn: 'root'
 })
 export class SkyModalHostService {
 
