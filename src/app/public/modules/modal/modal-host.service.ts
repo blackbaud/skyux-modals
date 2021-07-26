@@ -7,7 +7,9 @@ import {
  * @internal
  * @dynamic
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkyModalHostService {
 
   public static get openModalCount(): number {
