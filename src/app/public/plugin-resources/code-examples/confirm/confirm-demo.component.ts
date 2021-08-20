@@ -35,19 +35,6 @@ export class ConfirmDemoComponent {
     });
   }
 
-  public openYesCancelConfirmWithBody() {
-    const dialog: SkyConfirmInstance = this.confirmService.open({
-      message: 'Use the YesCancel button type to let users confirm or cancel.',
-      body: 'Do not use a YesCancel button type if users could be confused about what the Yes button does. Use a Custom button type instead and provide labels that clearly indicate the action occurs when users select the button.',
-      type: SkyConfirmType.YesCancel
-    });
-
-    dialog.closed.subscribe((result: any) => {
-      this.selectedText = undefined;
-      this.selectedAction = result.action;
-    });
-  }
-
   public openCustomConfirm() {
     const buttons = [
       { text: 'Save', action: 'save', styleType: 'primary' },
