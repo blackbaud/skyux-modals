@@ -24,7 +24,12 @@ import {
  * [write unit tests for modals](https://developer.blackbaud.com/skyux/learn/get-started/advanced/unit-test-modals).
  * @dynamic
  */
-@Injectable()
+@Injectable({
+  // Must be 'any' so that the modal component is created in the context of its module's injector.
+  // If set to 'root', the component's dependency injections would only be derived from the root
+  // injector and may loose context if the modal was opened from within a lazy-loaded module.
+  providedIn: 'any'
+})
 export class SkyModalService {
 
   private static host: ComponentRef<SkyModalHostComponent>;

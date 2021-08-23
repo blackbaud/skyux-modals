@@ -11,12 +11,6 @@ import {
 } from '@angular/router';
 
 import {
-  MutationObserverService,
-  SkyAppWindowRef,
-  SkyDynamicComponentModule
-} from '@skyux/core';
-
-import {
   SkyI18nModule
 } from '@skyux/i18n';
 
@@ -25,17 +19,12 @@ import {
 } from '@skyux/indicators';
 
 import {
-  SkyThemeModule,
-  SkyThemeService
+  SkyThemeModule
 } from '@skyux/theme';
 
 import {
   SkyModalsResourcesModule
 } from '../shared/sky-modals-resources.module';
-
-import {
-  SkyModalAdapterService
-} from './modal-adapter.service';
 
 import {
   SkyModalContentComponent
@@ -61,10 +50,6 @@ import {
   SkyModalComponent
 } from './modal.component';
 
-import {
-  SkyModalService
-} from './modal.service';
-
 @NgModule({
   declarations: [
     SkyModalComponent,
@@ -74,17 +59,9 @@ import {
     SkyModalHostComponent,
     SkyModalScrollShadowDirective
   ],
-  providers: [
-    MutationObserverService,
-    SkyModalAdapterService,
-    SkyModalService,
-    SkyAppWindowRef,
-    SkyThemeService
-  ],
   imports: [
     CommonModule,
     RouterModule,
-    SkyDynamicComponentModule,
     SkyI18nModule,
     SkyIconModule,
     SkyModalsResourcesModule,
