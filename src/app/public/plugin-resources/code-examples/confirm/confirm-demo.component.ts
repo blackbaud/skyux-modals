@@ -39,7 +39,7 @@ export class ConfirmDemoComponent {
     const buttons = [
       { text: 'Save', action: 'save', styleType: 'primary' },
       { text: 'Delete', action: 'delete' },
-      { text: 'Cancel', action: 'cancel', autofocus: true }
+      { text: 'Cancel', action: 'cancel', autofocus: true, styleType: 'link' }
     ];
 
     const dialog: SkyConfirmInstance = this.confirmService.open({
