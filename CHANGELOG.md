@@ -1,6 +1,6 @@
 # 4.5.6 (2021-08-26)
 
-- Remove deprecated options from examples in the documentation. [#161](https://github.com/blackbaud/skyux-modals/pull/161)
+- Removed deprecated options from examples in the documentation. [#161](https://github.com/blackbaud/skyux-modals/pull/161)
 
 # 4.5.5 (2021-07-13)
 
