@@ -1,3 +1,7 @@
+# 5.0.0-beta.2 (2021-08-26)
+
+- Migrated to Angular CLI. [#163](https://github.com/blackbaud/skyux-modals/pull/163)
+
 # 5.0.0-beta.1 (2021-07-26)
 
 - Fixed the `SkyModalService` to work within lazy-loaded modules. [#160](https://github.com/blackbaud/skyux-modals/pull/160)
