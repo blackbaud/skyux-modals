@@ -50,6 +50,12 @@ import {
   SkyModalComponent
 } from './modal.component';
 
+// Libraries that compile using the View Engine should export any
+// modules used by their entry components.
+const entryComponentModules = [
+  SkyIconModule
+];
+
 @NgModule({
   declarations: [
     SkyModalComponent,
@@ -71,7 +77,8 @@ import {
     SkyModalComponent,
     SkyModalContentComponent,
     SkyModalFooterComponent,
-    SkyModalHeaderComponent
+    SkyModalHeaderComponent,
+    ...entryComponentModules
   ],
   entryComponents: [
     SkyModalHostComponent

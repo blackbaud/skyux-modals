@@ -4,6 +4,6 @@
     "declarationMap": false
   },
   "angularCompilerOptions": {
-    "enableIvy": "partial"
+    "enableIvy": false
   }
 }
