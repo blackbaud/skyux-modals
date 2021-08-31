@@ -17,9 +17,3 @@ export * from './modules/modal/modal-instance';
 export * from './modules/modal/modal.interface';
 export * from './modules/modal/modal.module';
 export * from './modules/modal/modal.service';
-
-export * from './modules/confirm/confirm.component';
-export * from './modules/modal/modal.component';
-export * from './modules/modal/modal-content.component';
-export * from './modules/modal/modal-footer.component';
-export * from './modules/modal/modal-header.component';
