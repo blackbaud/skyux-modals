@@ -23,10 +23,6 @@ import {
 } from '@skyux/theme';
 
 import {
-  SkyModalForRootCompatModule
-} from '../shared/modal-for-root-compat.module';
-
-import {
   SkyModalsResourcesModule
 } from '../shared/sky-modals-resources.module';
 
@@ -68,7 +64,6 @@ import {
     RouterModule,
     SkyI18nModule,
     SkyIconModule,
-    SkyModalForRootCompatModule,
     SkyModalsResourcesModule,
     SkyThemeModule
   ],

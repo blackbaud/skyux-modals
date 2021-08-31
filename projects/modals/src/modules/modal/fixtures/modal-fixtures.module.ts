@@ -19,10 +19,6 @@ import {
 } from '@skyux/theme';
 
 import {
-  SkyModalForRootCompatModule
-} from '../../shared/modal-for-root-compat.module';
-
-import {
   ModalMockMutationObserverService
 } from './mock-modal-mutation-observer';
 
@@ -80,7 +76,6 @@ import {
   imports: [
     CommonModule,
     RouterTestingModule,
-    SkyModalForRootCompatModule,
     SkyModalModule
   ],
   providers: [

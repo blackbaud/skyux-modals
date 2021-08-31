@@ -25,10 +25,6 @@ import {
 } from '../modal/modal.module';
 
 import {
-  SkyModalForRootCompatModule
-} from '../shared/modal-for-root-compat.module';
-
-import {
   MockSkyModalHostService,
   MockSkyModalInstance
 } from './fixtures/mocks';
@@ -72,8 +68,7 @@ describe('Confirm component', () => {
     TestBed.configureTestingModule({
       imports: [
         SkyModalModule,
-        SkyConfirmModule,
-        SkyModalForRootCompatModule
+        SkyConfirmModule
       ],
       providers: [
         { provide: SkyModalHostService, useValue: modalHost },
