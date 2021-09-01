@@ -1,3 +1,7 @@
+# 5.0.0-beta.3 (2021-09-01)
+
+- Fixed the `SkyModalModule` to work with consuming libraries that are compiled with the legacy View Engine. [#166](https://github.com/blackbaud/skyux-modals/pull/166)
+
 # 5.0.0-beta.2 (2021-08-26)
 
 - Migrated to Angular CLI. [#163](https://github.com/blackbaud/skyux-modals/pull/163)
