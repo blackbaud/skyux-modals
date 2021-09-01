@@ -7,10 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  SkyI18nModule
-} from '@skyux/i18n';
-
-import {
   SkyThemeModule
 } from '@skyux/theme';
 
@@ -32,7 +28,6 @@ import {
   ],
   imports: [
     CommonModule,
-    SkyI18nModule,
     SkyModalModule,
     SkyModalsResourcesModule,
     SkyThemeModule

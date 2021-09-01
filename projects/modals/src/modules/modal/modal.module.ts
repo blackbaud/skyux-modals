@@ -11,10 +11,6 @@ import {
 } from '@angular/router';
 
 import {
-  SkyI18nModule
-} from '@skyux/i18n';
-
-import {
   SkyIconModule
 } from '@skyux/indicators';
 
@@ -50,12 +46,6 @@ import {
   SkyModalComponent
 } from './modal.component';
 
-// Libraries that compile using the View Engine should export any
-// modules used by their entry components.
-const entryComponentModules = [
-  SkyIconModule
-];
-
 @NgModule({
   declarations: [
     SkyModalComponent,
@@ -68,17 +58,20 @@ const entryComponentModules = [
   imports: [
     CommonModule,
     RouterModule,
-    SkyI18nModule,
     SkyIconModule,
     SkyModalsResourcesModule,
     SkyThemeModule
   ],
   exports: [
+    // Libraries that compile using the View Engine should export any
+    // modules used by their entry components.
+    //#region Entry component modules
+    SkyIconModule,
+    //#endregion
     SkyModalComponent,
     SkyModalContentComponent,
     SkyModalFooterComponent,
-    SkyModalHeaderComponent,
-    ...entryComponentModules
+    SkyModalHeaderComponent
   ],
   entryComponents: [
     SkyModalHostComponent
