@@ -11,20 +11,12 @@ import {
 } from '@angular/router';
 
 import {
-  SkyI18nModule
-} from '@skyux/i18n';
-
-import {
   SkyIconModule
 } from '@skyux/indicators';
 
 import {
   SkyThemeModule
 } from '@skyux/theme';
-
-import {
-  SkyModalForRootCompatModule
-} from '../shared/modal-for-root-compat.module';
 
 import {
   SkyModalsResourcesModule
@@ -66,13 +58,16 @@ import {
   imports: [
     CommonModule,
     RouterModule,
-    SkyI18nModule,
     SkyIconModule,
-    SkyModalForRootCompatModule,
     SkyModalsResourcesModule,
     SkyThemeModule
   ],
   exports: [
+    // Libraries that compile using the View Engine should export any
+    // modules used by their entry components.
+    //#region Entry component modules
+    SkyIconModule,
+    //#endregion
     SkyModalComponent,
     SkyModalContentComponent,
     SkyModalFooterComponent,

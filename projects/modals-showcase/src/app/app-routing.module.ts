@@ -9,7 +9,7 @@ import { ModalVisualComponent } from './visual/modal/modal-visual.component';
 
 const routes: Routes = [
   {
-    path: 'visual',
+    path: '',
     component: VisualComponent
   },
   {
