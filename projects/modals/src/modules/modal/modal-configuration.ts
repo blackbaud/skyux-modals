@@ -5,9 +5,11 @@ import {
 /**
  * @internal
  */
-@Injectable()
-export class SkyModalConfiguration {
+@Injectable({
+  providedIn: 'any'
+})
 
+export class SkyModalConfiguration {
   public fullPage?: boolean;
   public size?: string;
   public ariaDescribedBy?: string;

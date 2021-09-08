@@ -17,3 +17,9 @@ export * from './modules/modal/modal-instance';
 export * from './modules/modal/modal.interface';
 export * from './modules/modal/modal.module';
 export * from './modules/modal/modal.service';
+
+export { SkyConfirmComponent as λ1 } from './modules/confirm/confirm.component';
+export { SkyModalContentComponent as λ2 } from './modules/modal/modal-content.component';
+export { SkyModalFooterComponent as λ3 } from './modules/modal/modal-footer.component';
+export { SkyModalHeaderComponent as λ4 } from './modules/modal/modal-header.component';
+export { SkyModalComponent as λ5 } from './modules/modal/modal.component';

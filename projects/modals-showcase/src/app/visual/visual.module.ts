@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { SkyDocsToolsModule } from '@skyux/docs-tools';
 import { SkyInputBoxModule } from '@skyux/forms';
 import { SkyTilesModule } from '@skyux/tiles';
 
@@ -40,7 +39,6 @@ import { VisualComponent } from './visual.component';
     CommonModule,
     FormsModule,
     RouterModule,
-    SkyDocsToolsModule,
     SkyInputBoxModule,
     SkyModalModule,
     SkyTilesModule

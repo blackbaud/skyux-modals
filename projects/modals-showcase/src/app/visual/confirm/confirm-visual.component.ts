@@ -3,11 +3,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
-import {
   SkyConfirmService,
   SkyConfirmType
 } from '../../../../../modals/src/public-api';
@@ -18,8 +13,7 @@ import {
 })
 export class ConfirmVisualComponent {
   constructor(
-    private confirmService: SkyConfirmService,
-    private themeSvc: SkyThemeService
+    private confirmService: SkyConfirmService
   ) { }
 
   public openOKConfirm() {
@@ -79,9 +73,5 @@ export class ConfirmVisualComponent {
       preserveWhiteSpace: true,
       type: SkyConfirmType.OK
     });
-  }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
   }
 }
