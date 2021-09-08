@@ -20,6 +20,7 @@ import { ModalLargeDemoComponent } from './modal/modal-large-demo.component';
 import { ModalTiledDemoComponent } from './modal/modal-tiled-demo.component';
 import { ModalVisualComponent } from './modal/modal-visual.component';
 import { VisualComponent } from './visual.component';
+import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { VisualComponent } from './visual.component';
     CommonModule,
     FormsModule,
     RouterModule,
+    SkyE2eThemeSelectorModule,
     SkyInputBoxModule,
     SkyModalModule,
     SkyTilesModule
