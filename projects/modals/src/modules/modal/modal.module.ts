@@ -63,11 +63,6 @@ import {
     SkyThemeModule
   ],
   exports: [
-    // Libraries that compile using the View Engine should export any
-    // modules used by their entry components.
-    //#region Entry component modules
-    SkyIconModule,
-    //#endregion
     SkyModalComponent,
     SkyModalContentComponent,
     SkyModalFooterComponent,

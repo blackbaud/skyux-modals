@@ -3,11 +3,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
-import {
   SkyModalConfigurationInterface,
   SkyModalInstance,
   SkyModalService
@@ -55,8 +50,7 @@ export class ModalVisualComponent {
   public buttonsHidden: boolean;
 
   constructor(
-    private modal: SkyModalService,
-    private themeSvc: SkyThemeService
+    private modal: SkyModalService
   ) { }
 
   public openModal(): void {
@@ -115,10 +109,6 @@ export class ModalVisualComponent {
 
   public openFormModal(): void {
     this.openModalInstance(ModalFormDemoComponent);
-  }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
   }
 
   public hideButtons(): void {

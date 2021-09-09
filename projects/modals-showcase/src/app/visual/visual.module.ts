@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { SkyDocsToolsModule } from '@skyux/docs-tools';
 import { SkyInputBoxModule } from '@skyux/forms';
 import { SkyTilesModule } from '@skyux/tiles';
 
@@ -21,6 +20,7 @@ import { ModalLargeDemoComponent } from './modal/modal-large-demo.component';
 import { ModalTiledDemoComponent } from './modal/modal-tiled-demo.component';
 import { ModalVisualComponent } from './modal/modal-visual.component';
 import { VisualComponent } from './visual.component';
+import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { VisualComponent } from './visual.component';
     CommonModule,
     FormsModule,
     RouterModule,
-    SkyDocsToolsModule,
+    SkyE2eThemeSelectorModule,
     SkyInputBoxModule,
     SkyModalModule,
     SkyTilesModule
