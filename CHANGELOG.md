@@ -1,3 +1,7 @@
+# 5.0.0-beta.4 (2021-09-09)
+
+- Added support for "partial" Ivy compilation mode. [#169](https://github.com/blackbaud/skyux-modals/pull/169)
+
 # 5.0.0-beta.3 (2021-09-01)
 
 - Fixed the `SkyModalModule` to work with consuming libraries that are compiled with the legacy View Engine. [#166](https://github.com/blackbaud/skyux-modals/pull/166)
