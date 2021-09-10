@@ -1,6 +1,6 @@
 # 5.0.0-beta.5 (2021-09-10)
 
-- Updated the peer dependencies. []()
+- Updated the peer dependencies. [#172](https://github.com/blackbaud/skyux-modals/pull/172)
 
 # 5.0.0-beta.4 (2021-09-09)
 
