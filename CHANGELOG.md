@@ -1,3 +1,7 @@
+# 5.0.0-beta.5 (2021-09-10)
+
+- Updated the peer dependencies. []()
+
 # 5.0.0-beta.4 (2021-09-09)
 
 - Added support for "partial" Ivy compilation mode. [#169](https://github.com/blackbaud/skyux-modals/pull/169)
