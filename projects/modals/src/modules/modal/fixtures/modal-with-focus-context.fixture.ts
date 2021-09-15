@@ -1,4 +1,4 @@
 export class ModalWithFocusContext {
-  public disableFirstContent: boolean;
-  public disableSecondContent: boolean;
+  public disableFirstContent: boolean = false;
+  public disableSecondContent: boolean = false;
 }

@@ -29,7 +29,15 @@
           "options": {
             "main": "projects/modals/src/test.ts",
             "tsConfig": "projects/modals/tsconfig.spec.json",
-            "karmaConfig": "projects/modals/karma.conf.js"
+            "karmaConfig": "projects/modals/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/fixtures/**"
+            ],
+            "styles": [
+              "@skyux/theme/css/sky.css",
+              "@skyux/theme/css/themes/modern/styles.css"
+            ]
           }
         },
         "lint": {
