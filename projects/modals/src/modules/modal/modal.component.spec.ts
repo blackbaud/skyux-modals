@@ -13,7 +13,10 @@ import {
 } from '@angular/router';
 
 import {
-  MutationObserverService
+  MutationObserverService,
+  SkyCoreAdapterService,
+  SkyDockLocation,
+  SkyDockService
 } from '@skyux/core';
 
 import {
@@ -71,6 +74,10 @@ import {
 import {
   ModalWithFocusContentTestComponent
 } from './fixtures/modal-with-focus-content.fixture';
+
+import {
+  ModalWithFocusContext
+} from './fixtures/modal-with-focus-context.fixture';
 
 import {
   ModalMockThemeService
@@ -174,8 +181,39 @@ describe('Modal component', () => {
     closeModal(modalInstance1);
   }));
 
+  it('should focus the first non-disabled element if the first element is disabled', fakeAsync(() => {
+    let modalInstance1 = openModal(ModalWithFocusContentTestComponent, {
+      providers: [
+        {
+          provide: ModalWithFocusContext,
+          useValue: {
+            disableFirstContent: true
+          }
+        }
+      ]
+    });
+    expect(document.activeElement).toEqual(document.querySelector('#visible-btn-2'));
+    closeModal(modalInstance1);
+  }));
+
   it('should focus the dialog when no autofocus or focus element is inside of content', fakeAsync(() => {
     let modalInstance1 = openModal(ModalTestComponent);
+    expect(document.activeElement).toEqual(document.querySelector('.sky-modal-content'));
+    closeModal(modalInstance1);
+  }));
+
+  it('should focus the dialog when all focuable elements are disabled', fakeAsync(() => {
+    let modalInstance1 = openModal(ModalWithFocusContentTestComponent, {
+      providers: [
+        {
+          provide: ModalWithFocusContext,
+          useValue: {
+            disableFirstContent: true,
+            disableSecondContent: true
+          }
+        }
+      ]
+    });
     expect(document.activeElement).toEqual(document.querySelector('.sky-modal-content'));
     closeModal(modalInstance1);
   }));
@@ -402,7 +440,7 @@ describe('Modal component', () => {
   }));
 
   it('should handle empty list for focus first and last element functions', fakeAsync(() => {
-    let adapterService = new SkyModalComponentAdapterService();
+    let adapterService = new SkyModalComponentAdapterService(TestBed.inject(SkyCoreAdapterService));
     let firstResult = adapterService.focusFirstElement([]);
     expect(firstResult).toBe(false);
 
@@ -719,6 +757,25 @@ describe('Modal component', () => {
     );
 
     const modalInstance = openModal(ModalTiledBodyTestComponent);
+
+    closeModal(modalInstance);
+  }));
+
+  it('should set the dock service location to between the modal content and footer', fakeAsync(() => {
+    const dockServiceLocationSpy = spyOn(SkyDockService.prototype, 'setDockOptions');
+
+    const modalInstance = openModal(ModalTestComponent);
+
+    tick();
+    getApplicationRef().tick();
+
+    const modalContent = document.querySelector('.sky-modal-content');
+
+    expect(dockServiceLocationSpy).toHaveBeenCalledWith({
+      location: SkyDockLocation.ElementBottom,
+      referenceEl: modalContent,
+      zIndex: 5
+    });
 
     closeModal(modalInstance);
   }));

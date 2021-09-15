@@ -1,3 +1,7 @@
+# 4.6.0 (2021-09-15)
+
+- Updated the modal component to place docked elements at the bottom of the modal content. [#168](https://github.com/blackbaud/skyux-modals/pull/168)
+
 # 5.0.0-beta.5 (2021-09-10)
 
 - Updated the peer dependencies. [#172](https://github.com/blackbaud/skyux-modals/pull/172)
@@ -17,6 +21,10 @@
 # 5.0.0-beta.1 (2021-07-26)
 
 - Fixed the `SkyModalService` to work within lazy-loaded modules. [#160](https://github.com/blackbaud/skyux-modals/pull/160)
+
+# 4.5.5 (2021-07-13)
+
+- Fixed the modal component so that it does not include disabled elements with `tabIndex` attributes among the focusable elements when a modal loads. [#158](https://github.com/blackbaud/skyux-modals/pull/158)
 
 # 5.0.0-beta.0 (2021-07-06)
 
