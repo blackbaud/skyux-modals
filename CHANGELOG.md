@@ -1,3 +1,7 @@
+# 5.0.0-beta.6 (2021-09-15)
+
+- Merge master and update peer dependencies. [#174](https://github.com/blackbaud/skyux-modals/pull/174)
+
 # 4.6.0 (2021-09-15)
 
 - Updated the modal component to place docked elements at the bottom of the modal content. [#168](https://github.com/blackbaud/skyux-modals/pull/168)
