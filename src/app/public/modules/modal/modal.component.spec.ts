@@ -769,12 +769,12 @@ describe('Modal component', () => {
     tick();
     getApplicationRef().tick();
 
-    const modalFooter = document.querySelector('.sky-modal-footer');
+    const modalContent = document.querySelector('.sky-modal-content');
 
     expect(dockServiceLocationSpy).toHaveBeenCalledWith({
-      location: SkyDockLocation.BeforeElement,
-      referenceEl: modalFooter,
-      zIndex: 1
+      location: SkyDockLocation.ElementBottom,
+      referenceEl: modalContent,
+      zIndex: 5
     });
 
     closeModal(modalInstance);
