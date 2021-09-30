@@ -18,6 +18,8 @@ export * from './modules/modal/modal.interface';
 export * from './modules/modal/modal.module';
 export * from './modules/modal/modal.service';
 
+// Components and directives must be exported to support Angular's "partial" Ivy compiler.
+// Obscure names are used to indicate types are not part of the public API.
 export { SkyConfirmComponent as λ1 } from './modules/confirm/confirm.component';
 export { SkyModalContentComponent as λ2 } from './modules/modal/modal-content.component';
 export { SkyModalFooterComponent as λ3 } from './modules/modal/modal-footer.component';
