@@ -49,16 +49,63 @@
         <p class="sky-docs-text-block">
           Use modals when tasks are functionally modal and users must finish them before doing anything else.
         </p>
+        <sky-docs-design-guideline-thumbnail
+          caption="Do use modals when the user must complete the form before anything else downstream."
+          captionType="success"
+          *skyThemeIf="'modern'"
+          imageSource="~/assets/img/guidelines/modal-usage1-modern.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
       </sky-docs-design-guideline>
       <sky-docs-design-guideline>
         <p class="sky-docs-text-block">
           Use modals when displaying forms inline would lead to substantial content shifting or require users to scroll to complete the forms.
         </p>
+        <sky-docs-design-guideline-thumbnail
+          *skyThemeIf="'modern'"
+          caption="Do use a modal if the form would shift content inline or require scrolling."
+          captionType="success"
+          imageSource="~/assets/img/guidelines/modal-usage2-modern.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
       </sky-docs-design-guideline>
       <sky-docs-design-guideline>
         <p class="sky-docs-text-block">
           Use modals when forms add records from paginated lists or infinite scroll lists.
         </p>
+        <sky-docs-design-guideline-thumbnail
+          *skyThemeIf="'modern'"
+          caption="Do use a modal if the form adds records from paginated or infinite scroll lists."
+          captionType="success"
+          imageSource="~/assets/img/guidelines/modal-usage3-modern.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+      <sky-docs-design-guideline
+      *skyThemeIf="'modern'"
+      >
+        <p class="sky-docs-text-block">
+          Use a <a href="https://developer.blackbaud.com/skyux-action-bars/docs/summary-action-bar">summary action bar</a> in the modal's footer when you need to show summary information related to the form in the modal's body.
+        </p>
+        <sky-docs-design-guideline-thumbnail
+        caption="Do use a summary action bar in modal footers for form summary information."
+        captionType="success"
+        imageSource="~/assets/img/guidelines/modal-usage4-modern.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+      <sky-docs-design-guideline
+      *skyThemeIf="'modern'"
+      >
+        <p class="sky-docs-text-block">
+          Use a large modal when housing a component that best utilizes the horizontal space such as <a href="https://developer.blackbaud.com/skyux-tabs/docs/sectioned-form">a sectioned form</a>, <a href="https://developer.blackbaud.com/skyux-progress-indicator/docs/wizard">a wizard</a>, or <a href="https://developer.blackbaud.com/skyux/components/data-entry-grid">a data entry grid</a>.
+        </p>
+        <sky-docs-design-guideline-thumbnail
+        caption="Do use a larger sized modal for larger components."
+        captionType="success"
+        imageSource="~/assets/img/guidelines/modal-usage5-modern.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
       </sky-docs-design-guideline>
 
       <sky-docs-design-guideline
@@ -85,7 +132,20 @@
         </p>
     </sky-docs-design-guideline>
   </sky-docs-demo-page-section>
-
+  <sky-docs-demo-page-section
+    *skyThemeIf="'modern'"
+    heading="Anatomy"
+  >
+    <sky-docs-anatomy
+      imagePath="~/assets/img/guidelines/modal-anatomy-modern.png"
+    >
+    <sky-docs-anatomy-item>Header</sky-docs-anatomy-item>
+    <sky-docs-anatomy-item>Title</sky-docs-anatomy-item>
+    <sky-docs-anatomy-item>Body</sky-docs-anatomy-item>
+    <sky-docs-anatomy-item>Footer</sky-docs-anatomy-item>
+    <sky-docs-anatomy-item>Action buttons</sky-docs-anatomy-item>
+    </sky-docs-anatomy>
+  </sky-docs-demo-page-section>
     <sky-docs-demo-page-section
       heading="Content"
     >
@@ -100,12 +160,12 @@
         </p>
         <sky-docs-design-guideline-thumbnail
           *skyThemeIf="'default'"
-          imageSource="~/assets/img/modal-with-object.png"
+          imageSource="~/assets/img/guidelines/modal-with-object.png"
         >
         </sky-docs-design-guideline-thumbnail>
         <sky-docs-design-guideline-thumbnail
           *skyThemeIf="'modern'"
-          imageSource="~/assets/img/modal-with-object-modern.png"
+          imageSource="~/assets/img/guidelines/modal-with-object-modern.png"
         >
         </sky-docs-design-guideline-thumbnail>
       </sky-docs-design-guideline>
@@ -118,12 +178,12 @@
         </p>
         <sky-docs-design-guideline-thumbnail
           *skyThemeIf="'default'"
-          imageSource="~/assets/img/modal-without-object.png"
+          imageSource="~/assets/img/guidelines/modal-without-object.png"
         >
         </sky-docs-design-guideline-thumbnail>
         <sky-docs-design-guideline-thumbnail
           *skyThemeIf="'modern'"
-          imageSource="~/assets/img/modal-without-object-modern.png"
+          imageSource="~/assets/img/guidelines/modal-without-object-modern.png"
         >
         </sky-docs-design-guideline-thumbnail>
       </sky-docs-design-guideline>
@@ -141,7 +201,21 @@
         </div>
       </sky-docs-design-guideline>
     </sky-docs-demo-page-section>
+    <sky-docs-demo-page-section
+      *skyThemeIf="'modern'"
+      heading="Behavior and states"
+    >
+    <sky-docs-design-guideline>
+      <div class="sky-docs-text-block">
+        The header and footer increase in elevation as the user scrolls within the body of the modal.
+      </div>
+      <sky-docs-design-guideline-thumbnail
+      imageSource="~/assets/img/guidelines/modal-behavior-scroll-modern.png"
+      >
 
+      </sky-docs-design-guideline-thumbnail>
+    </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
     <sky-docs-demo-page-section
       heading="Related information"
     >
@@ -160,6 +234,18 @@
           </li>
         </ul>
       </sky-docs-design-guideline>
+      <sky-docs-design-guideline
+      heading="Guidelines"
+    >
+      <ul>
+        <li>
+          <a href="https://developer.blackbaud.com/skyux/design/guidelines/error-handling">Error handling</a>
+        </li>
+        <li>
+          <a href="https://developer.blackbaud.com/skyux/design/guidelines/form-design#form-containers">Form design</a>
+        </li>
+      </ul>
+    </sky-docs-design-guideline>
     </sky-docs-demo-page-section>
   </sky-docs-design-guidelines>
 
