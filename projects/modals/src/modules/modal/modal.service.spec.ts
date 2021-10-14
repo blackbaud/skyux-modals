@@ -225,6 +225,6 @@ describe('Modal service', () => {
     openModal(ModalTestComponent, { wrapperClass });
     applicationRef.tick();
 
-    expect(document.body.querySelector(`.${wrapperClass}`)).toExist();
+    expect(document.body.querySelector(`sky-modal.${wrapperClass}`)).toExist();
   }));
 });
