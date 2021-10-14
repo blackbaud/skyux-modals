@@ -1,3 +1,7 @@
+# 4.6.1 (2021-10-14)
+
+- Added bug fixes and features from the `master` branch.
+
 # 4.6.0 (2021-09-15)
 
 - Updated the modal component to place docked elements at the bottom of the modal content. [#168](https://github.com/blackbaud/skyux-modals/pull/168)
