@@ -10,21 +10,20 @@ import { ModalVisualComponent } from './visual/modal/modal-visual.component';
 const routes: Routes = [
   {
     path: '',
-    component: VisualComponent
+    component: VisualComponent,
   },
   {
     path: 'visual/confirm',
-    component: ConfirmVisualComponent
+    component: ConfirmVisualComponent,
   },
   {
     path: 'visual/modal',
-    component: ModalVisualComponent
-  }
+    component: ModalVisualComponent,
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

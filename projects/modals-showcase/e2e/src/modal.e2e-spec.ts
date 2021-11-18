@@ -1,13 +1,6 @@
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
 
-import {
-  element,
-  by
-} from 'protractor';
+import { element, by } from 'protractor';
 
 describe('Modal', () => {
   let currentTheme: string;
@@ -41,7 +34,7 @@ describe('Modal', () => {
     await element(by.css('.sky-btn-primary')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-screenshot')
+      screenshotName: getScreenshotName('modal-lg-screenshot'),
     });
   }
 
@@ -49,7 +42,7 @@ describe('Modal', () => {
     await element(by.css('.sky-modal-with-help')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-with-help-screenshot')
+      screenshotName: getScreenshotName('modal-lg-with-help-screenshot'),
     });
   }
 
@@ -57,7 +50,7 @@ describe('Modal', () => {
     await element(by.css('.sky-modal-with-extended-title')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-with-extended-title')
+      screenshotName: getScreenshotName('modal-lg-with-extended-title'),
     });
   }
 
@@ -65,7 +58,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-content-only')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-content-screenshot')
+      screenshotName: getScreenshotName('modal-lg-content-screenshot'),
     });
   }
 
@@ -73,7 +66,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-small-size-modal')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-small-size-screenshot')
+      screenshotName: getScreenshotName('modal-lg-small-size-screenshot'),
     });
   }
 
@@ -81,7 +74,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-medium-size-modal')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-medium-size-screenshot')
+      screenshotName: getScreenshotName('modal-lg-medium-size-screenshot'),
     });
   }
 
@@ -89,7 +82,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-large-modal')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-large-screenshot')
+      screenshotName: getScreenshotName('modal-lg-large-screenshot'),
     });
   }
 
@@ -98,7 +91,9 @@ describe('Modal', () => {
     await element(by.css('.sky-modal-btn-close')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-close-confirmation-screenshot')
+      screenshotName: getScreenshotName(
+        'modal-lg-close-confirmation-screenshot'
+      ),
     });
   }
 
@@ -106,7 +101,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-large-size-modal')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-large-size-screenshot')
+      screenshotName: getScreenshotName('modal-lg-large-size-screenshot'),
     });
   }
 
@@ -114,7 +109,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-large-modal-autofocus')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-lg-autofocus-screenshot')
+      screenshotName: getScreenshotName('modal-lg-autofocus-screenshot'),
     });
   }
 
@@ -122,7 +117,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-large-size-modal')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-md-large-size-screenshot')
+      screenshotName: getScreenshotName('modal-md-large-size-screenshot'),
     });
   }
 
@@ -130,7 +125,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-tiled-modal')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-md-tiled-screenshot')
+      screenshotName: getScreenshotName('modal-md-tiled-screenshot'),
     });
   }
 
@@ -138,7 +133,7 @@ describe('Modal', () => {
     await element(by.css('.sky-modal-with-help')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-xs-with-help-screenshot')
+      screenshotName: getScreenshotName('modal-xs-with-help-screenshot'),
     });
   }
 
@@ -146,7 +141,9 @@ describe('Modal', () => {
     await element(by.css('.sky-modal-with-extended-title')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-xs-with-extended-title-screenshot')
+      screenshotName: getScreenshotName(
+        'modal-xs-with-extended-title-screenshot'
+      ),
     });
   }
 
@@ -154,7 +151,7 @@ describe('Modal', () => {
     await element(by.css('.sky-btn-primary')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-xs-screenshot')
+      screenshotName: getScreenshotName('modal-xs-screenshot'),
     });
   }
 
@@ -162,7 +159,7 @@ describe('Modal', () => {
     await element(by.css('.sky-test-large-modal')).click();
 
     expect('#modal-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('modal-xs-large-size-screenshot')
+      screenshotName: getScreenshotName('modal-xs-large-size-screenshot'),
     });
   }
 
@@ -257,7 +254,6 @@ describe('Modal', () => {
   });
 
   describe('when modern theme', () => {
-
     beforeEach(async () => {
       await selectTheme('modern', 'light');
     });
@@ -335,11 +331,9 @@ describe('Modal', () => {
         validateLargeXs(done);
       });
     });
-
   });
 
   describe('when modern theme in dark mode', () => {
-
     beforeEach(async () => {
       await selectTheme('modern', 'dark');
     });
@@ -417,7 +411,5 @@ describe('Modal', () => {
         validateLargeXs(done);
       });
     });
-
   });
-
 });

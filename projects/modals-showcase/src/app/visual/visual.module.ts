@@ -34,7 +34,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     ModalLargeDemoComponent,
     ModalTiledDemoComponent,
     ModalVisualComponent,
-    VisualComponent
+    VisualComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +43,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     SkyE2eThemeSelectorModule,
     SkyInputBoxModule,
     SkyModalModule,
-    SkyTilesModule
-  ]
+    SkyTilesModule,
+  ],
 })
-export class VisualModule { }
+export class VisualModule {}
