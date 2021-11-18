@@ -1,15 +1,11 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {
-  SkyModalService
-} from '../../../../../modals/src/public-api';
+import { SkyModalService } from '../../../../../modals/src/public-api';
 
 @Component({
   selector: 'app-test-cmp-modal',
   templateUrl: './modal-demo.component.html',
-  providers: [SkyModalService]
+  providers: [SkyModalService],
 })
 export class ModalDemoComponent {
   public title = 'Hello world';

@@ -1,24 +1,17 @@
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
 
-import {
-  SkyHostBrowserBreakpoint
-} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
+import { SkyHostBrowserBreakpoint } from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
 
-import {
-  by,
-  element
-} from 'protractor';
+import { by, element } from 'protractor';
 
 describe('Confirm', () => {
   let currentTheme: string;
   let currentThemeMode: string;
   let currentBreakpoint: string;
 
-  async function setWindowBreakpoint(breakpoint: SkyHostBrowserBreakpoint): Promise<void> {
+  async function setWindowBreakpoint(
+    breakpoint: SkyHostBrowserBreakpoint
+  ): Promise<void> {
     await SkyHostBrowser.setWindowBreakpoint(breakpoint);
     currentBreakpoint = breakpoint;
   }
@@ -55,7 +48,7 @@ describe('Confirm', () => {
     await element(by.css('.sky-confirm-btn-ok')).click();
 
     expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('confirm-ok')
+      screenshotName: getScreenshotName('confirm-ok'),
     });
   }
 
@@ -63,7 +56,7 @@ describe('Confirm', () => {
     await element(by.css('.sky-confirm-btn-yescancel')).click();
 
     expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('confirm-yes-cancel')
+      screenshotName: getScreenshotName('confirm-yes-cancel'),
     });
   }
 
@@ -71,7 +64,7 @@ describe('Confirm', () => {
     await element(by.css('.sky-confirm-btn-body')).click();
 
     expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('confirm-body')
+      screenshotName: getScreenshotName('confirm-body'),
     });
   }
 
@@ -79,7 +72,7 @@ describe('Confirm', () => {
     await element(by.css('.sky-confirm-btn-yesnocancel')).click();
 
     expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('confirm-yes-no-cancel')
+      screenshotName: getScreenshotName('confirm-yes-no-cancel'),
     });
   }
 
@@ -87,7 +80,7 @@ describe('Confirm', () => {
     await element(by.css('.sky-confirm-btn-custom')).click();
 
     expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('confirm-custom')
+      screenshotName: getScreenshotName('confirm-custom'),
     });
   }
 
@@ -95,7 +88,7 @@ describe('Confirm', () => {
     await element(by.css('.sky-confirm-btn-preserve-white-space')).click();
 
     expect('#confirm-screenshot').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('confirm-preserve-white-space')
+      screenshotName: getScreenshotName('confirm-preserve-white-space'),
     });
   }
 
@@ -297,5 +290,4 @@ describe('Confirm', () => {
       });
     });
   });
-
 });
