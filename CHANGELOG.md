@@ -1,6 +1,6 @@
 # 5.0.3 (2021-12-21)
 
-- Fix Stackblitz demo. []()
+- Fix Stackblitz demo. [#182](https://github.com/blackbaud/skyux-modals/pull/182)
 
 # 5.0.2 (2021-11-18)
 
