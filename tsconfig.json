@@ -9,7 +9,8 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "paths": {
-      "modals": ["dist/modals/modals", "dist/modals"]
+      "modals": ["dist/modals/modals", "dist/modals"],
+      "@skyux/modals": ["projects/modals/src/public-api.ts"]
     },
     "moduleResolution": "node",
     "importHelpers": true,
