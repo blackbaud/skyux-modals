@@ -6,6 +6,7 @@
 
 <div
   class="sky-modal-dialog"
+  aria-live="assertive"
   aria-modal="true"
   [attr.aria-describedby]="ariaDescribedBy"
   [attr.aria-labelledby]="ariaLabelledBy"
@@ -68,7 +69,6 @@
     <div
       class="sky-modal-content sky-padding-even-large"
       role="region"
-      tabindex="0"
       [attr.aria-labelledby]="modalHeaderId"
       [attr.id]="modalContentId"
       (skyModalScrollShadow)="scrollShadowChange($event)"
