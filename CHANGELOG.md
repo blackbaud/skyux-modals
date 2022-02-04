@@ -1,4 +1,4 @@
-# 5.0.4 (2021-02-04)
+# 5.0.4 (2022-02-04)
 
 - Removed an outdated reference to entry components. [#185](https://github.com/blackbaud/skyux-modals/pull/185)
 
