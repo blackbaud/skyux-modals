@@ -21,7 +21,7 @@ import {
 
 /**
  * A service that lauches modals. For information about how to test modals in SKY UX, see
- * [write unit tests for modals](https://developer.blackbaud.com/skyux/learn/get-started/advanced/unit-test-modals).
+ * [write unit tests for modals](https://developer.blackbaud.com/skyux-v4/learn/get-started/advanced/unit-test-modals).
  * @dynamic
  */
 @Injectable()
@@ -52,7 +52,7 @@ export class SkyModalService {
    * Since the component generates dynamically instead of with HTML selectors, consumers must
    * register it with the `entryComponents` property in the `app-extras.module.ts` file.
    * For more information, see the
-   * [entry components tutorial](https://developer.blackbaud.com/skyux/learn/get-started/advanced/entry-components).
+   * [entry components tutorial](https://developer.blackbaud.com/skyux-v4/learn/get-started/advanced/entry-components).
    * @param {SkyModalConfigurationInterface} config Populates the modal based on the `SkyModalConfigurationInterface` object.
    */
   public open(component: any, config?: SkyModalConfigurationInterface | any[]): SkyModalInstance {
