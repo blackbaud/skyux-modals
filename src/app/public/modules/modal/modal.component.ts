@@ -42,7 +42,7 @@ let skyModalUniqueIdentifier: number = 0;
  * Provides a common look-and-feel for modal content with options to display
  * a common modal header, specify body content, and display a common modal footer
  * and buttons. For information about how to test modals in SKY UX, see
- * [write unit tests for modals](https://developer.blackbaud.com/skyux/learn/get-started/advanced/unit-test-modals).
+ * [write unit tests for modals](https://developer.blackbaud.com/skyux-v4/learn/get-started/advanced/unit-test-modals).
  */
 @Component({
   selector: 'sky-modal',
